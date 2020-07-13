@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\FirebaseDB",
+    "\\src\\components\\Products",
+    "\\src\\server"
+  ],
+  "SelectedNode": "\\src\\components\\Products\\Posts.js",
+  "PreviewInSolutionExplorer": false
+}
