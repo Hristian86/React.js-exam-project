@@ -2,7 +2,7 @@ import React from 'react';
 
 const Details = (props) => {
     //console.log(props)
-    return <div className="details-page bg-warning">
+    return <div className="details-page">
         <div className="right-corner">
 
             <h5 className="mt-1">Phone number:<br />{props.props.phone}<br /><br />Email:<br />{props.props.email}</h5>

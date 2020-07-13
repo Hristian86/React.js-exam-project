@@ -11,15 +11,12 @@ export default class DetailsQuery extends Component {
 
         const currUser = fire.auth().currentUser;
 
-        if (currUser) {
+        const firestore = fire.firestore();
+        const db = firestore.collection('Posts').doc(id); //search by id
+        const doc = await db.get();
+        const datas = doc.data();
+        // console.log(datas);
 
-            const firestore = fire.firestore();
-            const db = firestore.collection('Posts').doc(id); //search by id
-            const doc = await db.get();
-            const datas = doc.data();
-            //console.log(datas);
-
-            return datas
-        }
+        return datas
     }
 }

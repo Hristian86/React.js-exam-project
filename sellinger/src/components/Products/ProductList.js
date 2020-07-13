@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fireDB from '../FirebaseDB/fireDB';
 import ProductLeyout from './ProductLayout';
+import './style.css';
 
 export default class ProductList extends Component {
     constructor(props) {
@@ -20,7 +21,6 @@ export default class ProductList extends Component {
 
     getItems = async () => {
         let fire = new fireDB();
-
         const resp = await fire.readFromDb();
 
         if (resp) {
@@ -37,7 +37,7 @@ export default class ProductList extends Component {
         return (
             <div className="container-fluid">
 
-                {this.state.data ? <ProductLeyout state={this.state.data} /> : <em>loading....</em>}
+                {this.state.data ? <ProductLeyout state={this.state.data} /> : <div className="loading"><em>loading....</em></div>}
 
             </div>
         )

@@ -108,7 +108,8 @@ export default class Home extends Component {
                 {this.state.user ? <Tests name={this.state.user.displayName} /> : <Tests name={""} />}
 
                 {this.state.user ? (<Cards />) : <div className="text-center load">Not logged</div>}
-                    
+
+                <button onClick={fireQuery.createDataDb} className="btn btn-primary text-center">Seed</button>        
 
                 {this.state.user ? <div className="d-flex justify-content-between">
 

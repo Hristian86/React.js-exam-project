@@ -1,0 +1,17 @@
+.loading {
+    height:900px;
+}
+
+.create-post {
+    width: 80%;
+    margin:110px auto;
+    background-color: #ffff;
+}
+
+.content-holder {
+    height: 300px!important;
+}
+
+.create-back {
+    background: url(https://d1.awsstatic.com/webteam/homepage/heroes/overlay-art/Site-Merch_What-is-AWS_Hero-Art.d92a5ae5daf0c0735f49b06814bee7a07742ba20.png);
+}

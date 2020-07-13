@@ -23,8 +23,8 @@ export default class fireDB extends Component {
 
         const currUser = fire.auth().currentUser;
 
-        if (currUser) {
-            const token = currUser.refreshToken;
+        //if (currUser) {
+        //    const token = currUser.refreshToken;
             let arr = [];
             const firestore = fire.firestore();
             const db = firestore.collection('Posts');
@@ -45,14 +45,14 @@ export default class fireDB extends Component {
             });
 
             //delete
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i].id == "UPxiX8DExLGpLzgA8OzX") {
-                    const del = arr[i].id;
+            // for (var i = 4; i < arr.length; i++) {
+            //     if (arr[i].id == "UPxiX8DExLGpLzgA8OzX") {
+            //         const del = arr[i].id;
 
-                    const reses = await db.doc(del).delete();
+            //         const reses = await db.doc(del).delete();
 
-                }
-            }
+            //     }
+            // }
 
             return arr;
 
@@ -73,17 +73,17 @@ export default class fireDB extends Component {
             //arr.push(obj);
             //return arr;
 
-        }
+        // }
     }
 
+    //not used only for guidelines with firestore
     async createDataDb() {
         
+        try {
         const currUser = fire.auth().currentUser;
-        const userId = currUser.uid;
+
         if (currUser) {
-
-            try {
-
+            const userId = currUser.uid;
                 let pLoad = {
                     "content": "greeeedy one",
                     "createdOn": new Date(),
@@ -98,11 +98,6 @@ export default class fireDB extends Component {
                     .then(() => {
                         console.log('Create');
                     }).catch((err) => console.log(err));
-
-            } catch (e) {
-                console.log(e);
-            }
-
 
             //const token = currUser.refreshToken;
             //const userId = currUser.uid;
@@ -134,6 +129,10 @@ export default class fireDB extends Component {
             //} catch (e) {
             //    console.log(e);
             //}
+        }
+        
+        } catch (error) {
+            console.log(error);
         }
     }
 }

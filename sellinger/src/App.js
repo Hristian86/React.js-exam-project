@@ -22,6 +22,7 @@ import Hcard from './components/HearthStoneCards/HearthstoneCard';
 import ProductList from './components/Products/ProductList';
 import Details from './components/Products/Details';
 import CreatePost from './components/CreatePost/CreatePost';
+import DetailsPage from './components/Products/DetailsPage';
 //import PrivateRoute from './components/Auth/PrivateRoute';
 
 var useraaa = [];
@@ -88,6 +89,9 @@ export default class App extends Component {
                                 <Route path="/Contact" component={Contact}>
                                 </Route>
 
+                                <Route path="/Products/DetailsPage" component={DetailsPage}>
+                                </Route>
+                                
                                 <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route>
 
 
