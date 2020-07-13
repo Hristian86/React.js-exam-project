@@ -4,10 +4,12 @@
     "\\public",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\Auth",
+    "\\src\\components\\CreatePost",
     "\\src\\components\\FirebaseDB",
     "\\src\\components\\Products",
     "\\src\\server"
   ],
-  "SelectedNode": "\\src\\components\\Products\\Posts.js",
+  "SelectedNode": "\\src\\components\\FirebaseDB\\fireDB.js",
   "PreviewInSolutionExplorer": false
 }

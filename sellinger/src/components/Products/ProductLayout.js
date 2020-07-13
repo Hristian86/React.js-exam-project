@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
 
-
-
 export default class ProductLeyout extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +26,7 @@ export default class ProductLeyout extends Component {
 
         return (
             <div>
-                {this.props.state ? display.map(x => x) : <em>Loading...</em>}
+                {this.props.state ? display.map(post => post) : <em>Loading...</em>}
             </div>
         )
     }

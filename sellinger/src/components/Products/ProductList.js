@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import fireDB from '../FirebaseDB/fireDB';
 import ProductLeyout from './ProductLayout';
 
-var counter = 0;
-
 export default class ProductList extends Component {
     constructor(props) {
         super(props)
@@ -16,6 +14,7 @@ export default class ProductList extends Component {
             if (this.state.data == undefined) {
                 this.getItems();
             }
+            //console.log("test");
         }, 600);
     }
 
@@ -31,10 +30,14 @@ export default class ProductList extends Component {
 
     render() {
 
+        if (this.state.data) {
+            clearInterval(this.interval);
+        }
+
         return (
             <div className="container-fluid">
-                {this.state.data ? <ProductLeyout state={this.state.data} /> : <em>loading....</em>}
 
+                {this.state.data ? <ProductLeyout state={this.state.data} /> : <em>loading....</em>}
 
             </div>
         )

@@ -26,7 +26,6 @@ export default class fireDB extends Component {
         if (currUser) {
             const token = currUser.refreshToken;
             let arr = [];
-
             const firestore = fire.firestore();
             const db = firestore.collection('Posts');
             const fr = await db.get();
@@ -38,7 +37,8 @@ export default class fireDB extends Component {
                     "createdOn": doc.data().createdOn.toString(),
                     "id": doc.id,
                     "userId": doc.data().userId,
-                    "subject": doc.data().subject
+                    "subject": doc.data().subject,
+                    "image":doc.data().image
                 }
 
                 arr.push(obj);

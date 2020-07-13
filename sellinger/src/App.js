@@ -20,6 +20,8 @@ import Logout from './components/Auth/Logout';
 import Manage from './components/Auth/Manage';
 import Hcard from './components/HearthStoneCards/HearthstoneCard';
 import ProductList from './components/Products/ProductList';
+import Details from './components/Products/Details';
+import CreatePost from './components/CreatePost/CreatePost';
 //import PrivateRoute from './components/Auth/PrivateRoute';
 
 var useraaa = [];
@@ -57,6 +59,7 @@ export default class App extends Component {
     }
 
     render() {
+        
         //if (!this.state.user) {
         //    return (
         //        <div><em>Loaging...</em></div>
@@ -64,7 +67,6 @@ export default class App extends Component {
         //}
 
         //this.state.user ? console.log("Loaded") : console.log("not loaded");
-
         
         return (
             <div className="App">
@@ -81,10 +83,12 @@ export default class App extends Component {
 
                                 <Route path="/Products/ProductList" component={ProductList} ></Route>
 
+                                <Route path="/Products/Details" component={Details} ></Route>
+
                                 <Route path="/Contact" component={Contact}>
                                 </Route>
 
-
+                                <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route>
 
 
                                 <Route path="/components/HearthStoneCards/HearthstoneCard" component={Hcard}>

@@ -15,6 +15,7 @@ import Cards from './Cards/Cards';
 import fire from './FirebaseAuth/Config';
 import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
+import CreatePost from './CreatePost/CreatePost';
 
 export default class navbar extends Component {
     constructor(props) {
@@ -94,6 +95,9 @@ export default class navbar extends Component {
                         <Nav.Link href="/Contact" onClick={() => this.prevDef}>Contact</Nav.Link>
 
                         <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef}>Hearthstone</Nav.Link>
+
+
+                        <Nav.Link href="/CreatePost/CreatePost" onClick={() => this.prevDef}>Create a post</Nav.Link>
 
                     </Nav>
                     <Form inline className="mr-3">

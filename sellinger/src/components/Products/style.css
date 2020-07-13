@@ -1,0 +1,22 @@
+.image-style {
+    height:200px;
+    width:200px;
+}
+
+.details-page {
+    height:400px;
+    width:100%;
+}
+
+.right-corner {
+    float:right;
+}
+
+.content-place {
+    width:80%;
+}
+
+.card-style {
+    width: 85%;
+    margin:auto;
+}
