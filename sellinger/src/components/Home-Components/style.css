@@ -1,0 +1,24 @@
+.left-box {
+    background: url(https://www.pdvg.it/wp-content/uploads/2019/09/vbbnbn.jpg);
+    background-size: cover;
+    background-position: center;
+    /* background-position-y: 20px; */
+    width: 100%;
+    margin-right: 80px;
+    padding-top: 180px;
+    
+}
+
+.right-box {
+    background: url(https://www.passionateinmarketing.com/wp-content/uploads/2013/10/sprite.jpg);
+    background-size: cover;
+    background-position: center;
+    /* background-position-y: 20px; */
+    width: 100%;
+    margin-left: 80px;
+    padding-top: 180px;
+}
+
+.wrapper-home {
+    height: 1200px;
+}

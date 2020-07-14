@@ -22,6 +22,7 @@ import Hcard from './components/HearthStoneCards/HearthstoneCard';
 import ProductList from './components/Products/ProductList';
 import Details from './components/Products/Details';
 import CreatePost from './components/CreatePost/CreatePost';
+import DetailsPage from './components/Products/DetailsPage';
 //import PrivateRoute from './components/Auth/PrivateRoute';
 
 var useraaa = [];
@@ -31,7 +32,10 @@ export default class App extends Component {
         super(props)
 
 
-        this.state = {}
+        this.state = {
+            user:null,
+            isLoading:false
+        }
 
         this.authListener = this.authListener.bind(this);
     }
@@ -45,11 +49,14 @@ export default class App extends Component {
         const users = await fire.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({
-                    user: user
+                    user: user,
+                    isLoading:true
                 });
                 useraaa = user;
             } else {
-                this.setState = null;
+                this.setState({
+                    isLoading:true
+                });
             }
         });
 
@@ -69,9 +76,9 @@ export default class App extends Component {
         //this.state.user ? console.log("Loaded") : console.log("not loaded");
         
         return (
-            <div className="App">
+           <div className="App">
                 <header className="App-header">
-                    <Layout>
+                   <Layout>
                         <Router>
                             <Switch>
                                 <Route exact path="/" component={Home}>
@@ -88,6 +95,9 @@ export default class App extends Component {
                                 <Route path="/Contact" component={Contact}>
                                 </Route>
 
+                                <Route path="/Products/DetailsPage" component={DetailsPage}>
+                                </Route>
+                                
                                 <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route>
 
 

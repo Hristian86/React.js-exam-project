@@ -16,6 +16,7 @@ import fire from './FirebaseAuth/Config';
 import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
 import CreatePost from './CreatePost/CreatePost';
+import './navbar.css';
 
 export default class navbar extends Component {
     constructor(props) {
@@ -82,7 +83,7 @@ export default class navbar extends Component {
         }
         
         return (
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="" className="nav-bar-background border-bottom box-shadow mb-3" expand="lg">
                 <Navbar.Brand href="/" onClick={() => this.prevDef}>Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -100,10 +101,6 @@ export default class navbar extends Component {
                         <Nav.Link href="/CreatePost/CreatePost" onClick={() => this.prevDef}>Create a post</Nav.Link>
 
                     </Nav>
-                    <Form inline className="mr-3">
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
 
                     {cheks ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :
                         <Nav.Link href="/Auth/Register" className="text-info" onClick={() => this.prevDef}>Register</Nav.Link>}

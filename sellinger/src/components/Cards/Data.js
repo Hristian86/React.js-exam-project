@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const data = (key) => {
 
-    return <div key={key} className="container">
+    return <div key={key} className="col-4">
         <Card style={{ width: '18rem' }} >
             <Card.Img variant="top" src="https://s12emagst.akamaized.net/products/25152/25151183/images/res_a7cdb843072c8155cc20cca65b3c849b_200x200_lj47.jpg" />
             <Card.Body className="text-center">

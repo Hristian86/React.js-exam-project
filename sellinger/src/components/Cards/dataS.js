@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fireDB from '../FirebaseDB/fireDB';
+// import fireDB from '../FirebaseDB/fireDB';
 import ssd from './ssd';
 
 export default class dataS extends Component {
@@ -17,18 +17,18 @@ export default class dataS extends Component {
     }
 
     async getItems() {
-        let db = new fireDB();
-        let items = await db.readFromDb();
-        this.setState({data: items })
-        console.log(this.state)
+        // let db = new fireDB();
+        // let items = await db.readFromDb();
+        // this.setState({data: items })
+        // console.log(this.state)
     }
 
     render() {
 
-        var dataArray = [];
-        for (var i = 0; i < 3; i++) {
-            dataArray.push(<ssd data={this.state} key={i} />);
-        }
+        // var dataArray = [];
+        // for (var i = 0; i < 3; i++) {
+        //     dataArray.push(<ssd data={this.state} key={i} />);
+        // }
 
         return (
             <div>

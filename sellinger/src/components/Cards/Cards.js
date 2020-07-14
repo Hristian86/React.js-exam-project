@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import Data from './Data';
+import './style.css';
 
 export default class Cards extends Component {
 
@@ -12,8 +13,11 @@ export default class Cards extends Component {
         }
 
         return (
-            <div className="container d-flex">
-                {cardsSeedArray.map(card => card)}
+            <div className="container d-flex justify-content-center cards-style">
+
+                <div className="row">
+                    {cardsSeedArray.map(card => card)}
+                </div>
             </div>
             )
     }
