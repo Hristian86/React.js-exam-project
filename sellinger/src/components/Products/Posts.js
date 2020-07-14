@@ -4,7 +4,10 @@ import { Component } from 'react';
 import { Redirect, useHistory } from 'react-router';
 import Details from './Details';
 import DetailsPage from './DetailsPage';
+<<<<<<< HEAD
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
+=======
+>>>>>>> 868b3e90d38c0db41408702ba47cb3f39818520f
 
 //const Posts = (props) => {
 export default class Posts extends Component {
@@ -66,6 +69,7 @@ export default class Posts extends Component {
                 <div>
                     {this.state.isDetail ? <Redirect to={{
             pathname: '/Products/DetailsPage',
+<<<<<<< HEAD
             state: { 
                 id: this.state.detailId,
                 data: this.state.data
@@ -74,6 +78,13 @@ export default class Posts extends Component {
 
 <form onSubmit={this.submitHanler} className="card mb-4 card-style">
         <button className="btn btn-info" onClick={this.detailHandle(this.props.props.id)}>{this.props.props.subject}</button>
+=======
+            state: { id: this.state.detailId }
+        }} /> : 
+
+<form onSubmit={this.submitHanler} className="card mb-4 card-style">
+<button className="btn btn-info" onClick={this.detailHandle(this.props.props.id)}>click</button>
+>>>>>>> 868b3e90d38c0db41408702ba47cb3f39818520f
 
 
             <div className="card-header">
@@ -91,6 +102,7 @@ export default class Posts extends Component {
 
             <div className="card-body">
                 <div className="row">
+<<<<<<< HEAD
                     <div className="col d-flex">
                         <img src={this.props.props.image} className="image-style" />
 
@@ -100,6 +112,16 @@ export default class Posts extends Component {
                     <div className="col">
                         <p className="card-text d-flex justify-content-end content-mobile">{this.props.props.content}</p>
                         <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
+=======
+                    <div className="col">
+                        <img src={this.props.props.image} className="image-style" />
+                    
+                        <h5 className="card-title mt-2">{this.props.props.subject} </h5>
+                    </div>
+
+                    <div className="col">
+                        <p className="card-text text-center content-mobile">{this.props.props.content}</p>
+>>>>>>> 868b3e90d38c0db41408702ba47cb3f39818520f
                     </div>
                 </div>
                 

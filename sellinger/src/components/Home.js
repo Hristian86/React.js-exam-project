@@ -82,7 +82,38 @@ export default class Home extends Component {
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 {this.state.user ? <HomeCom /> : null} 
+=======
+                {propsy(this.state.user)}        
+                {this.state.user ? <Tests name={this.state.user.displayName} /> : <Tests name={""} />}
+
+                {this.state.user ? (<Cards />) : <div className="text-center load">Not logged</div>}
+
+                <button onClick={fireQuery.createDataDb} className="btn btn-primary text-center">Seed</button>        
+
+                {this.state.user ? <div className="d-flex justify-content-between">
+
+                    <button onClick={fireQuery.createDataDb} className="btn btn-primary text-center">Seed</button>
+
+                    <button onClick={this.retriveData} className="btn btn-primary text-center">Read</button>
+
+                </div> : null}
+
+                {this.state.user ? <table className='table table-striped' aria-labelledby="tabelLabel">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Last name</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.getDataFromStore()}
+                    </tbody>
+                </table> : null}
+>>>>>>> 868b3e90d38c0db41408702ba47cb3f39818520f
 
                 <div className="spacer"></div>
             </div>

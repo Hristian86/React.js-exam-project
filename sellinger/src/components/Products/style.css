@@ -25,6 +25,7 @@
     height:800px;
 }
 
+<<<<<<< HEAD
 .content-mobile {
     height: 83%;
     padding-right: 30px;
@@ -35,6 +36,8 @@
     padding-right: 30px;
 }
 
+=======
+>>>>>>> 868b3e90d38c0db41408702ba47cb3f39818520f
 @media only screen and (max-width: 768px) {
     .content-mobile {
         display: none;
