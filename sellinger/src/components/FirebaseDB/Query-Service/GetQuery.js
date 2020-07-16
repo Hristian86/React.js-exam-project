@@ -5,6 +5,7 @@ import GetModel from '../Models/GetModel';
 const firebaseURL = "https://full-stack-app-a2668.firebaseio.com/.json";
 const fireDbs = "https://full-stack-app-a2668.firebaseio.com/TestDB/EJxVkda1X8dPQU3KhHuO.json";
 const urlLink = "https://full-stack-app-a2668.firebaseio.com/";
+const collection = "Posts";
 
 export default class GetQuery extends Component {
     constructor(props) {
@@ -15,14 +16,13 @@ export default class GetQuery extends Component {
             loading: true,
             display: null
         }
-
     }
 
     getPosts = async () => {
         // const currUser = fire.auth().currentUser;
         let arr = [];
             const firestore = fire.firestore();
-            const db = firestore.collection('Posts');
+            const db = firestore.collection(collection);
             const fr = await db.get();
             fr.forEach(doc => {
                 //console.log(doc.id, ' => ', doc.data());

@@ -10,11 +10,11 @@ export default class Search extends Component {
     render() {
         return (
 
-            <div className="container">
+            <div className="container content-style">
 
                 <section className="search-sec">
                 <div className="container">
-                    <form action="#" method="post" novalidate="novalidate">
+                    <form action="#" method="post" >
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="row">
@@ -36,7 +36,7 @@ export default class Search extends Component {
                                         </select>
                                     </div>
                                     <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                                        <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                                        <button type="button" className="btn btn-danger wrn-btn">Search</button>
                                     </div>
                                 </div>
                             </div>

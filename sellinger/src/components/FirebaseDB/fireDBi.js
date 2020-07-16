@@ -5,7 +5,7 @@ const firebaseURL = "https://full-stack-app-a2668.firebaseio.com/.json";
 const fireDbs = "https://full-stack-app-a2668.firebaseio.com/TestDB/EJxVkda1X8dPQU3KhHuO.json";
 const urlLink = "https://full-stack-app-a2668.firebaseio.com/";
 
-export default class fireDB extends Component {
+// export default class fireDB extends Component {
     // constructor(props) {
     //     super(props)
     //     this.state = {
@@ -135,4 +135,4 @@ export default class fireDB extends Component {
     //         console.log(error);
     //     }
     // }
-}
+// }

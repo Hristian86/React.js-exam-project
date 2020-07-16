@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostModel = (content,currUser,subject,image,phone,email,price) => {
+const PostModel = (content,currUser,subject,image,phone,email,price,city,address) => {
     
     let pLoad = {
         "content": content,
@@ -11,7 +11,11 @@ const PostModel = (content,currUser,subject,image,phone,email,price) => {
         "image": image,
         "phone": phone,
         "email": currUser.email,
-        "price": price
+        "price": price,
+        "city":city,
+        "address":address,
+        "name":currUser.displayName,
+        "photoURL":currUser.photoURL
     };
     
     return pLoad;

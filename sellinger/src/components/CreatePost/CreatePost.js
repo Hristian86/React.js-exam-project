@@ -43,7 +43,6 @@ export default class CreatePost extends Component {
             <div className="">
                 {this.state.user ? <Create /> : <div className="loading"><em>Loading...</em></div>}
                 {this.state.setRedirect ? <Redirect to="/Auth/LogIn" /> : null}
-
             </div>
         )
     }

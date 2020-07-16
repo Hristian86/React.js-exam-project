@@ -12,12 +12,7 @@ const Validate = (subject,phone,content,image,price) => {
         error.innerHTML = "Length must be more that 2 symbols";
         chek = true;
     }
-    if (phone.length < 3 || isNaN(phone)) {
-        let error = document.getElementById('phone');
-        error.innerHTML = "The input is not a phone number";
-        chek = true;
-    }
-    if (phone.length < 3 || isNaN(phone)) {
+    if (isNaN(phone || phone.length < 3)) {
         let error = document.getElementById('phone');
         error.innerHTML = "The input is not a phone number";
         chek = true;
@@ -35,7 +30,7 @@ const Validate = (subject,phone,content,image,price) => {
     if (!chek) {
         return false;
     }
-    
     return true;
 }
+
 export default Validate

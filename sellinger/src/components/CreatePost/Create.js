@@ -22,13 +22,15 @@ export default class Create extends Component {
         const content = e.target.content.value;
         const image = e.target.image.value;
         const price = e.target.price.value;
+        const city = e.target.city.value;
+        const address = e.target.address.value;
         console.log(price);
 
-        const isNotValidate = Validate(subject,phone,content,image,price);
+        const isNotValidate = Validate(subject,phone,content,image,price,city,address);
         if (!isNotValidate) {
 
             let query = new CreateQuery();
-            const responce = query.Create(subject,phone,content,image,price);
+            const responce = query.Create(subject,phone,content,image,price,city,address);
             if (responce === onSuccessing) {
                 
                 this.setState({procesing:true});
@@ -54,47 +56,57 @@ export default class Create extends Component {
                 
                     <div className="form-row">
                         <div className="form-group col-md-6">
-                            <label >Subject</label>
+                            <label >Subject *</label>
                             <input type="text" className="form-control" placeholder="subject" name="subject" />
                             <span id="subject" ></span>
                         </div>
+                        
                         <div className="form-group col-md-6">
-                            <label >Phone number</label>
+                            <label >Phone number *</label>
                             <input type="text" className="form-control" placeholder="phone number" name="phone" />
                             <span id="phone" ></span>
                         </div>
                     </div>
 
+                    <div className="form-row">
+                        <div className="form-group col-md-6">
+                            <label>City *</label>
+                            <input type="text" className="form-control" placeholder="city" name="city" />
+                            <span id="city" ></span>
+                        </div>
+
+                        <div className="form-group col-md-6">
+                            {/* <div className="form-check">
+                                <input className="form-check-input" type="checkbox" id="gridCheck" />
+                                <label className="form-check-label" >
+                                    Check me out
+                                </label>
+                            </div> */}
+                            <label >Price *</label>
+                            <input type="text" className="form-control" placeholder="price" name="price" />
+                            <span id="price" ></span>
+                        </div>
+                        
+                    </div>
+
                     <div className="form-group">
-                        <label >content</label>
-                        <input type="text" className="form-control content-holder" placeholder="description" name="content" />
+                        <label >Address *</label>
+                        <input type="text" className="form-control" placeholder="address" name="address" />
+                        <span id="address" ></span>
+                    </div>
+
+                    <div className="form-group">
+                        <label >Description *</label>
+                        <textarea type="text" className="form-control content-holder" placeholder="description" name="content" />
                         <span id="content" ></span>
                     </div>
-                    
+                                        
                     <div className="form-group">
-                        <label >Image</label>
+                        <label >Image *</label>
                         <input type="text" className="form-control" placeholder="image link" name="image" />
                         <span id="image" ></span>
                     </div>
-                    <div className="form-group w-25">
-                        {/* <div className="form-check">
-=======
-                    <div className="form-group w-25">
-                        {/* <div className="form-check">
->>>>>>> 074ebfa281304b683946ad49ceb3c9990f28e65a
-                            <input className="form-check-input" type="checkbox" id="gridCheck" />
-                            <label className="form-check-label" >
-                                Check me out
-                            </label>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 074ebfa281304b683946ad49ceb3c9990f28e65a
-                        </div> */}
-                        <label >Price</label>
-                        <input type="text" className="form-control" placeholder="price" name="price" />
-                        <span id="price" ></span>
-                    </div>
+
                     <button type="submit" className="btn btn-primary">Create post</button>
                 </form>
                 }

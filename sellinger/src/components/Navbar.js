@@ -16,14 +16,15 @@ import fire from './FirebaseAuth/Config';
 import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
 import CreatePost from './CreatePost/CreatePost';
-import './navbar.css';
 
 export default class navbar extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {}
-
+        this.state = {
+            isLoget: false
+        }
+        
         this.authListener = this.authListener.bind(this);
     }
 
@@ -36,7 +37,8 @@ export default class navbar extends Component {
         const users = await fire.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({
-                    user: user
+                    user: user,
+                    isLoget: true
                 });
             } else {
                 this.setState = null;
@@ -83,13 +85,13 @@ export default class navbar extends Component {
         }
         
         return (
-            <Navbar bg="" className="nav-bar-background border-bottom box-shadow mb-3" expand="lg">
+            <Navbar bg="light" className="nav-bar-background" expand="lg">
                 <Navbar.Brand href="/" onClick={() => this.prevDef}>Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
 
-                        <Nav.Link href="/Products/ProductList" onClick={() => this.prevDef}>Products</Nav.Link>
+                        <Nav.Link href="/Products/ProductList"  onClick={() => this.prevDef}>Products</Nav.Link>
 
                         <Nav.Link href="/About" onClick={() => this.prevDef}>About</Nav.Link>
 
@@ -97,15 +99,18 @@ export default class navbar extends Component {
 
                         <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef}>Hearthstone</Nav.Link>
 
-
                         <Nav.Link href="/CreatePost/CreatePost" onClick={() => this.prevDef}>Create a post</Nav.Link>
 
                     </Nav>
+                    <Form inline className="mr-3">
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <Button variant="outline-success">Search</Button>
+                    </Form>
 
-                    {cheks ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :
+                    {this.state.isLoget ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :
                         <Nav.Link href="/Auth/Register" className="text-info" onClick={() => this.prevDef}>Register</Nav.Link>}
 
-                    {cheks ? <Nav.Link href="/Auth/Logout" className="mr-3 text-info" onSubmit={() => this.prevDef}>Log out</Nav.Link> : <Nav.Link href="/Auth/LogIn" className="mr-3 text-info" onClick={() => this.prevDef}>LogIn</Nav.Link>}
+                    {this.state.isLoget ? <Nav.Link href="/Auth/Logout" className="mr-3 text-info" onSubmit={() => this.prevDef}>Log out</Nav.Link> : <Nav.Link href="/Auth/LogIn" className="mr-3 text-info" onClick={() => this.prevDef}>LogIn</Nav.Link>}
 
                 </Navbar.Collapse>
             </Navbar>

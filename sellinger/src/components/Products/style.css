@@ -18,7 +18,7 @@
 
 .card-style {
     width: 85%;
-    margin:auto;
+    margin:0px auto;
 }
 
 .loading {
@@ -40,3 +40,45 @@
         display: none;
     }
 }
+
+.wrapper-details {
+    margin-bottom: 40px;
+}
+
+.image-button {
+    background-color: transparent;
+    border: none;
+}
+
+.container-up-left{
+    /* background-color: antiquewhite; */
+    margin-right: 15px;
+    height: 600px;
+}
+
+.container-up-right {
+    /* background-color: aliceblue; */
+}
+
+.image-poster {
+    margin-top: 35px;
+    margin-left: 16px;
+    width: 700px;
+}
+
+.up-right-left {
+    height: 290px;
+}
+
+.user-image {
+    width: 90px;
+}
+
+.up-right-right {
+    height: 290px;
+    margin-top: 10px;
+}
+
+/* .message-button {
+    margin-top: 60px;
+} */

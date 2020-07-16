@@ -10,14 +10,14 @@ export default class CreateQuery extends Component {
 
 
 
-    Create = (subject,phone,content,image,price) => {
+    Create = (subject,phone,content,image,price,city,address) => {
         const currUser = fire.auth().currentUser;
         const userId = currUser.uid;
         if (currUser) {
 
             try {
 
-                let model = Model(content,currUser,subject,image,phone,currUser,price);
+                let model = Model(content,currUser,subject,image,phone,currUser,price,city,address);
                 console.log(model);
                 
                 const firestore = fire.firestore();

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
-import Search from '../SearchBar/Search';
+import './style.css';
 
 export default class ProductLeyout extends Component {
     constructor(props) {
@@ -26,8 +26,8 @@ export default class ProductLeyout extends Component {
         }
         
         return (
-            <div>
-                <Search />
+            <div className="wrapper-body">
+            
                 {this.props.state ? display.map(post => post) : <em>Loading...</em>}
             </div>
         )

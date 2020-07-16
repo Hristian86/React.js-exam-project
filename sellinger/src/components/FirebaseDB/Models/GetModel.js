@@ -8,7 +8,11 @@ const GetModel = (doc) => {
         "userId": doc.data().userId,
         "subject": doc.data().subject,
         "image":doc.data().image,
-        "price":doc.data().price
+        "price":doc.data().price,
+        "address":doc.data().address,
+        "city":doc.data().city,
+        "name":doc.data().name,
+        "photoURL":doc.data().photoURL
     }
     
     return obj;

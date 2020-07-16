@@ -7,7 +7,7 @@ import { useHistory } from 'react-router';
 export default class Register extends Component {
 
 
-    signUpFunc = (e) => {
+    signUpFunc = async (e) => {
         e.preventDefault();
         let error = document.getElementById('errors');
         const { history } = this.props;
@@ -22,7 +22,7 @@ export default class Register extends Component {
 
                 if (email.length > 5 && password.length > 5) {
 
-                    var userCreate = fire.auth()
+                    var userCreate = await fire.auth()
                         .createUserWithEmailAndPassword(email, password)
                         .then(resp => console.log(resp))
                         .catch(err => console.log(err));

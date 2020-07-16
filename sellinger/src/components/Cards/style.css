@@ -1,4 +1,29 @@
-.cards-style {
+/* .cards-style { */
     
     /* margin: auto; */
+/* } */
+
+/* .image-style { */
+    /* height: 200px; */
+    /* width: 220px; */
+/* } */
+
+.card-style {
+    display: flex;
+    justify-content: center;
+    /* background-color: aliceblue;
+    border: solid; */
+    /* height: 600px!important; */
+}
+
+.card-body {
+    height: 270px!important;
+}
+
+.card-title {
+    height: 50px;
+}
+
+.card-text {
+    height: 100px;
 }

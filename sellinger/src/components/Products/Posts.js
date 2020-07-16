@@ -72,7 +72,7 @@ export default class Posts extends Component {
             }
         }} /> : 
 
-<form onSubmit={this.submitHanler} className="card mb-4 card-style">
+<form onSubmit={this.submitHanler} className="card mb-4 card-style col-9">
         <button className="btn btn-info" onClick={this.detailHandle(this.props.props.id)}>{this.props.props.subject}</button>
 
 
@@ -92,13 +92,15 @@ export default class Posts extends Component {
             <div className="card-body">
                 <div className="row">
                     <div className="col d-flex">
+                        <button type="submit" className="image-button">
                         <img src={this.props.props.image} className="image-style" />
+                        </button>
 
                         <h5 className="card-title mt-2 ml-4">{this.props.props.subject} </h5>
                     </div>
 
                     <div className="col">
-                        <p className="card-text d-flex justify-content-end content-mobile">{this.props.props.content}</p>
+                        <p className="card-text d-flex justify-content-end content-mobile">{this.props.props.address}</p>
                         <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
                     </div>
                 </div>
@@ -107,7 +109,7 @@ export default class Posts extends Component {
 
             <input name="idto" type="hidden" value={this.props.props.id} id="asdasd" />
 
-            <button type="submit" className="btn btn-outline-success">Details</button>
+            <button type="submit" className="btn btn-success">Details</button>
 
             {this.state.data ? <Details props={this.state.data} /> : null}
 

@@ -13,7 +13,7 @@ export default class login extends Component {
 
 
 
-    loginFunc = (e) => {
+    loginFunc = async (e) => {
         e.preventDefault();
         let error = document.getElementById('errors');
         const { history } = this.props;
@@ -26,7 +26,7 @@ export default class login extends Component {
 
                 error.innerHTML = "Procesing...";
 
-                var responce = fire.auth().signInWithEmailAndPassword(email, password)
+                var responce = await fire.auth().signInWithEmailAndPassword(email, password)
                     .then(resp => console.log(resp))
                     .catch(err => console.log(err));
 

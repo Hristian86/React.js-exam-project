@@ -77,7 +77,7 @@ export default class App extends Component {
         
         return (
            <div className="App">
-                <header className="App-header">
+                <header className="App-header wrapper-layout">
                    <Layout>
                         <Router>
                             <Switch>
