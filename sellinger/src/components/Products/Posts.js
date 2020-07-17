@@ -29,29 +29,29 @@ export default class Posts extends Component {
         if (data) {
             this.setState({
                  data: data,
-                 isDetail:true,
-                 detailId:productDetail
+                 isDetail: true,
+                 detailId: productDetail
                 });
             //console.log(data.name);
         }
     }
 
-    detailHandle = (e) => {
-        try {
+    // detailHandle = (e) => {
+    //     try {
             
-            if (this.state.detailId == null) {
+    //         if (this.state.detailId == null) {
                 
-                    // console.log(e);
+    //                 // console.log(e);
                 
-            }
-            // console.log(id);
-                // this.setState({detail:e});
+    //         }
+    //         // console.log(id);
+    //             // this.setState({detail:e});
             
             
-        } catch (error) {
-            // console.log(error);
-        }
-    }
+    //     } catch (error) {
+    //         // console.log(error);
+    //     }
+    // }
     
     render() {
         
@@ -72,9 +72,8 @@ export default class Posts extends Component {
             }
         }} /> : 
 
-<form onSubmit={this.submitHanler} className="card mb-4 card-style col-9">
-        <button className="btn btn-info" onClick={this.detailHandle(this.props.props.id)}>{this.props.props.subject}</button>
-
+        <form onSubmit={this.submitHanler} className="card mb-4 card-style col-9">
+                <button className="btn btn-info">{this.props.props.subject}</button>
 
             <div className="card-header">
                 <ul className="nav nav-tabs card-header-tabs d-flex justify-content-between">
