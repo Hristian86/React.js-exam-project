@@ -1,18 +1,40 @@
 import React,{Component} from 'react';
 import './style.css';
+import { Redirect } from 'react-router/cjs/react-router.min';
+import Nav from 'react-bootstrap/esm/Nav';
 
 export default class DetailsPage extends Component {
     constructor(props){
         super(props);
 
+        // this.state = {}
     }
+
+    // componentDidMount() {
+    //     this.setInrervals = setTimeout(() => {
+    //         if (this.state.isLoaded) {
+    //             this.setState({isLoaded: true});
+    //         }
+    //     }, 100);
+    // }
+
+    scrollWin = () => {
+        window.scrollTo(0, 0);
+      }
 
     render() {
         const data = this.props.history.location.state.data;
         // console.log(this.props.history.location.state.data);
+        // window.location.reload(false);
+        // if (this.state.isLoaded) {
+        //     clearInterval(this.setInrervals);
+        // }
+        this.scrollWin();
         return(
 
             <div className="container wrapper-details">
+
+                <Nav.Link href="/Products/ProductList" className="btn btn-info pl-4 pr-4 mb-3 back-button" >Back</Nav.Link>
 
                 <div className="row">
                     <div className="col-8 container-up-left bg-white">

@@ -72,7 +72,7 @@ export default class Posts extends Component {
             }
         }} /> : 
 
-        <form onSubmit={this.submitHanler} className="card mb-4 card-style col-9">
+        <form onSubmit={this.submitHanler} className="card mb-4 mr-2 card-style col">
                 <button className="btn btn-info">{this.props.props.subject}</button>
 
             <div className="card-header">
@@ -94,14 +94,16 @@ export default class Posts extends Component {
                         <button type="submit" className="image-button">
                         <img src={this.props.props.image} className="image-style" />
                         </button>
-
+                        <div className="d-grid">
                         <h5 className="card-title mt-2 ml-4">{this.props.props.subject} </h5>
+                        <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
+                        </div>
                     </div>
-
+{/* 
                     <div className="col">
                         <p className="card-text d-flex justify-content-end content-mobile">{this.props.props.address}</p>
                         <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
-                    </div>
+                    </div> */}
                 </div>
                 
             </div>

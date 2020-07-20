@@ -23,7 +23,7 @@ export default class HomeCom extends Component {
     getItems = async () => {
         let query = new GetQuery();
         const posts = await query.getPosts();
-
+        
         if (posts) {
             this.setState({ data: posts });
         }
@@ -47,7 +47,7 @@ export default class HomeCom extends Component {
 
                     <div className="col-8 wrapper-home">
                         <MainHeader />
-                       {this.state.data ? <Cards props={this.state.data} /> : null} 
+                       {this.state.data ? <Cards props={this.state.data} /> : <em>Loading...</em>} 
                     </div>
 
                     <div className="col-2 d-flex justify-content-center text-center">

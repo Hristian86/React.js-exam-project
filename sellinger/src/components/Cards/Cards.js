@@ -22,7 +22,7 @@ export default class Cards extends Component {
             } else if (bandA < bandB) {
               comparison = -1;
             }
-            return comparison;     
+            return comparison;
     }
 
     render() {
@@ -34,6 +34,7 @@ export default class Cards extends Component {
             array.sort(this.compare);
             
             for (var i = 0; i < 3; i++) {
+            //    console.log(array[i].id);
                 if (array[i] != undefined) {
                     cardsSeedArray.push(<Data props={array[i]} key={i} />);
                 }
