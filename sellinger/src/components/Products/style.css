@@ -92,3 +92,13 @@
 .card {
     width: 500px!important;
 }
+
+.more-pictures {
+    width: 260px;
+    height: 190px;
+    margin-bottom: 15px;
+}
+
+.previos-pointer {
+    cursor: pointer
+}

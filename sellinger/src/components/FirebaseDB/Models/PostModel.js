@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PostModel = (content,currUser,subject,image,phone,email,price,city,address) => {
+const PostModel = (content,currUser,subject,image,phone,email,price,city,address,uid) => {
     
     let pLoad = {
         "content": content,
         "createdOn": new Date(),
-        "id": "123",
+        "id": uid,
         "userId": currUser.uid,
         "subject": subject,
         "image": image,

@@ -22,9 +22,9 @@ export default class ProductList extends Component {
     getItems = async () => {
         let query = new GetQuery();
         const posts = await query.getPosts();
-
         if (posts) {
             this.setState({ data: posts });
+            // console.log(posts[0].id);
         }
     }
 

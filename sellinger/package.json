@@ -1,12 +1,12 @@
 {
   "name": "bootstrapapp",
-  "homepage" : "https://full-stack-app-a2668.web.app/",
+  "homepage": "https://full-stack-app-a2668.web.app/",
   "version": "0.1.0",
   "private": true,
-    "engines": {
-        "node": "12.10.0",
-        "npm": "6.10.3"
-    },
+  "engines": {
+    "node": "12.10.0",
+    "npm": "6.10.3"
+  },
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.19.17",
     "@testing-library/jest-dom": "^4.2.4",
@@ -25,7 +25,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "uid": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

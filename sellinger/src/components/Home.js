@@ -23,13 +23,49 @@ export const UserContext = createContext({ user: null });
 export default class Home extends Component {
     constructor(props) {
         super(props);
-
+        
+        this.state = {
+            image: null
+        }
     }
 
+    // handleImage = (e) => {
+    //     if (e.target.files[0]) {
+    //         this.setState({
+    //             image: e.target.files[0]
+    //         })
+    //     }
+    // }
+
+    // upload = () => {
+    //     if (this.state.image) {
+    //         const image = this.state.image;
+    //         const storage = fire.storage();
+    //         const storageRef = storage.ref();
+    //        const uploadTask = storageRef.ref(`images/${image.name}`).put(image);
+    //        uploadTask.on(
+    //            "state_changed",
+    //            snapshot => {},
+    //            error => {
+    //                console.log(error)
+    //            },
+    //            () => {
+    //                storage.ref("images").child(image.name).getDownloadURL().then(url => {
+    //                    console.log(url);
+    //                })
+    //            }
+    //        )
+    //     }
+    // }
+
     render() {
-        
+        // if(this.state.image) {
+        //      console.log(this.state.image) 
+        //     }
         return (
             <div>
+                {/* <input type="file" onChange={this.handleImage} />
+                <button onClick={this.upload} >Upload</button> */}
                 <HomeCom />
                 <div className="spacer"></div>
             </div>

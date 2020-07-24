@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Validate from './Validate';
 import Successully from './Successully';
 import CreateQuery from '../FirebaseDB/Query-Service/CreateQuery';
+import uid from 'uid';
 
 var onSuccessing = "Success";
 
@@ -26,13 +27,22 @@ export default class Create extends Component {
         const address = e.target.address.value;
         console.log(price);
 
+        const dataRef = `Posts`;
         const isNotValidate = Validate(subject,phone,content,image,price,city,address);
-        if (!isNotValidate) {
 
+        this.setState({
+                        success:true,
+                        procesing:false
+                    });
+
+        if (!isNotValidate) {
+            const _id = uid(16);
             let query = new CreateQuery();
-            const responce = query.Create(subject,phone,content,image,price,city,address);
+            const responce = query.Create(dataRef,subject,phone,content,image,price,city,address,_id);
             if (responce === onSuccessing) {
-                
+                this.setState({
+                    uid: _id
+                })
                 this.setState({procesing:true});
                 setTimeout(() => {
                     this.setState({
@@ -49,9 +59,10 @@ export default class Create extends Component {
         
         return (
             <div className="create-back">
+            {/* <Successully uid={this.state.uid} /> */}
                 {this.state.procesing ? <span id="message" className="message">Procesing...</span> : null}
 
-                {this.state.success ? <Successully /> : 
+                {this.state.success ? <Successully uid={this.state.uid} /> : 
                 <form className="create-post" onSubmit={this.submitHandler}>
                 
                     <div className="form-row">

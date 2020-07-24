@@ -133,9 +133,8 @@ export default class ProductLeyout extends Component {
 
                 </div>
 
-
                 {this.props.state ? <div className="row d-flex justify-content-center"> {pagination.map(post => post)} </div> : <em>Loading...</em>}
-                
+
                 <div>
                         <nav aria-label="Page navigation example" className="container-flud d-flex justify-content-center">
                             <ul className="pagination">

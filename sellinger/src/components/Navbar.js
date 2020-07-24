@@ -16,6 +16,8 @@ import fire from './FirebaseAuth/Config';
 import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
 import CreatePost from './CreatePost/CreatePost';
+import GetQuery from './FirebaseDB/Query-Service/GetQuery';
+import ProductLeyout from './Products/ProductLayout';
 
 export default class navbar extends Component {
     constructor(props) {
@@ -46,6 +48,32 @@ export default class navbar extends Component {
         });
 
         return users;
+    }
+
+    searchHandle = async (e) => {
+        e.preventDefault();
+        const search = e.target.searchItem.value;
+        console.log(search);
+        const searchQuery = new GetQuery();
+        let result = await searchQuery.getPosts();
+        if (result) {
+            let searchRes = [];
+            for (let index = 0; index < result.length; index++) {
+                const element = result[index];
+                let containsEl = element.content.includes(search);
+                if (containsEl) {
+                    console.log(element);
+                    searchRes.push(element);
+                }
+            }
+
+            if (this.state.search == undefined) {
+                this.setState({
+                    search: searchRes,
+                    redirect: true
+                });
+            }
+        }
     }
 
     prevDef(e) {
@@ -80,10 +108,16 @@ export default class navbar extends Component {
             var results = localuser === currUser.refreshToken ? "true" : "false";
             //console.log(results);
 
+
+
+
         } else {
             cheks = false;
         }
         
+        // if(this.state.redirect) {
+        //     return <ProductLeyout state={this.state.search}  />
+        // }
         return (
             <Navbar bg="light" className="nav-bar-background" expand="lg">
                 <Navbar.Brand href="/" onClick={() => this.prevDef}>Home</Navbar.Brand>
@@ -102,9 +136,9 @@ export default class navbar extends Component {
                         <Nav.Link href="/CreatePost/CreatePost" onClick={() => this.prevDef}>Create a post</Nav.Link>
 
                     </Nav>
-                    <Form inline className="mr-3">
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
+                    <Form inline className="mr-3" onSubmit={this.searchHandle} >
+                        <FormControl type="text" placeholder="Search" name="searchItem" className="mr-sm-2" />
+                        <Button type="submit" variant="outline-success">Search</Button>
                     </Form>
 
                     {this.state.isLoget ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :

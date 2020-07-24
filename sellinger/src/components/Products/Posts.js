@@ -5,6 +5,7 @@ import { Redirect, useHistory } from 'react-router';
 import Details from './Details';
 import DetailsPage from './DetailsPage';
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
+import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 
 //const Posts = (props) => {
 export default class Posts extends Component {
@@ -22,45 +23,36 @@ export default class Posts extends Component {
     submitHanler = async (e) => {
         e.preventDefault();
         const productDetail = e.target.idto.value;
-        // console.log(productDetail);
+        // console.log(productDetail)
+        
+        // const id = this.props.props.id;
+        // console.log(this.props.props.id);
+        // console.log(this.state.data);
 
         let query = new DetailsQuery();
         let data = await query.getDetails(productDetail);
-        if (data) {
+        
+        let getQuery = new GetQuery();
+        const pictures = await getQuery.getImagesbyId(data.id);
+
+        if (data && pictures) {
             this.setState({
                  data: data,
                  isDetail: true,
-                 detailId: productDetail
+                 detailId: productDetail,
+                 pictures: pictures
                 });
             //console.log(data.name);
         }
-    }
 
-    // detailHandle = (e) => {
-    //     try {
-            
-    //         if (this.state.detailId == null) {
-                
-    //                 // console.log(e);
-                
-    //         }
-    //         // console.log(id);
-    //             // this.setState({detail:e});
-            
-            
-    //     } catch (error) {
-    //         // console.log(error);
-    //     }
-    // }
+        // if (pictures) {
+        //     this.setState({
+        //         pictures:pictures
+        //     });
+        // }
+    }
     
     render() {
-        
-        //if (this.state.data) {
-            //    console.log(this.state.data);
-            
-            //    return (<Details state={this.state.data} />)
-            
-            //}
             
             return (
                 <div>
@@ -68,7 +60,8 @@ export default class Posts extends Component {
             pathname: '/Products/DetailsPage',
             state: { 
                 id: this.state.detailId,
-                data: this.state.data
+                data: this.state.data,
+                pictures: this.state.pictures
             }
         }} /> : 
 
@@ -94,7 +87,7 @@ export default class Posts extends Component {
                         <button type="submit" className="image-button">
                         <img src={this.props.props.image} className="image-style" />
                         </button>
-                        <div className="d-grid">
+                        <div className="d-grid w-100">
                         <h5 className="card-title mt-2 ml-4">{this.props.props.subject} </h5>
                         <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
                         </div>
