@@ -36,7 +36,7 @@ export default class HomeCom extends Component {
             <div className="container-fluid">
                         {/* first row  */}
                 <div className="row">
-                    <div className="col-2 d-flex justify-content-center text-center ">
+                    <div className="col-lg-2 d-flex justify-content-center text-center ">
                         <div className="left-box">
                             <p>More sells</p>
                             <p>Evane more sells</p>
@@ -45,12 +45,12 @@ export default class HomeCom extends Component {
                         </div>
                     </div>
 
-                    <div className="col-8 wrapper-home">
+                    <div className="col-lg-8 wrapper-home">
                         <MainHeader />
                        {this.state.data ? <Cards props={this.state.data} /> : <em>Loading...</em>} 
                     </div>
 
-                    <div className="col-2 d-flex justify-content-center text-center">
+                    <div className="col-lg-2 d-flex justify-content-center text-center">
                         <div className="right-box">
                             <p>More sells</p>
                             <p>Evane more sells</p>
@@ -62,7 +62,7 @@ export default class HomeCom extends Component {
 
                 {/* second row */}
                 <div className="row">
-                    <div className="col-2 d-flex justify-content-center text-center ">
+                    <div className="col-lg-2 d-flex justify-content-center text-center ">
                         <div>
                             {/* <p>More sells</p>
                             <p>Evane more sells</p>
@@ -71,13 +71,13 @@ export default class HomeCom extends Component {
                         </div>
                     </div>
 
-                    <div className="col-8">
+                    <div className="col-lg-8">
                         {/* <Cards /> */}
                     </div>
 
-                    <div className="col-2 d-flex justify-content-end ">
+                    <div className="col-lg-2 d-flex justify-content-end ">
                         <div >
-
+                                
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,8 @@ import ProductList from './Products/ProductList';
 import CreatePost from './CreatePost/CreatePost';
 import GetQuery from './FirebaseDB/Query-Service/GetQuery';
 import ProductLeyout from './Products/ProductLayout';
+import Searching from './SearchBar/Searching';
+import SearchNav from './SearchBar/SearchNav';
 
 export default class navbar extends Component {
     constructor(props) {
@@ -67,12 +69,11 @@ export default class navbar extends Component {
                 }
             }
 
-            if (this.state.search == undefined) {
                 this.setState({
                     search: searchRes,
                     redirect: true
                 });
-            }
+            
         }
     }
 
@@ -115,17 +116,16 @@ export default class navbar extends Component {
             cheks = false;
         }
         
-        // if(this.state.redirect) {
-        //     return <ProductLeyout state={this.state.search}  />
-        // }
-        return (
+        // <ProductLeyout state={this.state.search}  />
+        
+        return ( <div> 
             <Navbar bg="light" className="nav-bar-background" expand="lg">
                 <Navbar.Brand href="/" onClick={() => this.prevDef}>Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
 
-                        <Nav.Link href="/Products/ProductList"  onClick={() => this.prevDef}>Products</Nav.Link>
+                        <Nav.Link href="/Products/ProductList" onClick={() => this.prevDef}>Products</Nav.Link>
 
                         <Nav.Link href="/About" onClick={() => this.prevDef}>About</Nav.Link>
 
@@ -141,6 +141,8 @@ export default class navbar extends Component {
                         <Button type="submit" variant="outline-success">Search</Button>
                     </Form>
 
+                    {/* <SearchNav /> */}
+
                     {this.state.isLoget ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :
                         <Nav.Link href="/Auth/Register" className="text-info" onClick={() => this.prevDef}>Register</Nav.Link>}
 
@@ -148,6 +150,8 @@ export default class navbar extends Component {
 
                 </Navbar.Collapse>
             </Navbar>
+            {this.state.search ? <ProductLeyout state={this.state.search}  /> : null}
+            </div>
         )
     }
 }

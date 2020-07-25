@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
 import './style.css';
+import Dropdown from 'react-bootstrap/esm/Dropdown';
 
 const pageLength = 6;
 
@@ -84,18 +85,17 @@ export default class ProductLeyout extends Component {
     }
 
     pageCount = (e) => {
-        console.log(e);
+        // console.log(e);
         this.setState({
             pages: e
         });
     }
 
-    render() {
-        
+    engine = () => {
         let arr = [];
         let display = [];
         let pagination = [];
-        const element = [];
+        let element = [];
 
         let maxLength = parseInt((this.props.state.length / pageLength));
         if (this.props.state.length % pageLength !== 0) {
@@ -124,12 +124,31 @@ export default class ProductLeyout extends Component {
             }
         }
 
+        return { pagination, element };
+    }
+
+    render() {
+
+        const { pagination, element } = this.engine();
+        
         return (
             <div className="wrapper-body">
-                <div className="container d-flex justify-content-center mb-3">
+                <div id="d-d-options" className="mb-3 drop-down-options">
 
-                    <button className="btn btn-success mr-3" onClick={this.filterItemsByPrice} > Filter by price ascending </button>
-                    <button className="btn btn-success" onClick={this.filterItemsByPriceDes} > Filter by price descending </button>
+                    {/* <button className="btn btn-success mr-3" onClick={this.filterItemsByPrice} > Filter by price ascending </button> */}
+                    {/* <button className="btn btn-success" onClick={this.filterItemsByPriceDes} > Filter by price descending </button> */}
+
+                    <Dropdown>
+                        <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
+                            Order by options...
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={this.filterItemsByPrice} >Price ascending</Dropdown.Item>
+                            <Dropdown.Item onClick={this.filterItemsByPriceDes} >Price descending</Dropdown.Item>
+                            {/* <Dropdown.Item href="#/action-3">Something else</Dropdown.Item> */}
+                        </Dropdown.Menu>
+                    </Dropdown>
 
                 </div>
 

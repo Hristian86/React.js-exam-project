@@ -1,7 +1,9 @@
 ﻿import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import './style.css';
-import { Redirect } from 'react-router/cjs/react-router.min';
+import { Redirect, useHistory } from 'react-router/cjs/react-router.min';
+import DetailsPage from '../Products/DetailsPage';
+import History from './History';
 
 export default class data extends Component{
     constructor(props) {
@@ -17,12 +19,21 @@ export default class data extends Component{
         this.setState({
             id: productDetail
         })
+        // console.log(this.props.props)
+        let redir = new History(this.props.props);
+        // History(this.props.props);
+        this.setState({
+            redirecting: await redir.redirect()
+        }) 
     }
 
     render() {
 
-            return (<form key={this.props.props.key} onSubmit={this.redirectToDetails} className="col-4 card-style">
-        <Card style={{ width: '18rem' }} >
+            return (
+                <div className="card-style">
+            {this.state.redirecting ? this.state.redirecting :
+            <form key={this.props.props.key} onSubmit={this.redirectToDetails} className="card-style">
+        <Card id="cardis" style={{ width: '18rem' }} >
             <Card.Img variant="top" className="image-style" src={this.props.props.image} />
             <Card.Body className="text-center">
                 <Card.Title>{this.props.props.subject}</Card.Title>
@@ -34,7 +45,8 @@ export default class data extends Component{
                 <Button variant="primary" type="submit" >Details</Button>
             </Card.Body>
         </Card>
-    </form>
+            </form> }
+    </div>
         )   
     }
 }

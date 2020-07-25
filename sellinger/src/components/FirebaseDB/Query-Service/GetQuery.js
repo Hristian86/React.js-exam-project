@@ -53,7 +53,7 @@ export default class GetQuery extends Component {
             const db = firestore.collection(images);
             const allImages = await db.where('id', '==', id).get();
             allImages.forEach(doc => {
-                console.log(doc.id, ' => ', doc.data());
+                // console.log(doc.id, ' => ', doc.data());
                 // arr.push(GetModel(doc));
                 
                 arr.push({

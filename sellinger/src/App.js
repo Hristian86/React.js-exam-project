@@ -23,6 +23,7 @@ import ProductList from './components/Products/ProductList';
 import Details from './components/Products/Details';
 import CreatePost from './components/CreatePost/CreatePost';
 import DetailsPage from './components/Products/DetailsPage';
+import Searching from './components/SearchBar/Searching';
 //import PrivateRoute from './components/Auth/PrivateRoute';
 
 var useraaa = [];
@@ -91,6 +92,8 @@ export default class App extends Component {
                                 <Route path="/Products/ProductList" component={ProductList} ></Route>
 
                                 <Route path="/Products/Details" component={Details} ></Route>
+
+                                <Route path="/SearchBar/Searching" component={Searching} ></Route>
 
                                 <Route path="/Contact" component={Contact}>
                                 </Route>

@@ -8,7 +8,7 @@ export default class DetailsPage extends Component {
         super(props);
 
         this.state = {
-            previos: 0
+            current: 0
         }
     }
 
@@ -21,23 +21,22 @@ export default class DetailsPage extends Component {
     // }
 
     previos = () => {
-        if (this.state.previos <= 0) {
+        if (this.state.current <= 0) {
             
         } else {
-            let prev = this.state.previos - 1;
+            let prev = this.state.current - 1;
             this.setState({
-                previos: prev
+                current: prev
             });
         }
     }
 
     next = () => {
-        if (this.state.previos >= this.state.data.length - 1) {
-            
+        if (this.state.current >= this.state.data.length - 1) {
         } else {
-            let prev = this.state.previos + 1;
+            let prev = this.state.current + 1;
             this.setState({
-                previos: prev
+                current: prev
             });
         }
     }
@@ -46,27 +45,45 @@ export default class DetailsPage extends Component {
         window.scrollTo(0, 0);
     }
 
-    render() {
-        const data = this.props.history.location.state.data;
-        const pictures = this.props.history.location.state.pictures;
-        if (this.state.data == undefined) {
-            let pagesData = [];
-            pagesData.push(data.image);
-            if (pictures.length > 0) {
-                let dats = pictures.map(pic => pagesData.push(pic.image));
-            }
-            
-            this.setState({
-                data: pagesData
-            });
-            console.log("This is pages data " + pagesData);
-        }
-        const id = this.props.history.location.state.id;
-        console.log(pictures);
+    engine = () => {
+        let data = [];
+        data = this.props.history.location.state.data;
+        let pictures = [];
+        pictures = this.props.history.location.state.pictures;
+
         let pics = null;
-        if (pics == null) {
-            pics = pictures.map((pic, index) => <img key={index} className="more-pictures" src={pic.image} />);
+        try {
+            
+            if (this.state.data == undefined) {
+                let pagesData = [];
+                pagesData.push(data.image);
+                if (pictures !==undefined && pictures.length > 0) {
+                    let dats = pictures.map(pic => pagesData.push(pic.image));
+                }
+                // console.log(pagesData);
+                this.setState({
+                    data: pagesData
+                });
+                // console.log("This is pages data " + pagesData);
+            }
+            // const id = this.props.history.location.state.id;
+            // console.log(pictures);
+        
+            if (pics == null) {
+                pics = pictures.map((pic, index) => <img key={index} className="more-pictures" src={pic.image} />);
+            }
+
+        } catch (error) {
+            console.log(error);
         }
+        
+        return { data, pics};
+    }
+
+    render() {
+        
+        const { data, pics} = this.engine();
+
         // console.log(this.props.history.location.state.data);
         // window.location.reload(false);
         // if (this.state.isLoaded) {
@@ -80,11 +97,11 @@ export default class DetailsPage extends Component {
                 <Nav.Link href="/Products/ProductList" className="btn btn-info pl-4 pr-4 mb-3 back-button" >Back</Nav.Link>
 
                 <div className="row">
-                    <div className="col-8 container-up-left bg-white">
+                    <div className="col-lg-8 container-up-left bg-white">
 
 
 
-                       {this.state.data ? <img src={this.state.data[this.state.previos]} className="image-poster" /> : null } 
+                       {this.state.data ? <img src={this.state.data[this.state.current]} className="image-poster" /> : null } 
 
                         <ul className="pagination d-flex justify-content-center">
                             <li className="page-item mr-1 previos-pointer">
@@ -104,18 +121,18 @@ export default class DetailsPage extends Component {
 
                     </div>
 
-                    <div className="col-3 container-up-right">
+                    <div className="col-lg-3 container-up-right">
 
                         <div className="row">
 
-                            <div className="col-5 bg-white up-right-left text-center">
+                            <div className="col-lg-5 bg-white up-right-left text-center">
                                 <p className="mt-4">User:</p>
                                 <p><img src={data.photoURL} className="user-image" /></p>
                                 <p>Phone number</p>
                                 <p>{data.phone}</p>
                                 </div>
 
-                                <div className="col-7 up-right-left bg-white text-center">
+                                <div className="col-lg-7 up-right-left bg-white text-center">
                                 <p className="mt-4">{data.name}</p>
                                 <p >{data.address}</p>
                                 <br />
@@ -125,7 +142,7 @@ export default class DetailsPage extends Component {
                                 </p>
                             </div>
 
-                            <div className="col-12 bg-white up-right-right">
+                            <div className="col-lg-12 bg-white up-right-right">
                                {/* <p className="mt-4"> So hard to do this<br /> never again </p> */}
                                <p className="mt-3">Populated place:<br /><a className="mt-1">{data.city}</a></p>
                                <div className="text-center"><p>Google maps here.</p></div>
@@ -139,7 +156,7 @@ export default class DetailsPage extends Component {
                 </div>
 
                 <div className="row mt-4">
-                    <div className="col-8 container-up-left bg-white">
+                    <div className="col-lg-8 container-down-left bg-white">
                         <div className="image-poster">
                             <h2><p>{data.subject}</p></h2>
                             <h1><p>{data.price} $</p></h1>
@@ -153,7 +170,7 @@ export default class DetailsPage extends Component {
 
                     </div>
 
-                    <div className="col-3 container-up-right">
+                    <div className="col-lg-3 container-up-right">
 
                        {/* second half goes here from className row*/}
                        <div className="more-pictures">

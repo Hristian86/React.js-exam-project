@@ -27,3 +27,13 @@
 .card-text {
     height: 100px;
 }
+
+#cardis {
+    width: 550px!important;
+}
+
+.card-style {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 300px!important;
+}

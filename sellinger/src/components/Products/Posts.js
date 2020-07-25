@@ -56,7 +56,7 @@ export default class Posts extends Component {
             
             return (
                 <div>
-                    {this.state.isDetail ? <Redirect to={{
+                    {this.state.isDetail ? <Redirect push to={{
             pathname: '/Products/DetailsPage',
             state: { 
                 id: this.state.detailId,
@@ -65,7 +65,7 @@ export default class Posts extends Component {
             }
         }} /> : 
 
-        <form onSubmit={this.submitHanler} className="card mb-4 mr-2 card-style col">
+        <form onSubmit={this.submitHanler} id="products-card" className="card mb-4 mr-2 card-style col">
                 <button className="btn btn-info">{this.props.props.subject}</button>
 
             <div className="card-header">
