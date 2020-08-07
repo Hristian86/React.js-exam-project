@@ -73,7 +73,7 @@ export default class Manage extends Component {
             <h3 className="logo">Manage Profile</h3>
 
             <h3 id="errors" className="text-danger text-center error"></h3>
-            <div className="container d-flex justify-content-center">
+            <div className="container d-sm-flex justify-content-center manage-profile ">
 
                 <form className="registerForm" onSubmit={this.updateProfile}>
 
@@ -81,7 +81,7 @@ export default class Manage extends Component {
                     <FormControl type="text" className="passwordInput" placeholder={user ? user.displayName : ""} name="username" />
 
                     <h3>Email</h3>
-                    <FormControl className="userInput" type="email" name="email" placeholder={user ? user.email : ""} />
+                    <FormControl className="userInput" disabled="disabled" type="email" name="email" placeholder={user ? user.email : ""} />
 
 
                     <h3>Photo image</h3>
@@ -91,11 +91,11 @@ export default class Manage extends Component {
                     <input type="submit" value="Apply changes" className="btn btn-primary buttons" />
 
                 </form>
-                <img src={user ? user.photoURL : ""} />
+                <img className="image-holder" src={user ? user.photoURL : ""} alt="image" />
             </div>
 
             <div className="spacer"></div>
-        </div> : <div className="text-center">Loading...</div>
+        </div> : <div className="loading">Loading...</div>
 
         return (
             <div>

@@ -17,9 +17,9 @@ export default class Cards extends Component {
             const bandB = b.price;
           
             let comparison = 0;
-            if (bandA > bandB) {
+            if (bandA < bandB) {
               comparison = -1;
-            } else if (bandA < bandB) {
+            } else if (bandA > bandB) {
               comparison = 1;
             }
             return comparison;
@@ -44,7 +44,7 @@ export default class Cards extends Component {
             <div className="container row d-flex justify-content-center cards-style">
 
                 {/* <div className="container cont"> */}
-                    {cardsSeedArray.map(card => <div className="col-lg-4"> {card}</div>)}
+                    {cardsSeedArray.map((card,index) => <div className="col-lg-4" key={index}> {card}</div>)}
                 {/* </div> */}
             </div>
             )

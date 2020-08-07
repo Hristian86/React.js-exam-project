@@ -85,8 +85,10 @@ export default class App extends Component {
                                 <Route exact path="/" component={Home}>
                                 </Route>
 
-                                {this.state.user ? <Route path="/About" component={About}>
-                                </Route> : <Route path="/Auth/LogIn" component={login}>
+                                <Route path="/About" component={About}>
+                                </Route>
+
+                                {this.state.user ? <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route> : <Route path="/Auth/LogIn" component={login}>
                                     </Route>} 
 
                                 <Route path="/Products/ProductList" component={ProductList} ></Route>

@@ -1,0 +1,10 @@
+.loading-bar{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    /* height: 800px; */
+}
+
+.loader {
+    height: 800px;
+}

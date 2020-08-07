@@ -24,7 +24,7 @@ export default class ProductList extends Component {
         const posts = await query.getPosts();
         if (posts) {
             this.setState({ data: posts });
-            // console.log(posts[0].id);
+             //console.log(posts);
         }
     }
 
@@ -34,10 +34,21 @@ export default class ProductList extends Component {
             clearInterval(this.interval);
         }
 
+        if (this.props.data) {
+            console.log(this.props.data);
+            return (
+                <div className="container-fluid">
+
+                    {this.props.data ? <ProductLeyout state={this.props.data} /> : <div className="loading"><em>loading....</em></div> }    
+
+                </div>
+            )
+        }
+        
         return (
             <div className="container-fluid">
 
-                {this.state.data ? <ProductLeyout state={this.state.data} /> : <div className="loading"><em>loading....</em></div>}
+                {this.state.data ? <ProductLeyout state={this.state.data} /> : <div className="loading"><em>loading....</em></div> }
 
             </div>
         )

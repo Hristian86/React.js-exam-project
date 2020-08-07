@@ -8,9 +8,16 @@ export default class contact extends Component {
 
     render() {
         return (
-            <div>
+            <div className="text-center">
                 <h3>Hello</h3>
-            <div className="spacer"></div>
+                <h3>For more info contact us at</h3>
+                <h3>aa@aa.com</h3>
+                <h3>or on phone number:</h3>
+                <h3>6312931271203</h3>
+
+                <div className="spacer"></div>
+                <div className="spacer"></div>
+
             </div>
             )
     }

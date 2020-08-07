@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './style.css';
 import { Redirect } from 'react-router/cjs/react-router.min';
 import Nav from 'react-bootstrap/esm/Nav';
+import ImageComponent from './ImageComponent';
 
 export default class DetailsPage extends Component {
     constructor(props){
@@ -32,7 +33,7 @@ export default class DetailsPage extends Component {
     }
 
     next = () => {
-        if (this.state.current >= this.state.data.length - 1) {
+        if (this.state.current >= this.state.images.length - 1) {
         } else {
             let prev = this.state.current + 1;
             this.setState({
@@ -50,19 +51,20 @@ export default class DetailsPage extends Component {
         data = this.props.history.location.state.data;
         let pictures = [];
         pictures = this.props.history.location.state.pictures;
-
         let pics = null;
         try {
             
-            if (this.state.data == undefined) {
+            if (this.state.images == undefined) {
                 let pagesData = [];
                 pagesData.push(data.image);
-                if (pictures !==undefined && pictures.length > 0) {
-                    let dats = pictures.map(pic => pagesData.push(pic.image));
+                if (pictures !==undefined) {
+                    if (pictures.length > 0) {   
+                        let dats = pictures.map(pic => pagesData.push(pic.image));
+                    }
                 }
                 // console.log(pagesData);
                 this.setState({
-                    data: pagesData
+                    images: pagesData
                 });
                 // console.log("This is pages data " + pagesData);
             }
@@ -74,7 +76,7 @@ export default class DetailsPage extends Component {
             }
 
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
         
         return { data, pics};
@@ -90,6 +92,7 @@ export default class DetailsPage extends Component {
         //     clearInterval(this.setInrervals);
         // }
         this.scrollWin();
+
         return(
 
             <div className="container wrapper-details">
@@ -99,9 +102,11 @@ export default class DetailsPage extends Component {
                 <div className="row">
                     <div className="col-lg-8 container-up-left bg-white">
 
+                        {this.state.images ?
 
+                            <ImageComponent image={this.state.images[this.state.current]} /> 
 
-                       {this.state.data ? <img src={this.state.data[this.state.current]} className="image-poster" /> : null } 
+                            : null} 
 
                         <ul className="pagination d-flex justify-content-center">
                             <li className="page-item mr-1 previos-pointer">

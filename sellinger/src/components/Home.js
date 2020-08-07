@@ -29,34 +29,37 @@ export default class Home extends Component {
         }
     }
 
-    // handleImage = (e) => {
-    //     if (e.target.files[0]) {
-    //         this.setState({
-    //             image: e.target.files[0]
-    //         })
-    //     }
-    // }
+    handleImage = (e) => {
+        if (e.target.files[0]) {
+            this.setState({
+                image: e.target.files[0]
+            })
+        }
+    }
 
-    // upload = () => {
-    //     if (this.state.image) {
-    //         const image = this.state.image;
-    //         const storage = fire.storage();
-    //         const storageRef = storage.ref();
-    //        const uploadTask = storageRef.ref(`images/${image.name}`).put(image);
-    //        uploadTask.on(
-    //            "state_changed",
-    //            snapshot => {},
-    //            error => {
-    //                console.log(error)
-    //            },
-    //            () => {
-    //                storage.ref("images").child(image.name).getDownloadURL().then(url => {
-    //                    console.log(url);
-    //                })
-    //            }
-    //        )
-    //     }
-    // }
+    //upload = () => {
+    //    if (this.state.image) {
+    //        const image = this.state.image;
+    //        const storage = fire.storage().ref();
+    //       const uploadTask = storage.child(`images/${image.name}`).put(image);
+    //       uploadTask.on(
+    //           "state_changed",
+    //           snapshot => {
+    //            let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //            console.log('Upload is ' + progress + '% done');
+    //           },
+    //           error => {
+    //               console.log(error)
+    //           },
+    //           () => {
+    //               storage.child(`images/${image.name}`).getDownloadURL().then(url => {
+    //                   //save into posts
+    //                   console.log(url);
+    //               })
+    //           }
+    //       )
+    //    }
+    //}
 
     render() {
         // if(this.state.image) {

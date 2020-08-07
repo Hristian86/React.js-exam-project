@@ -3,11 +3,21 @@ import RegAuth from './RegAuth';
 import { FormControl } from 'react-bootstrap';
 import fire from '../FirebaseAuth/Config';
 import { useHistory } from 'react-router';
+import { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
 
 export default class Register extends Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            loading: false
+        }
+    }
 
     signUpFunc = async (e) => {
+        this.setState({
+            loading: true
+        });
         e.preventDefault();
         let error = document.getElementById('errors');
         const { history } = this.props;
@@ -17,40 +27,53 @@ export default class Register extends Component {
 
         try {
 
-            error.innerHTML = "";
+            error.innerHTML = "Procesing...";
             if (password === passwordConf) {
 
                 if (email.length > 5 && password.length > 5) {
 
+                    let credentials;
                     var userCreate = await fire.auth()
                         .createUserWithEmailAndPassword(email, password)
-                        .then(resp => console.log(resp))
+                        .then(resp => {
+                            console.log(resp);
+                            credentials = resp
+                        })
                         .catch(err => console.log(err));
-
-                    if (userCreate) {
-
+                    
+                    if (await credentials) {
+                        const token = credentials.user.xa;
+                        const user = credentials.user.email;
+                        setCookieUser(user);
+                        setCookieToken(token);
                         error.innerHTML = "Account created suceesfully";
 
+                        setTimeout(function () {
+                            history.push("/");
+                            window.location.reload(false);
+                        }, 700);
                     }
-
-                    setTimeout(function () {
-                        history.push("/");
-                        window.location.reload(false    );
-                    }, 700);
 
                 } else {
                     if (email.length < 6) {
-
+                        this.setState({
+                            loading: false
+                        });
                         error.innerHTML = "Email addres lenght must be at least 6 symbols";
 
                     } else if (password.length < 6) {
-
+                        this.setState({
+                            loading: false
+                        });
                         error.innerHTML = "Password length must be at least 6 symbols";
 
                     }
                 }
 
             } else {
+                this.setState({
+                    loading: false
+                });
                 error.innerHTML = "Password does not match";
             }
         } catch (e) {
@@ -79,7 +102,7 @@ export default class Register extends Component {
                         <FormControl type="password" className="passwordInput" placeholder="confirm password" name="passwordConf" />
 
                         <h3></h3>
-                        <input type="submit" value="Submit to register" className="btn btn-primary buttons" />
+                        {this.state.loading ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" />}
 
                     </form>
 

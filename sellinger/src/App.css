@@ -1,14 +1,4 @@
-.userInput, .passwordInput {
-    margin-top:8px;
-    margin-bottom:20px;
-    width:400px!important;
-    height:35px!important;
-    text-align:center;
-}
 
-.registerForm {
-    margin-top:60px;
-}
 
 .logo {
     color:green;
@@ -33,13 +23,10 @@
 }
 
 .spacer {
-    height: 300px;
+    height: 520px;
 }
 
-.buttons {
-    height:50px;
-    width:398px;
-}
+
 
 .error {
     height:50px;

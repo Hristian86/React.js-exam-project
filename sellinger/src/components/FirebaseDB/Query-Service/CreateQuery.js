@@ -33,7 +33,7 @@ export default class CreateQuery extends Component {
         }
     }
 
-    AddPictures = (image1, image2, image3,id) =>{
+    AddPictures = (image1, id) =>{
         const currUser = fire.auth().currentUser;
         const userId = currUser.uid;
         if (currUser) {
@@ -53,28 +53,28 @@ export default class CreateQuery extends Component {
                     }).catch((err) => console.log(err));
                     
                     
-                    let payload2 = {
-                        "id": id,
-                        "userId": userId,
-                        "image": image2
-                    }
+                    // let payload2 = {
+                    //     "id": id,
+                    //     "userId": userId,
+                    //     "image": image2
+                    // }
                     
-                    firestore.collection(dataReference).add(payload2)
-                    .then(() => {
-                        console.log('Created');
-                    }).catch((err) => console.log(err));
+                    // firestore.collection(dataReference).add(payload2)
+                    // .then(() => {
+                    //     console.log('Created');
+                    // }).catch((err) => console.log(err));
 
                     
-                    let payload3 = {
-                        "id": id,
-                        "userId": userId,
-                        "image": image3
-                    }
+                    // let payload3 = {
+                    //     "id": id,
+                    //     "userId": userId,
+                    //     "image": image3
+                    // }
                     
-                    firestore.collection(dataReference).add(payload3)
-                    .then(() => {
-                        console.log('Created');
-                    }).catch((err) => console.log(err));
+                    // firestore.collection(dataReference).add(payload3)
+                    // .then(() => {
+                    //     console.log('Created');
+                    // }).catch((err) => console.log(err));
                 
                     return "Success";
             } catch (e) {

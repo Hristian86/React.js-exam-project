@@ -66,7 +66,7 @@ export default class Posts extends Component {
         }} /> : 
 
         <form onSubmit={this.submitHanler} id="products-card" className="card mb-4 mr-2 card-style col">
-                <button className="btn btn-info">{this.props.props.subject}</button>
+                <button className="btn btn-info">{this.props.props.subject ? this.props.props.subject : null}</button>
 
             <div className="card-header">
                 <ul className="nav nav-tabs card-header-tabs d-flex justify-content-between">
@@ -88,7 +88,7 @@ export default class Posts extends Component {
                         <img src={this.props.props.image} className="image-style" />
                         </button>
                         <div className="d-grid w-100">
-                        <h5 className="card-title mt-2 ml-4">{this.props.props.subject} </h5>
+                        <h5 className="card-title mt-2 ml-4 card-info">{this.props.props.subject} </h5>
                         <p className="d-flex justify-content-end price-post">Price: {this.props.props.price} $</p>
                         </div>
                     </div>

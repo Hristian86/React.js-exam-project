@@ -22,9 +22,11 @@ export default class CreatePost extends Component {
     async authListener() {
         const users = await fire.auth().onAuthStateChanged(user => {
             if (user) {
-                this.setState({
-                    user: true
-                });
+                if (user.displayName == "pencho") {
+                    this.setState({
+                        user: true
+                    });
+                }
             } else {
                 setTimeout(() => {
                     this.setState({
@@ -41,7 +43,8 @@ export default class CreatePost extends Component {
 
         return (
             <div className="">
-                {this.state.user ? <Create /> : <div className="loading"><em>Loading...</em></div>}
+
+                {this.state.user ? <Create /> : <div className="loading"><em>Permission denied...</em></div>}
                 {this.state.setRedirect ? <Redirect to="/Auth/LogIn" /> : null}
             </div>
         )

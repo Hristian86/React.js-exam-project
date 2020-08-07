@@ -6,7 +6,7 @@ import DetailsPage from '../Products/DetailsPage';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
 
-export default class History extends Component {
+export default class DetailRedirect extends Component {
     constructor(props){
         super(props);
 
@@ -16,7 +16,7 @@ export default class History extends Component {
         // console.log(this.props.id);
 
         let query = new DetailsQuery();
-        let data = await query.getDetails(this.props.id);        
+        let data = await query.getDetails(this.props.id);
 
         let getQuery = new GetQuery();
         const pictures = await getQuery.getImagesbyId(data.id);
@@ -27,20 +27,21 @@ export default class History extends Component {
             return <Redirect push to={{
                 pathname: '/Products/DetailsPage',
                 state: { 
-                    // id: this.state.detailId,
-                    data: this.props,
+                    id: this.props.id,
+                    data: data,
                     pictures: pictures
                 }
             }} />     
         }
-       return <Redirect push to={{
-        pathname: '/Products/DetailsPage',
-        state: { 
-            // id: this.state.detailId,
-            data: this.props
-            // pictures: this.state.pictures
-        }
-    }} />
+
+        return <Redirect push to={{
+            pathname: '/Products/DetailsPage',
+            state: { 
+                id: this.props.id,
+                data: this.props
+            }
+            }} />
+
     }
 
     render() {
