@@ -1,30 +1,64 @@
 import React, { Component } from "react";
 import { FormControl } from 'react-bootstrap';
 import UpdateUser from "./UpdateUser";
-import fire from "../FirebaseAuth/Config";
-import { useHistory } from 'react-router';
+import { useHistory, Redirect } from 'react-router';
+import url from "../BaseUrl/BaseUrl";
+import getCookie from "../Cookioes/GetCookie";
+import getUserByToken from "./GetUserByToken";
+import './style.css';
 
 export default class Manage extends Component {
     constructor(props) {
-        super(props)
-        this.state = {}
+        super(props);
 
-        this.getUserProfile = this.getUserProfile.bind(this);
+        this.state = {
+            user: null,
+            procesing: false
+        }
+
     }
 
-    componentWillUpdate() {
-        this.getUserProfile();
+    async componentWillUpdate() {
+        if (!this.state.loadedProfile) {
+            this.setState({
+                loadedProfile: true
+            });
+            await this.getUserProfile();
+        }
     }
 
-    getUserProfile() {
-        var currUser = fire.auth().currentUser;
+    getUserProfile = async () => {
 
-        return currUser
+        const user = await getUserByToken();
+        console.log(user.error);
+        if (user.error == "Unauthorized") {
+            this.setState({
+                redirect: true
+            });
+        }
+        
+        if (await user) {
+            console.log(user);
+            this.setState({
+                user: await user
+            })
+            //return await user;
+        } else {
+            this.setState({
+                user: null
+            })
+            //return null;
+        }
     }
 
-    updateProfile = (e) => {
+    updateProfile = async (e) => {
+        this.setState({
+            procesing: true
+        });
+
         e.preventDefault();
         let error = document.getElementById('errors');
+        error.innerHTML = "Procesing...";
         const { history } = this.props;
         const username = e.target.username.value;
         const email = e.target.email.value;
@@ -34,41 +68,53 @@ export default class Manage extends Component {
 
             if (email.length > 3 || username.length > 3 || photoURL.length > 3) {
 
-                error.innerHTML = UpdateUser(username, photoURL);
+                const result = await UpdateUser(username, photoURL);
+                error.innerHTML = await result;
 
                 setTimeout(function () {
                     history.push('/');
                     window.location.reload(false);
-                }, 700)
+                }, 700);
             } else {
                 if (email.length < 4) {
-
+                    this.setState({
+                        procesing: false
+                    });
                     error.innerHTML = "Email addres lenght must be at least 4 symbols";
 
                 } else if (username.length < 4) {
+                    this.setState({
+                        procesing: false
+                    });
 
                     error.innerHTML = "Username length must be at least 4 symbols";
 
                 } else if (photoURL.length < 4) {
+                    this.setState({
+                        procesing: false
+                    });
 
                     error.innerHTML = "PhotoURL length must be at least 4 symbols";
                 }
             }
 
         } catch (e) {
+            this.setState({
+                procesing: false
+            });
             error.innerHTML = "Invalid Input";
         }
     }
 
     render() {
-
-        let manage = new Manage();
-        let user = manage.getUserProfile();
+        
+        //let manage = new Manage();
+        //let user = manage.getUserProfile();
         //if (user) {
 
         //}
 
-        let manageProfile = user ? <div>
+        let manageProfile = this.state.user ? <div>
 
             <h3 className="logo">Manage Profile</h3>
 
@@ -78,29 +124,30 @@ export default class Manage extends Component {
                 <form className="registerForm" onSubmit={this.updateProfile}>
 
                     <h3>Username</h3>
-                    <FormControl type="text" className="passwordInput" placeholder={user ? user.displayName : ""} name="username" />
+                    <FormControl type="text" className="passwordInput" placeholder={this.state.user ? this.state.user.displayName : ""} name="username" />
 
                     <h3>Email</h3>
-                    <FormControl className="userInput" disabled="disabled" type="email" name="email" placeholder={user ? user.email : ""} />
+                    <FormControl className="userInput" type="email" disabled name="email" placeholder={this.state.user ? this.state.user.email : ""} />
 
 
                     <h3>Photo image</h3>
-                    <FormControl type="text" className="passwordInput" placeholder={user ? user.photoURL : ""} name="photo" />
+                    <FormControl type="text" className="passwordInput" placeholder={this.state.user ? this.state.user.imageURL : ""} name="photo" />
 
                     <h3></h3>
-                    <input type="submit" value="Apply changes" className="btn btn-primary buttons" />
+                    {this.state.procesing ? <em>Loading...</em> : <input type="submit" value="Apply changes" className="btn btn-primary buttons" />}
 
                 </form>
-                <img className="image-holder" src={user ? user.photoURL : ""} alt="image" />
+                <img className="image-holder" src={this.state.user ? this.state.user.imageURL : ""} />
             </div>
 
             <div className="spacer"></div>
         </div> : <div className="loading">Loading...</div>
-
+        
         return (
             <div>
+                {this.state.redirect ? <Redirect to="/Auth/LogIn" /> : null}
                 {manageProfile}
             </div>
-            )
+        )
     }
 }

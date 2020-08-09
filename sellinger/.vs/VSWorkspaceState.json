@@ -3,12 +3,11 @@
     "",
     "\\src",
     "\\src\\components",
+    "\\src\\components\\FirebaseDB",
     "\\src\\components\\FirebaseDB\\Query-Service",
-    "\\src\\components\\Home-Components",
     "\\src\\components\\Products",
-    "\\src\\components\\Weather",
-    "\\src\\server"
+    "\\src\\components\\Products\\Details-Components-Holder"
   ],
-  "SelectedNode": "\\src\\components\\Navbar.js",
+  "SelectedNode": "\\src\\components\\FirebaseDB\\Query-Service\\DetailsQuery.js",
   "PreviewInSolutionExplorer": false
 }

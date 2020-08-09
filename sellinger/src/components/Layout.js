@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap';
 import Footer from './Footer';
 import '../index.css';
 
-
 export default class Layout extends Component {
 
     render() {

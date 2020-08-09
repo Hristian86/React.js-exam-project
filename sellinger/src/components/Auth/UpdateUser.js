@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
-import fire from '../FirebaseAuth/Config';
-import setCookie from '../Cookioes/SetCookie';
+import getUserByToken, { sendChanges } from './GetUserByToken';
 
-const UpdateUser = (user, photo) => {
+const UpdateUser = async (user, photo) => {
 
-    var currUser = fire.auth().currentUser;
+    var currUser = await getUserByToken();
 
     try {
-        if (photo.length > 3 && currUser.photoURL !== photo) {
-           
-            currUser.updateProfile({
-                photoURL: photo
-            })
-                .then(upd => upd)
-                .catch(err => console.log(err));
-            //console.log(currUser.photoURL);
+        if (photo.length > 3 && await currUser.imageURL !== photo) {
             
+            const result = await sendChanges(null, photo);
+            //console.log(await result);
+            //console.log(currUser.imageURL);
 
-        } else if (user.length > 3 && currUser.displayName !== user) {
-            setCookie('userName', null, -1);
-
-            currUser.updateProfile({
-                displayName: user
-            })
-                .then(upd => upd)
-                .catch(err => console.log(err));
+        } if (user.length > 3 && await currUser.displayName !== user) {
+            
+            const result = await sendChanges(user, null);
             //console.log(currUser.displayName);
-
-            setCookie('userName', user, 5);
         }
         return "Success";
     } catch (e) {

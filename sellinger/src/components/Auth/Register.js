@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import RegAuth from './RegAuth';
 import { FormControl } from 'react-bootstrap';
-import fire from '../FirebaseAuth/Config';
 import { useHistory } from 'react-router';
 import { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
+import url from '../BaseUrl/BaseUrl';
+import './style.css';
 
 export default class Register extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            loading: false
+            buttonPushed: false
         }
     }
 
+
     signUpFunc = async (e) => {
         this.setState({
-            loading: true
+            buttonPushed: true
         });
         e.preventDefault();
         let error = document.getElementById('errors');
@@ -27,43 +28,52 @@ export default class Register extends Component {
 
         try {
 
-            error.innerHTML = "Procesing...";
+            error.innerHTML = "";
             if (password === passwordConf) {
 
                 if (email.length > 5 && password.length > 5) {
 
-                    let credentials;
-                    var userCreate = await fire.auth()
-                        .createUserWithEmailAndPassword(email, password)
-                        .then(resp => {
-                            console.log(resp);
-                            credentials = resp
+                    error.innerHTML = "Procesing...";
+
+                    let payload = {
+                        "email": email,
+                        "password": password
+                    }
+
+                    let result = await fetch(url("signup"), {
+                        "method": "POST",
+                        "headers": {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }, body: JSON.stringify(payload)
+                    })
+                        .then(res => res.json())
+                        .catch(err => {
+                            console.log(err);
                         })
-                        .catch(err => console.log(err));
-                    
-                    if (await credentials) {
-                        const token = credentials.user.xa;
-                        const user = credentials.user.email;
-                        setCookieUser(user);
-                        setCookieToken(token);
+
+                    if (result) {
+                        setCookieUser(result.email);
+                        setCookieToken(result.token);
                         error.innerHTML = "Account created suceesfully";
 
-                        setTimeout(function () {
-                            history.push("/");
-                            window.location.reload(false);
-                        }, 700);
                     }
+
+                    setTimeout(function () {
+                        history.push("/");
+                        window.location.reload(false    );
+                    }, 700);
 
                 } else {
                     if (email.length < 6) {
                         this.setState({
-                            loading: false
+                            buttonPushed: false
                         });
                         error.innerHTML = "Email addres lenght must be at least 6 symbols";
 
                     } else if (password.length < 6) {
                         this.setState({
-                            loading: false
+                            buttonPushed: false
                         });
                         error.innerHTML = "Password length must be at least 6 symbols";
 
@@ -72,7 +82,7 @@ export default class Register extends Component {
 
             } else {
                 this.setState({
-                    loading: false
+                    buttonPushed: false
                 });
                 error.innerHTML = "Password does not match";
             }
@@ -80,7 +90,6 @@ export default class Register extends Component {
             console.log(e);
         }
     }
-
 
     render() {
         return (
@@ -102,7 +111,7 @@ export default class Register extends Component {
                         <FormControl type="password" className="passwordInput" placeholder="confirm password" name="passwordConf" />
 
                         <h3></h3>
-                        {this.state.loading ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" />}
+                        {this.state.buttonPushed ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" /> }
 
                     </form>
 

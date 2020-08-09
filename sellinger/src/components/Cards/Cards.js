@@ -17,9 +17,9 @@ export default class Cards extends Component {
             const bandB = b.price;
           
             let comparison = 0;
-            if (bandA < bandB) {
+            if (bandA > bandB) {
               comparison = -1;
-            } else if (bandA > bandB) {
+            } else if (bandA < bandB) {
               comparison = 1;
             }
             return comparison;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import fireDB from '../FirebaseDB/fireDB';
 import ssd from './ssd';
 
 export default class dataS extends Component {

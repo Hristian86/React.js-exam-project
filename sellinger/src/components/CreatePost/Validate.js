@@ -22,9 +22,9 @@ const Validate = (subject,phone,content,image,price) => {
         error.innerHTML = "Length must be more that 2 symbols";
         chek = true;
     }
-    if (image == null || image == undefined) {
+    if (image.length < 3) {
         let error = document.getElementById('image');
-        error.innerHTML = "Image file is required";
+        error.innerHTML = "Length must be more that 2 symbols";
         chek = true;
     }
     if (!chek) {

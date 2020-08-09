@@ -15,13 +15,6 @@ server.listen(port, () => {
     console.log(`Server listen on port: ${port}`);
 })
 
-app.get('/gifts', (req, res) => {
-    if (req.method === 'GET') {
-        res.writeHead(300, {
-            'Content-Type': 'Application/Json'
-        });
-    }
-
-    res.write('greeetings');
-    res.end();
+app.get('/gifts', (req, res) => {    
+    return res.send('get http method on');
 })

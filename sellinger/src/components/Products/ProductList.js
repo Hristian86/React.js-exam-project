@@ -24,7 +24,7 @@ export default class ProductList extends Component {
         const posts = await query.getPosts();
         if (posts) {
             this.setState({ data: posts });
-             //console.log(posts);
+            // console.log(posts[0].id);
         }
     }
 

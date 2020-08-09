@@ -15,7 +15,6 @@ import Contact from './components/Contact';
 import Home from './components/Home';
 import Register from './components/Auth/Register';
 import login from './components/Auth/LogIn';
-import fire from './components/FirebaseAuth/Config';
 import Logout from './components/Auth/Logout';
 import Manage from './components/Auth/Manage';
 import Hcard from './components/HearthStoneCards/HearthstoneCard';
@@ -24,7 +23,8 @@ import Details from './components/Products/Details';
 import CreatePost from './components/CreatePost/CreatePost';
 import DetailsPage from './components/Products/DetailsPage';
 import Searching from './components/SearchBar/Searching';
-//import PrivateRoute from './components/Auth/PrivateRoute';
+import getCookie from './components/Cookioes/GetCookie';
+import NotFound from './components/NotFoundPage/NotFount';
 
 var useraaa = [];
 
@@ -38,32 +38,27 @@ export default class App extends Component {
             isLoading:false
         }
 
-        this.authListener = this.authListener.bind(this);
     }
 
-    async componentDidMount() {
-        await this.authListener();
+    componentDidMount() {
+        this.cookieUser();
     }
 
-
-    async authListener() {
-        const users = await fire.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.setState({
-                    user: user,
-                    isLoading:true
-                });
-                useraaa = user;
-            } else {
-                this.setState({
-                    isLoading:true
-                });
-            }
-        });
-
-        //<Route path="/About" component={About}>
-        //</Route>
-        return users;
+    cookieUser = () => {
+        let currentUser = getCookie("user");
+        
+        //To Do : add loged user to redux global state
+        if (currentUser) {
+            this.setState({
+                user: currentUser,
+                isLoged: true
+            });
+        } else {
+            this.setState({
+                user: null,
+                isLoged: false
+            });
+        }
     }
 
     render() {
@@ -85,38 +80,36 @@ export default class App extends Component {
                                 <Route exact path="/" component={Home}>
                                 </Route>
 
-                                <Route path="/About" component={About}>
+                                <Route exact path="/About" component={About}>
                                 </Route>
 
-                                {this.state.user ? <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route> : <Route path="/Auth/LogIn" component={login}>
-                                    </Route>} 
+                                <Route exact path="/Products/ProductList" component={ProductList} ></Route>
 
-                                <Route path="/Products/ProductList" component={ProductList} ></Route>
+                                <Route exact path="/Products/Details" component={Details} ></Route>
 
-                                <Route path="/Products/Details" component={Details} ></Route>
+                                <Route exact path="/SearchBar/Searching" component={Searching} ></Route>
 
-                                <Route path="/SearchBar/Searching" component={Searching} ></Route>
-
-                                <Route path="/Contact" component={Contact}>
+                                <Route exact path="/Contact" component={Contact}>
                                 </Route>
 
-                                <Route path="/Products/DetailsPage" component={DetailsPage}>
-                                </Route>
-                                
-                                <Route path="/CreatePost/CreatePost" component={CreatePost} ></Route>
-
-
-                                <Route path="/components/HearthStoneCards/HearthstoneCard" component={Hcard}>
+                                <Route exact path="/Products/DetailsPage/:id?" component={DetailsPage}>
                                 </Route>
 
-                                <Route path="/Auth/Register" component={Register}>
+                                <Route exact path="/components/HearthStoneCards/HearthstoneCard" component={Hcard}>
                                 </Route>
-                                <Route path="/Auth/LogIn" component={login}>
+
+                                <Route exact path="/Auth/Register" component={Register}>
                                 </Route>
-                                <Route path="/Auth/Logout" component={Logout}>
+                                <Route exact path="/Auth/LogIn" component={login}>
                                 </Route>
-                                <Route path="/Auth/Manage" component={Manage}>
+                                <Route exact path="/Auth/Logout" component={Logout}>
                                 </Route>
+
+                                <Route exact path="/Auth/Manage" component={Manage}>
+                                </Route>
+
+                                <Route path="*" component={NotFound} />
+
                             </Switch>
                         </Router>
 
@@ -128,38 +121,38 @@ export default class App extends Component {
     }
 }
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    var resut = authListener();
-    var rs = { ...rest };
-    var chek = false;
-    resut.then(res => res);
-    setTimeout(() => {
-        console.log(useraaa);
-        if (useraaa.email !== undefined) {
-            return <Route {...rest} render={(props) => (
-                chek ? <Component {...props} /> : <Redirect to="/Auth/LogIn" />
-            )
-            } />
-        }
-    }, 1000);
+//const PrivateRoute = ({ component: Component, ...rest }) => {
+//    var resut = authListener();
+//    var rs = { ...rest };
+//    var chek = false;
+//    resut.then(res => res);
+//    setTimeout(() => {
+//        console.log(useraaa);
+//        if (useraaa.email !== undefined) {
+//            return <Route {...rest} render={(props) => (
+//                chek ? <Component {...props} /> : <Redirect to="/Auth/LogIn" />
+//            )
+//            } />
+//        }
+//    }, 1000);
 
-    if (rs !== undefined) {
-        chek = true;
-    }
+//    if (rs !== undefined) {
+//        chek = true;
+//    }
 
-    return <Route {...rest} render={(props) => (
-        chek ? <Component {...props} /> : <Redirect to="/Auth/LogIn" />
-    )
-    } />
-}
+//    return <Route {...rest} render={(props) => (
+//        chek ? <Component {...props} /> : <Redirect to="/Auth/LogIn" />
+//    )
+//    } />
+//}
 
-async function authListener() {
-    let chek = false;
-    const users = await fire.auth().onAuthStateChanged(user => {
-        if (user) {
-            chek = true;
-        } else {
-        }
-    });
-    return chek;
-}
+//async function authListener() {
+//    let chek = false;
+//    const users = await fire.auth().onAuthStateChanged(user => {
+//        if (user) {
+//            chek = true;
+//        } else {
+//        }
+//    });
+//    return chek;
+//}

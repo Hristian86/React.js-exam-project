@@ -4,7 +4,6 @@ import './style.css';
 import { Redirect, useHistory } from 'react-router/cjs/react-router.min';
 import DetailsPage from '../Products/DetailsPage';
 import HistoryRedirect from './DetailRedirect';
-import { ButtonToggle } from 'reactstrap';
 
 export default class data extends Component{
     constructor(props) {
@@ -34,24 +33,18 @@ export default class data extends Component{
                 <div className="card-style" >
             {this.state.redirecting ? this.state.redirecting :
             <form key={this.props.props.key} onSubmit={this.redirectToDetails} className="card-style">
-
-                            <button type="submit" className="card-style">
-
         <Card id="cardis" style={{ width: '18rem' }} >
             <Card.Img variant="top" className="image-style" src={this.props.props.image} />
             <Card.Body className="text-center">
                 <Card.Title>{this.props.props.subject}</Card.Title>
                 <Card.Text>
-                   {this.props.props.city}
+                    {this.props.props.city}
                 </Card.Text>
                     <div className="mt-0">Price: {this.props.props.price} $</div>
                     <input type="hidden" value={this.props.props.id} name="keys" />
                 <Button variant="primary" type="submit" >Details</Button>
             </Card.Body>
         </Card>
-
-                            </button>
-
             </form> }
     </div>
         )   

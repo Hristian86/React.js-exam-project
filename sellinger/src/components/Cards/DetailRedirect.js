@@ -13,33 +13,9 @@ export default class DetailRedirect extends Component {
     }
     
     redirect = async () => {
-        // console.log(this.props.id);
-
-        let query = new DetailsQuery();
-        let data = await query.getDetails(this.props.id);
-
-        let getQuery = new GetQuery();
-        const pictures = await getQuery.getImagesbyId(data.id);
-
-        // console.log(data.id);
-        
-        if (pictures) {
-            return <Redirect push to={{
-                pathname: '/Products/DetailsPage',
-                state: { 
-                    id: this.props.id,
-                    data: data,
-                    pictures: pictures
-                }
-            }} />     
-        }
 
         return <Redirect push to={{
-            pathname: '/Products/DetailsPage',
-            state: { 
-                id: this.props.id,
-                data: this.props
-            }
+            pathname: `/Products/DetailsPage/${this.props.id}`
             }} />
 
     }

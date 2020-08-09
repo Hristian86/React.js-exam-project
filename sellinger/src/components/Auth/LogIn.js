@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { FormControl } from 'react-bootstrap';
-import fire from '../FirebaseAuth/Config';
 import Home from '../Home';
 import LogInSuccess from './LogInSuccess';
 import { Redirect, useHistory } from 'react-router';
-import setCookie, { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
+import { setCookie, setCookieToken, setCookieUser } from '../Cookioes/SetCookie';
+import url from '../BaseUrl/BaseUrl';
+import './style.css';
 
 export default class login extends Component {
     constructor(props) {
@@ -12,19 +13,16 @@ export default class login extends Component {
         this.liks = [];
 
         this.state = {
-            loading: false
+            buttonPresed: false
         }
     }
 
-
     loginFunc = async (e) => {
         this.setState({
-            loading: true
+            buttonPresed: true
         });
-
         e.preventDefault();
         let error = document.getElementById('errors');
-        error.innerHTML = "Procesing...";
         const { history } = this.props;
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -33,41 +31,52 @@ export default class login extends Component {
 
             if (email.length > 5 && password.length > 5) {
 
-                let credentials;
-                let responce = await fire.auth().signInWithEmailAndPassword(email, password)
-                    .then(resp => {
-                        credentials = resp
-                    })
-                    .catch(err => console.log(err));
+                error.innerHTML = "Procesing...";
 
-                if (await credentials) {
-                    const token = credentials.user.xa;
-                    const user = credentials.user.email;
+                let payload = {
+                    "email": email,
+                    "password": password
+                }
 
-                    if (credentials.user.displayName) {
-                        setCookie('userName', credentials.user.displayName, 5);
-                    }
-                    setCookieUser(user);
-                    setCookieToken(token);
+                let notLoged = false;
+
+                let user = await fetch(url("login"), {
+                    "method": "POST",
+                    "headers": {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }, body: JSON.stringify(payload)
+                }).then(res => res.json())
+                    .catch(err => console.log('something is wrong with log in'));
+                console.log(user);
+                if (user.email && user.token && user.id) {
+                    setCookieUser(user.email);
+                    setCookieToken(user.token);
                     error.innerHTML = "Success";
 
                     setTimeout(function () {
                         history.push('/');
                         window.location.reload(false);
                     }, 700);
+                } else {
+                    this.setState({
+                        buttonPresed: false
+                    });
+                    error.innerHTML = "Wrong email or password";
                 }
 
             } else {
                 if (email.length < 6) {
                     this.setState({
-                        loading: false
+                        buttonPresed: false
                     });
                     error.innerHTML = "Email addres lenght must be at least 6 symbols";
 
                 } else if (password.length < 6) {
                     this.setState({
-                        loading: false
+                        buttonPresed: false
                     });
+
                     error.innerHTML = "Password length must be at least 6 symbols";
 
                 }
@@ -75,7 +84,7 @@ export default class login extends Component {
 
         } catch (e) {
             this.setState({
-                loading: false
+                buttonPresed: false
             });
             error.innerHTML = "Invalid Input";
         }
@@ -83,8 +92,6 @@ export default class login extends Component {
     }
 
     render() {
-
-
 
         return (<div>
             <div className="backgrounds">
@@ -103,7 +110,7 @@ export default class login extends Component {
                         <FormControl type="password" className="passwordInput" placeholder="password" name="password" />
 
                         <h3></h3>
-                        {this.state.loading ? <em>Loading...</em> : <input type="submit" value="Log in" className="btn btn-primary buttons" />}
+                        {this.state.buttonPresed ? <em>Loading..</em> : <input type="submit" value="Log in" className="btn btn-primary buttons" />}
 
                     </form>
 

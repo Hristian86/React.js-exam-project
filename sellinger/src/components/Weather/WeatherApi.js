@@ -9,9 +9,21 @@ export default class WeatherApi extends Component {
         }
     }
 
-    getWeather = async (city) => {
-        const link = `https://api.openweathermap.org/data/2.5/weather?q=${city},Bulgaria&appid=${this.state.apiKey}`;
-        let ress = null
+    getWeather = async () => {
+        // let rests = null;
+        // let responce = await fetch("https://localhost:44342/api/Chat")
+        // .then(res => {
+        //     if (res) {
+        //         rests = res.json();
+        //     }
+        // })
+        // .then(res => res)
+        // .catch(err => console.log(err));
+
+        // console.log(rests);
+
+        const link = `https://api.openweathermap.org/data/2.5/weather?q=Russe,Bulgaria&appid=${this.state.apiKey}`;
+        let ress = null;
         const result = await fetch(link)
         .then(res => {
             if (res) {

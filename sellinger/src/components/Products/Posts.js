@@ -44,12 +44,6 @@ export default class Posts extends Component {
                 });
             //console.log(data.name);
         }
-
-        // if (pictures) {
-        //     this.setState({
-        //         pictures:pictures
-        //     });
-        // }
     }
     
     render() {
@@ -57,7 +51,7 @@ export default class Posts extends Component {
             return (
                 <div>
                     {this.state.isDetail ? <Redirect push to={{
-            pathname: '/Products/DetailsPage',
+            pathname: `/Products/DetailsPage/${this.state.detailId}`,
             state: { 
                 id: this.state.detailId,
                 data: this.state.data,
@@ -75,7 +69,7 @@ export default class Posts extends Component {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">Little more details</a>
+                        <a className="nav-link active" href="#">DETAILS</a>
                     </li>
 
                 </ul>

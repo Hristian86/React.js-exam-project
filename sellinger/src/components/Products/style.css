@@ -1,10 +1,18 @@
+.pagination {
+    padding-right:55px;
+}
+
+.detail-loading {
+    height: 800px;
+}
+
 .products-style {
     padding-left:10%;
 }
 
 .image-style {
-    height: 180px;
-    width: 240px;
+    height:180px;
+    width:240px;
 }
 
 .details-page {
@@ -46,12 +54,19 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .products-style{
-        display:flex;
+
+    
+
+    .main-container {
+        overflow: hidden;
+    }
+
+    .products-style {
+        display: flex;
         padding: 0px;
-        margin:0px;
-        overflow:hidden;
-        justify-content:center!important;
+        margin: 0px;
+        /*overflow: hidden;*/
+        justify-content: center !important;
     }
 
     .image-style {

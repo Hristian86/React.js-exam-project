@@ -9,7 +9,7 @@ export default class SearchNav extends Component {
         super(props);
 
         this.state = {
-
+            
         }
     }
 

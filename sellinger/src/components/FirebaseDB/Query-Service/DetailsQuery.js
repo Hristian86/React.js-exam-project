@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import fire from '../../FirebaseAuth/Config';
-
-const collection = "Posts";
+import url from '../../BaseUrl/BaseUrl';
 
 export default class DetailsQuery extends Component {
     constructor(props) {
@@ -10,15 +8,29 @@ export default class DetailsQuery extends Component {
     }
 
     getDetails = async (id) => {
-        
-        const currUser = fire.auth().currentUser;
+        try {
 
-        const firestore = fire.firestore();
-        const db = firestore.collection(collection).doc(id); //search by id
-        const doc = await db.get();
-        const datas = doc.data();
-        // console.log(datas);
+            let payload = {
+                "id": id
+            };
 
-        return datas
+            let result = await fetch(url("detailsbyid"), {
+                "method": "POST",
+                "headers": {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(payload)
+            })
+                .then(res => res.json())
+                .catch(err => {
+                    console.log(err);
+                });
+            const data = await result;
+            //console.log(data);
+
+            return data;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
