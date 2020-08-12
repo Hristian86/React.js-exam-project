@@ -22,9 +22,9 @@ import ProductList from './components/Products/ProductList';
 import Details from './components/Products/Details';
 import CreatePost from './components/CreatePost/CreatePost';
 import DetailsPage from './components/Products/DetailsPage';
-import Searching from './components/SearchBar/Searching';
 import getCookie from './components/Cookioes/GetCookie';
 import NotFound from './components/NotFoundPage/NotFount';
+import Searching from './components/SearchBar/Searching';
 
 var useraaa = [];
 
@@ -42,6 +42,7 @@ export default class App extends Component {
 
     componentDidMount() {
         this.cookieUser();
+        
     }
 
     cookieUser = () => {
@@ -62,14 +63,6 @@ export default class App extends Component {
     }
 
     render() {
-        
-        //if (!this.state.user) {
-        //    return (
-        //        <div><em>Loaging...</em></div>
-        //    )
-        //}
-
-        //this.state.user ? console.log("Loaded") : console.log("not loaded");
         
         return (
            <div className="App">
@@ -106,6 +99,9 @@ export default class App extends Component {
                                 </Route>
 
                                 <Route exact path="/Auth/Manage" component={Manage}>
+                                </Route>
+
+                                <Route exact path="/components/SearchBar/Searching/:id?" component={Searching}>
                                 </Route>
 
                                 <Route path="*" component={NotFound} />

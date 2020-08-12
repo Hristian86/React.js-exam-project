@@ -10,15 +10,14 @@ export default class Searching extends Component {
     }
     
     render() {
-        let cont = this.props.state;
-        if (cont) {   
-            console.log(cont[0].content);
-        }
-        
+        //const paramId = this.props.match.params.id;
+        //<ProductLeyout state={this.state.search} />
+        console.log(this.props);
         return ( 
         
             <div>
-                {this.props.state ? <ProductLeyout state={this.props.state} /> : null}
+                <h3>results</h3>
+                <ProductLeyout state={this.props.search} />
             </div>
 
         )

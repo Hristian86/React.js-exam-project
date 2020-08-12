@@ -1,13 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
     "\\src\\components",
     "\\src\\components\\FirebaseDB",
     "\\src\\components\\FirebaseDB\\Query-Service",
+    "\\src\\components\\Home-Components",
     "\\src\\components\\Products",
-    "\\src\\components\\Products\\Details-Components-Holder"
+    "\\src\\components\\SearchBar"
   ],
-  "SelectedNode": "\\src\\components\\FirebaseDB\\Query-Service\\DetailsQuery.js",
+  "SelectedNode": "\\src\\components\\Products\\ProductList.js",
   "PreviewInSolutionExplorer": false
 }

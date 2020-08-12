@@ -152,8 +152,8 @@ export default class ProductLeyout extends Component {
 
                 </div >
 
-                <div className="perant-container" >
-                    {this.props.state ? <div className="row d-flex justify-content-start products-style"> {pagination.map(post => post)} </div> : <em>Loading...</em>}
+                <div className="products-style" >
+                    {this.props.state ? <div className="row d-flex justify-content-start"> {pagination.map(post => post)} </div> : <em>Loading...</em>}
                 </div>
 
                 <div>

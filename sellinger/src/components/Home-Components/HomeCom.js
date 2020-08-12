@@ -1,12 +1,17 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import Cards from '../Cards/Cards';
 import './style.css';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 import MainHeader from './MainHeader';
 import WeatherApi from '../Weather/WeatherApi';
+import LeftSideComponent from './LeftSideComponent';
+import CenterComponent from './CenterComponent';
+import RightComponent from './RightComponent';
+import CorouselImage from './CorouselImage';
+import Search from '../SearchBar/Search';
 
 export default class HomeCom extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {}
@@ -22,23 +27,23 @@ export default class HomeCom extends Component {
 
         let weather = new WeatherApi();
         const resultWeather = await weather.getWeather();
-        console.log(resultWeather);
+        //console.log(resultWeather);
         if (resultWeather) {
             this.setState({
                 weather: resultWeather
             })
-            console.log(resultWeather.weather[0].id);
-            console.log(resultWeather.weather[0].main);
-            console.log(resultWeather.weather[0].description);
-            console.log(resultWeather.weather[0].icon);
-            
+            //console.log(resultWeather.weather[0].id);
+            //console.log(resultWeather.weather[0].main);
+            //console.log(resultWeather.weather[0].description);
+            //console.log(resultWeather.weather[0].icon);
+
         }
     }
 
     getItems = async () => {
         let query = new GetQuery();
         const posts = await query.getPosts();
-        
+
         if (posts) {
             this.setState({ data: posts });
         }
@@ -52,41 +57,48 @@ export default class HomeCom extends Component {
             temp = temp - 273.15;
             temp = Math.floor(temp) + " C";
         }
-        
+
         return (
 
             <div className="container-fluid">
-                        {/* first row  */}
+
+                <Search />
+
+                <div>
+
+                    <div className="header-image-poster d-flex justify-content-end">
+
+                        <h3 className="text-white text-mage-poster">For Sale</h3>
+
+                    </div>
+
+                </div>
+
+                {/* first row  */}
                 <div className="row">
+                    {/*left side*/}
+
                     <div className="col-lg-2 d-flex justify-content-center text-center ">
-                        <div className="left-box">
-                            <div>The weather in Russe</div>
-                            {this.state.weather ? this.state.weather.weather[0].main : null}
-                            <br />
-                            {this.state.weather ? this.state.weather.weather[0].description : null}
-                            <br />
-                            {this.state.weather ? temp : null}
-                            
-                            
-                            {/* <p>More sells</p>
-                            <p>Evane more sells</p>
-                            <p>Dont waste time and money</p>
-                            <p>Just post you'r old items</p> */}
-                        </div>
+
+                        {this.state.weather ? <LeftSideComponent props={this.state} temp={temp} /> : null}
+
                     </div>
 
+                    {/*center*/}
                     <div className="col-lg-8 wrapper-home d-flex justify-content-center">
+
                         <MainHeader />
-                       {this.state.data ? <Cards props={this.state.data} /> : <em>Loading...</em>} 
+                        {this.state.data ? <Cards props={this.state.data} /> : <em>Loading...</em>}
+
+
                     </div>
 
+
+                    {/*right side*/}
                     <div className="col-lg-2 d-flex justify-content-center text-center">
-                        <div className="right-box">
-                            {/* <p>More sells</p>
-                            <p>Evane more sells</p>
-                            <p>Dont waste time and money</p>
-                            <p>Just post you'r old items</p> */}
-                        </div>
+
+                        <RightComponent />
+
                     </div>
                 </div>
 
@@ -107,7 +119,7 @@ export default class HomeCom extends Component {
 
                     <div className="col-lg-2 d-flex justify-content-end ">
                         <div >
-                                
+
                         </div>
                     </div>
                 </div>

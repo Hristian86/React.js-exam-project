@@ -55,8 +55,6 @@
 
 @media only screen and (max-width: 768px) {
 
-    
-
     .main-container {
         overflow: hidden;
     }
@@ -65,7 +63,6 @@
         display: flex;
         padding: 0px;
         margin: 0px;
-        /*overflow: hidden;*/
         justify-content: center !important;
     }
 

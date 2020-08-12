@@ -15,13 +15,23 @@
     height: calc(3rem + 2px) !important;
     border-radius:0;
 }
-.wrn-btn{
+
+.content-style {
+    height:12px;
+}
+
+.search-bar-placeholder {
+    background-color:aqua;
+    
+}
+
+.wrn-btn {
     width: 100%;
     font-size: 16px;
     font-weight: 400;
     text-transform: capitalize;
     height: calc(3rem + 2px) !important;
-    border-radius:0;
+    border-radius: 0;
 }
 @media (min-width: 992px){
     .search-sec{

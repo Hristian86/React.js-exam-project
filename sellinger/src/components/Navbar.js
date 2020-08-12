@@ -4,7 +4,8 @@ import { Collapse, Container, NavbarBrand, NavbarToggler, NavItem, NavLink } fro
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Redirect
 } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import About from './About';
@@ -26,9 +27,9 @@ export default class navbar extends Component {
 
         this.state = {
             isLoged: false,
-            user:null
+            user: null
         }
-        
+
         //this.authListener = this.authListener.bind(this);
     }
 
@@ -87,11 +88,11 @@ export default class navbar extends Component {
                 }
             }
 
-                this.setState({
-                    search: searchRes,
-                    redirect: true
-                });
-            }
+            this.setState({
+                search: searchRes,
+                redirect: true
+            });
+        }
     }
 
     prevDef(e) {
@@ -133,23 +134,25 @@ export default class navbar extends Component {
         } else {
             cheks = false;
         }
-        
+
         // <ProductLeyout state={this.state.search}  />
-        
-        return ( <div> 
+
+        return (<div>
             <Navbar bg="light" className="nav-bar-background" expand="lg">
-                <Navbar.Brand href="/" onClick={() => this.prevDef}>Home</Navbar.Brand>
+                <Navbar.Brand href="/" onClick={() => this.prevDef}>
+                    <img src="https://hristian86.github.io/WebTest/images/logo-real-estate.png" className="logo-image" alt="image" />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
 
-                        <Nav.Link href="/Products/ProductList" onClick={() => this.prevDef}>Products</Nav.Link>
+                        <Nav.Link href="/Products/ProductList" onClick={() => this.prevDef} className="link-style">Products</Nav.Link>
 
-                        <Nav.Link href="/About" onClick={() => this.prevDef}>About</Nav.Link>
+                        <Nav.Link href="/About" className="link-style" onClick={() => this.prevDef}>About</Nav.Link>
 
-                        <Nav.Link href="/Contact" onClick={() => this.prevDef}>Contact</Nav.Link>
+                        <Nav.Link href="/Contact" className="link-style" onClick={() => this.prevDef}>Contact</Nav.Link>
 
-                        <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef}>Hearthstone</Nav.Link>
+                        <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef} className="link-style" >Hearthstone</Nav.Link>
 
                     </Nav>
                     <Form inline className="mr-3" onSubmit={this.searchHandle} >
@@ -159,15 +162,19 @@ export default class navbar extends Component {
 
                     {/* <SearchNav /> */}
 
-                    {this.state.isLoged ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName+"'s" : ""} management</Nav.Link> :
+                    {this.state.isLoged ? <Nav.Link href="/Auth/Manage" className="text-info" onClick={() => this.prevDef}>{displayName !== null ? displayName + "'s" : ""} management</Nav.Link> :
                         <Nav.Link href="/Auth/Register" className="text-info" onClick={() => this.prevDef}>Register</Nav.Link>}
 
                     {this.state.isLoged ? <Nav.Link href="/Auth/Logout" className="mr-3 text-info" onSubmit={() => this.prevDef}>Log out</Nav.Link> : <Nav.Link href="/Auth/LogIn" className="mr-3 text-info" onClick={() => this.prevDef}>LogIn</Nav.Link>}
 
                 </Navbar.Collapse>
             </Navbar>
-            {this.state.search ? <ProductLeyout state={this.state.search}  /> : null}
+            <div>
+                {this.state.search ? <ProductLeyout state={this.state.search} /> : null}
             </div>
+
+
+        </div>
         )
     }
 }

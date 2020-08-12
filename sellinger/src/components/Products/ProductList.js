@@ -20,12 +20,19 @@ export default class ProductList extends Component {
     }
 
     getItems = async () => {
-        let query = new GetQuery();
-        const posts = await query.getPosts();
-        if (posts) {
-            this.setState({ data: posts });
-            // console.log(posts[0].id);
+
+
+        if (this.props.history.location.state != undefined) {
+            this.setState({ data: this.props.history.location.state.state });
+        } else {
+            let query = new GetQuery();
+            const posts = await query.getPosts();
+            if (posts) {
+                this.setState({ data: posts });
+                // console.log(posts[0].id);
+            }
         }
+
     }
 
     render() {
@@ -39,16 +46,16 @@ export default class ProductList extends Component {
             return (
                 <div className="container-fluid">
 
-                    {this.props.data ? <ProductLeyout state={this.props.data} /> : <div className="loading"><em>loading....</em></div> }    
+                    {this.props.data ? <ProductLeyout state={this.props.data} /> : <div className="loading"><em>loading....</em></div>}
 
                 </div>
             )
         }
-        
+
         return (
             <div className="container-fluid">
 
-                {this.state.data ? <ProductLeyout state={this.state.data} /> : <div className="loading"><em>loading....</em></div> }
+                {this.state.data ? <ProductLeyout state={this.state.data} /> : <div className="loading"><em>loading....</em></div>}
 
             </div>
         )

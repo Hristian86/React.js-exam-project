@@ -28,12 +28,31 @@
     height:50px;
 }
 
+.logo-image {
+    width:60px;
+    height:60px;
+}
+
+.link-style {
+    margin-left:18px;
+}
+
+.link-style:hover {
+    color:dodgerblue!important;
+}
+
+@media only screen and (max-width: 768px) {
+    .link-style {
+        margin-left:0px;
+    }
 
 
 
+}
 
 
-/*.App {
+
+    /*.App {
   text-align: center;
 }
 
