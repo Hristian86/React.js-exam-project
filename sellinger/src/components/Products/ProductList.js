@@ -3,6 +3,8 @@ import ProductLeyout from './ProductLayout';
 import './style.css';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 
+let visited = 0;
+
 export default class ProductList extends Component {
     constructor(props) {
         super(props)
@@ -24,6 +26,10 @@ export default class ProductList extends Component {
 
         if (this.props.history.location.state != undefined) {
             this.setState({ data: this.props.history.location.state.state });
+
+            //this.props.history.location.state = undefined;
+            console.log(this.props.history.location.state);
+
         } else {
             let query = new GetQuery();
             const posts = await query.getPosts();
@@ -45,7 +51,7 @@ export default class ProductList extends Component {
             console.log(this.props.data);
             return (
                 <div className="container-fluid">
-
+                    
                     {this.props.data ? <ProductLeyout state={this.props.data} /> : <div className="loading"><em>loading....</em></div>}
 
                 </div>

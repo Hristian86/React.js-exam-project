@@ -12,6 +12,10 @@ export default class Search extends Component {
     }
 
     searchItems = async (e) => {
+        this.setState({
+            loading: true
+        })
+
         e.preventDefault();
         const search = e.target.search.value;
         const city = e.target.city.value;
@@ -21,11 +25,23 @@ export default class Search extends Component {
         let result = await searchQuery.getPosts();
         if (result) {
             let searchRes = [];
+
+
+            if (city.length > 0) {
+                result = result.filter((citySeach, index) => {
+                    let currentCity = citySeach.city.toLowerCase();
+                    const cityToLower = city.toLowerCase();
+                    if (currentCity == cityToLower) {
+                        return citySeach;
+                    }
+                });
+            }
+
             for (let index = 0; index < result.length; index++) {
                 const element = result[index];
-                let containsEl = element.subject.includes(search);
+                let containsEl = element.subject.toLowerCase().includes(search.toLowerCase());
                 if (containsEl) {
-                    console.log(element);
+                    //console.log(element);
                     searchRes.push(element);
                 }
             }
@@ -35,15 +51,14 @@ export default class Search extends Component {
                 redirect: true
             });
         }
-
     }
 
     render() {
 
         if (this.state.redirect && this.state.search) {
-            
+
             return <Redirect push to={{
-                pathname: `/Products/ProductList/`,
+                pathname: `/Products/ProductList`,
                 state: {
                     state: this.state.search
                 }
@@ -76,8 +91,8 @@ export default class Search extends Component {
                                                     <option>For rent</option>
                                                 </select>
                                             </div>
-                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                                                <button type="submit" className="btn btn-danger wrn-btn">Search</button>
+                                            <div className="col-lg-3 col-md-3 col-sm-12 p-0 text-center">
+                                                {this.state.loading ? <em className="loading-search btn btn-info wrn-btn">Loading...</em> : <button type="submit" className="btn btn-danger wrn-btn">Search</button>}
                                             </div>
                                         </div>
                                     </div>

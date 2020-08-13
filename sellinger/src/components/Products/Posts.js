@@ -7,7 +7,6 @@ import DetailsPage from './DetailsPage';
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 
-//const Posts = (props) => {
 export default class Posts extends Component {
     constructor(props) {
         super(props)
@@ -23,27 +22,39 @@ export default class Posts extends Component {
     submitHanler = async (e) => {
         e.preventDefault();
         const productDetail = e.target.idto.value;
+
+        if (productDetail) {
+            this.setState({
+                //data: data,
+                isDetail: true,
+                detailId: productDetail
+                //pictures: pictures
+            });
+        }
+
         // console.log(productDetail)
         
         // const id = this.props.props.id;
         // console.log(this.props.props.id);
         // console.log(this.state.data);
 
-        let query = new DetailsQuery();
-        let data = await query.getDetails(productDetail);
+        //let data = [];
+        //let query = new DetailsQuery();
+        //let data = await query.getDetails(productDetail);
         
-        let getQuery = new GetQuery();
-        const pictures = await getQuery.getImagesbyId(data.id);
+        //const pictures = [];
+        //let getQuery = new GetQuery();
+        //const pictures = await getQuery.getImagesbyId(data.id);
 
-        if (data && pictures) {
-            this.setState({
-                 data: data,
-                 isDetail: true,
-                 detailId: productDetail,
-                 pictures: pictures
-                });
-            //console.log(data.name);
-        }
+        //if (data && pictures) {
+        //    this.setState({
+        //         data: data,
+        //         isDetail: true,
+        //         detailId: productDetail,
+        //         pictures: pictures
+        //        });
+        //    //console.log(data.name);
+        //}
     }
     
     render() {
@@ -51,12 +62,13 @@ export default class Posts extends Component {
             return (
                 <div>
                     {this.state.isDetail ? <Redirect push to={{
-            pathname: `/Products/DetailsPage/${this.state.detailId}`,
-            state: { 
-                id: this.state.detailId,
-                data: this.state.data,
-                pictures: this.state.pictures
-            }
+            pathname: `/Products/DetailsPage/${this.state.detailId}`
+            //            ,
+            //state: { 
+            //    id: this.state.detailId,
+            //    data: this.state.data,
+            //    pictures: this.state.pictures
+            //}
         }} /> : 
 
         <form onSubmit={this.submitHanler} id="products-card" className="card mb-4 mr-2 card-style col">
@@ -99,7 +111,7 @@ export default class Posts extends Component {
 
             <button type="submit" className="btn btn-success">Details</button>
 
-            {this.state.data ? <Details props={this.state.data} /> : null}
+            {/*{this.state.data ? <Details props={this.state.data} /> : null}*/}
 
         </form>
                     }

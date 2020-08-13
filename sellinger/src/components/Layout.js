@@ -10,7 +10,7 @@ export default class Layout extends Component {
         return (
             <div>
                 <Navbar />
-                <Container fluid className="mt-3 wrapper-layout">
+                <Container fluid className="mt-3 wrapper-layout pl-0 pr-0">
                     {this.props.children}
                 </Container>
                 <Footer />

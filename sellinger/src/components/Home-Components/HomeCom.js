@@ -9,6 +9,8 @@ import CenterComponent from './CenterComponent';
 import RightComponent from './RightComponent';
 import CorouselImage from './CorouselImage';
 import Search from '../SearchBar/Search';
+import SecondRowComp from './SecondRowComp';
+import ThirdRow from './ThirdRow';
 
 export default class HomeCom extends Component {
     constructor(props) {
@@ -69,13 +71,21 @@ export default class HomeCom extends Component {
                     <div className="header-image-poster d-flex justify-content-end">
 
                         <h3 className="text-white text-mage-poster">For Sale</h3>
+                        
+                    </div>
 
+                    <div className="mt-5 text-center">
+                        <h3>
+                            These are our proposals with highest prices :)
+                        </h3>
                     </div>
 
                 </div>
 
+
+
                 {/* first row  */}
-                <div className="row">
+                <div className="row bg-white first-row">
                     {/*left side*/}
 
                     <div className="col-lg-2 d-flex justify-content-center text-center ">
@@ -103,26 +113,12 @@ export default class HomeCom extends Component {
                 </div>
 
                 {/* second row */}
-                <div className="row">
-                    <div className="col-lg-2 d-flex justify-content-center text-center ">
-                        <div>
-                            {/* <p>More sells</p>
-                            <p>Evane more sells</p>
-                            <p>Dont waste time and money</p>
-                            <p>Just post you'r old items</p> */}
-                        </div>
-                    </div>
 
-                    <div className="col-lg-8">
-                        {/* <Cards /> */}
-                    </div>
+                <SecondRowComp />
 
-                    <div className="col-lg-2 d-flex justify-content-end ">
-                        <div >
 
-                        </div>
-                    </div>
-                </div>
+                {/*third row*/}
+                <ThirdRow />
 
             </div>
 

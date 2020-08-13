@@ -133,6 +133,10 @@ export default class ProductLeyout extends Component {
         
         return (
             <div className="wrapper-body">
+                {pagination[0] == null ? <h3 className="text-center mt-5">Not found</h3> :
+
+                <div>
+
                 <div id="d-d-options" className="mb-3 drop-down-options">
 
                     {/* <button className="btn btn-success mr-3" onClick={this.filterItemsByPrice} > Filter by price ascending </button> */}
@@ -152,7 +156,7 @@ export default class ProductLeyout extends Component {
 
                 </div >
 
-                <div className="products-style" >
+                <div className="products-style">
                     {this.props.state ? <div className="row d-flex justify-content-start"> {pagination.map(post => post)} </div> : <em>Loading...</em>}
                 </div>
 
@@ -164,7 +168,8 @@ export default class ProductLeyout extends Component {
                                 <li className={this.state.next}><button className="page-link" onClick={() => {this.paginationHandlerPlus()}}>Next</button></li>
                             </ul>            
                         </nav>
-                </div>
+                    </div>
+                </div>}
             </div>
         )
     }

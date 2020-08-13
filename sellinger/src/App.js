@@ -66,7 +66,7 @@ export default class App extends Component {
         
         return (
            <div className="App">
-                <header className="App-header wrapper-layout">
+                <div className="App-header wrapper-layout">
                    <Layout>
                         <Router>
                             <Switch>
@@ -76,7 +76,7 @@ export default class App extends Component {
                                 <Route exact path="/About" component={About}>
                                 </Route>
 
-                                <Route exact path="/Products/ProductList" component={ProductList} ></Route>
+                                <Route exact path="/Products/ProductList/:id?" component={ProductList} ></Route>
 
                                 <Route exact path="/Products/Details" component={Details} ></Route>
 
@@ -111,7 +111,7 @@ export default class App extends Component {
 
                     </Layout>
 
-                </header>
+                </div>
             </div>
         );
     }

@@ -34,7 +34,7 @@ export default class data extends Component{
             {this.state.redirecting ? this.state.redirecting :
             <form key={this.props.props.key} onSubmit={this.redirectToDetails} className="card-style">
         <Card id="cardis" style={{ width: '18rem' }} >
-            <Card.Img variant="top" className="image-style" src={this.props.props.image} />
+            <Card.Img variant="top" className="image-style w-100" src={this.props.props.image} />
             <Card.Body className="text-center">
                 <Card.Title>{this.props.props.subject}</Card.Title>
                 <Card.Text>

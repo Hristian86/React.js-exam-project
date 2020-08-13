@@ -33,7 +33,11 @@
     height: calc(3rem + 2px) !important;
     border-radius: 0;
 }
-@media (min-width: 992px){
+
+.loading-search {
+}
+
+@media (min-width: 992px) {
     .search-sec{
         position: relative;
         top: -114px;

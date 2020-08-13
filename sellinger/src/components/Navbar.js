@@ -73,30 +73,34 @@ export default class navbar extends Component {
 
     searchHandle = async (e) => {
         e.preventDefault();
-        const search = e.target.searchItem.value;
-        console.log(search);
-        const searchQuery = new GetQuery();
-        let result = await searchQuery.getPosts();
-        if (result) {
-            let searchRes = [];
-            for (let index = 0; index < result.length; index++) {
-                const element = result[index];
-                let containsEl = element.content.includes(search);
-                if (containsEl) {
-                    console.log(element);
-                    searchRes.push(element);
-                }
-            }
+        //const search = e.target.searchItem.value;
+        //console.log(search);
+        //const searchQuery = new GetQuery();
+        //let result = await searchQuery.getPosts();
+        //if (result) {
+        //    let searchRes = [];
+        //    for (let index = 0; index < result.length; index++) {
+        //        const element = result[index];
+        //        let containsEl = element.content.includes(search);
+        //        if (containsEl) {
+        //            console.log(element);
+        //            searchRes.push(element);
+        //        }
+        //    }
 
-            this.setState({
-                search: searchRes,
-                redirect: true
-            });
-        }
+        //    this.setState({
+        //        search: searchRes,
+        //        redirect: true
+        //    });
+        //}
     }
 
     prevDef(e) {
         e.preventDefault();
+    }
+
+    resetState = () => {
+
     }
 
     render() {
@@ -146,7 +150,7 @@ export default class navbar extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
 
-                        <Nav.Link href="/Products/ProductList" onClick={() => this.prevDef} className="link-style">Products</Nav.Link>
+                        <Nav.Link href="/Products/ProductList/all" onClick={this.resetState} className="link-style">Products</Nav.Link>
 
                         <Nav.Link href="/About" className="link-style" onClick={() => this.prevDef}>About</Nav.Link>
 
@@ -155,9 +159,10 @@ export default class navbar extends Component {
                         <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef} className="link-style" >Hearthstone</Nav.Link>
 
                     </Nav>
+
                     <Form inline className="mr-3" onSubmit={this.searchHandle} >
-                        <FormControl type="text" placeholder="Search" name="searchItem" className="mr-sm-2" />
-                        <Button type="submit" variant="outline-success">Search</Button>
+                        <FormControl type="text" placeholder="+359 98 978 4352" disabled name="searchItem" className="mr-sm-2" />
+                        <Button type="submit" variant="outline-success">For contacts</Button>
                     </Form>
 
                     {/* <SearchNav /> */}

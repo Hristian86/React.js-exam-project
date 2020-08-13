@@ -16,6 +16,14 @@
     /* height: 600px!important; */
 }
 
+@media only screen and (max-width: 768px) {
+    .card-style {
+        display: flex;
+        justify-content: center;
+        margin-bottom:40px!important;
+    }
+}
+
 .card-body {
     height: 270px!important;
 }

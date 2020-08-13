@@ -4,8 +4,7 @@
     background-position: center;
     /* background-position-y: 20px; */
     width: 100%;
-    margin-right: 80px;
-    padding-top: 180px;   
+    padding-top: 180px;
 }
 
 .right-box {
@@ -19,7 +18,39 @@
 }
 
 .wrapper-home {
-    height: 1200px;
+    padding-top:65px;
+    height: 620px;
+}
+
+.first-row {
+    margin-top:60px;
+}
+
+.second-row {
+    height:700px;
+}
+
+.third-row-style {
+    height:500px;
+}
+
+@media only screen and (max-width: 768px) {
+    .third-row-style {
+        height: 1500px;
+    }
+
+    .first-row {
+        height: 2200px;
+    }
+
+}
+
+.cube-col {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:100px;
+    height:300px;
 }
 
 .header-image-poster {
