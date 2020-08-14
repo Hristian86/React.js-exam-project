@@ -64,19 +64,21 @@ export default class HomeCom extends Component {
 
             <div className="container-fluid">
 
-                <Search />
+                <div className="mobile-container">
+                    <Search />
+                </div>
 
                 <div>
 
                     <div className="header-image-poster d-flex justify-content-end">
 
                         <h3 className="text-white text-mage-poster">For Sale</h3>
-                        
+
                     </div>
 
                     <div className="mt-5 text-center">
-                        <h3>
-                            These are our proposals with highest prices :)
+                        <h3 className="text-info">
+                            These are our proposals with highest prices
                         </h3>
                     </div>
 
@@ -118,6 +120,7 @@ export default class HomeCom extends Component {
 
 
                 {/*third row*/}
+
                 <ThirdRow />
 
             </div>

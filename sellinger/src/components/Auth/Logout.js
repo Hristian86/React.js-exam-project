@@ -6,13 +6,6 @@ import './style.css';
 export default class Logout extends Component {
 
     logOutHandle = () => {
-        let result = fetch(url("logout"), {
-            "method": "POST"
-        })
-            .catch(err => {
-                console.log(err);
-            });
-
         setCookie("user", null, -1);
         setCookie("token", null, -1);
     }

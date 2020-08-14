@@ -1,16 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Cards",
-    "\\src\\components\\FirebaseDB",
-    "\\src\\components\\FirebaseDB\\Query-Service",
+    "\\src\\components\\Auth",
     "\\src\\components\\Home-Components",
-    "\\src\\components\\Products",
     "\\src\\components\\SearchBar"
   ],
-  "SelectedNode": "\\src\\components\\Home-Components\\style.css",
+  "SelectedNode": "\\src\\components\\Auth\\Logout.js",
   "PreviewInSolutionExplorer": false
 }

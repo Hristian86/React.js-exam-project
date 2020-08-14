@@ -5,7 +5,7 @@ const About = () => {
 
     const { value, setValue } = useContext(Context);
     //console.log(value);
-
+    
 
     //const [notifications, setNotifications] = useState([]);
     //if (notifications[0] == null || notifications[0] == undefined) {
@@ -22,6 +22,8 @@ const About = () => {
         <p>Style Sheets (CSS)</p>
         <p>Computer Code (JavaScript)</p>
         <p>Live Data (Files and Databases)</p>
+
+
         
         <div className="spacer"></div>
     </div>

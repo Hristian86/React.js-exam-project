@@ -6,6 +6,7 @@ import { Redirect, useHistory } from 'react-router';
 import { setCookie, setCookieToken, setCookieUser } from '../Cookioes/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
+import LogInHandler from './LogInHandler';
 
 export default class login extends Component {
     constructor(props) {
@@ -39,16 +40,11 @@ export default class login extends Component {
                 }
 
                 let notLoged = false;
+                
+                let user = await LogInHandler(payload);
 
-                let user = await fetch(url("login"), {
-                    "method": "POST",
-                    "headers": {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }, body: JSON.stringify(payload)
-                }).then(res => res.json())
-                    .catch(err => console.log('something is wrong with log in'));
-                console.log(user);
+                //console.log(user);
+
                 if (user.email && user.token && user.id) {
                     setCookieUser(user.email);
                     setCookieToken(user.token);

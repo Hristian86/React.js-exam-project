@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './style.css';
 import { Redirect } from 'react-router/cjs/react-router.min';
-import Nav from 'react-bootstrap/esm/Nav';
+import { Nav } from 'react-bootstrap';
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
 import DetailsImage from './Details-Components-Holder/DetailImage';
+
+let scroll = 0;
 
 export default class DetailsPage extends Component {
     constructor(props) {
@@ -146,7 +148,10 @@ export default class DetailsPage extends Component {
         //     clearInterval(this.setInrervals);
         // }
 
-        this.scrollWin();
+        if (scroll == 0) {
+            this.scrollWin();
+            scroll = scroll + 1;
+        }
         let infoImages = null;
         if (this.state.pictures) {
             infoImages = this.state.pictures.map((pic, index) => {
@@ -207,7 +212,7 @@ export default class DetailsPage extends Component {
                                 <h2><p>{this.state.contentLoad.subject}</p></h2>
 
                                 <hr className="solid" />
-                                    
+
                                 <h1><p>{this.state.contentLoad.price} $</p></h1>
                                 <br />
                                 <br />

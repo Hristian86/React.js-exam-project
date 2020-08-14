@@ -17,8 +17,6 @@ import ProductList from './Products/ProductList';
 import CreatePost from './CreatePost/CreatePost';
 import GetQuery from './FirebaseDB/Query-Service/GetQuery';
 import ProductLeyout from './Products/ProductLayout';
-import Searching from './SearchBar/Searching';
-import SearchNav from './SearchBar/SearchNav';
 import getCookie from './Cookioes/GetCookie';
 
 export default class navbar extends Component {
@@ -141,7 +139,7 @@ export default class navbar extends Component {
 
         // <ProductLeyout state={this.state.search}  />
 
-        return (<div>
+        return (<div className="">
             <Navbar bg="light" className="nav-bar-background" expand="lg">
                 <Navbar.Brand href="/" onClick={() => this.prevDef}>
                     <img src="https://hristian86.github.io/WebTest/images/logo-real-estate.png" className="logo-image" alt="image" />
@@ -161,8 +159,8 @@ export default class navbar extends Component {
                     </Nav>
 
                     <Form inline className="mr-3" onSubmit={this.searchHandle} >
-                        <FormControl type="text" placeholder="+359 98 978 4352" disabled name="searchItem" className="mr-sm-2" />
-                        <Button type="submit" variant="outline-success">For contacts</Button>
+                        <FormControl type="text" placeholder="    +359 98 978 4352" disabled name="searchItem" className="mr-sm-2" />
+                        <Button type="submit" variant="outline-success" className="contact-button">For contacts</Button>
                     </Form>
 
                     {/* <SearchNav /> */}

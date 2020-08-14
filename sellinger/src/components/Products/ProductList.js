@@ -17,7 +17,6 @@ export default class ProductList extends Component {
             if (this.state.data == undefined) {
                 this.getItems();
             }
-            //console.log("test");
         }, 600);
     }
 

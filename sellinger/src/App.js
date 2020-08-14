@@ -34,20 +34,26 @@ export default class App extends Component {
 
 
         this.state = {
-            user:null,
-            isLoading:false
+            user: null,
+            isLoading: false
         }
-
+        this.mounted = false;
     }
 
     componentDidMount() {
-        this.cookieUser();
-        
+        this.mounted = true;
+        if (this.mounted) {
+            this.cookieUser();
+        }
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
     }
 
     cookieUser = () => {
         let currentUser = getCookie("user");
-        
+
         //To Do : add loged user to redux global state
         if (currentUser) {
             this.setState({
@@ -63,11 +69,11 @@ export default class App extends Component {
     }
 
     render() {
-        
+
         return (
-           <div className="App">
+            <div className="App">
                 <div className="App-header wrapper-layout">
-                   <Layout>
+                    <Layout>
                         <Router>
                             <Switch>
                                 <Route exact path="/" component={Home}>

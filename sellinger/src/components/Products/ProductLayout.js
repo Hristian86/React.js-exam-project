@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Posts from './Posts';
 import './style.css';
-import Dropdown from 'react-bootstrap/esm/Dropdown';
+import { Dropdown } from 'react-bootstrap';
 
 const pageLength = 6;
 
@@ -24,8 +24,10 @@ export default class ProductLeyout extends Component {
         let filter = this.state.filterPrice;
         filter = !filter;
         // console.log(filter);
+
         this.setState({filterPrice: filter});
         // console.log(this.props.state[1].price);
+
         let arr = this.props.state.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
         // console.log(arr);
     }
@@ -35,18 +37,22 @@ export default class ProductLeyout extends Component {
         let filter = this.state.filterPrice;
         filter = !filter;
         // console.log(filter);
+
         this.setState({filterPrice: filter});
         // console.log(this.props.state[1].price);
+
         let arr = this.props.state.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
         // console.log(arr);
     }
 
     paginationHandlerMinus = () => {
         if (this.state.pages === 1) {
+
             this.setState({
                 previos: "page-item disabled",
                 next: "page-item"
             });
+
         } else {
             let pageses = this.state.pages;
             pageses -= 1;
