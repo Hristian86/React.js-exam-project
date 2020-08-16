@@ -40,7 +40,7 @@ const AppContext = () => {
     }
     
     return <div>
-        {setDefaultLang}
+
         <App />
 
     </div>

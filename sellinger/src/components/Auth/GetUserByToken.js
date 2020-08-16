@@ -14,7 +14,7 @@ const sendChanges = async (userName, userImage) => {
         }
     }
 
-    const token = getCookie("token")
+    const token = getCookie("token");
     return await fetch(url("manage"), {
         "method": "POST",
         "headers": {

@@ -29,7 +29,13 @@ export default class DetailsPage extends Component {
 
             let query = new DetailsQuery();
             let data = await query.getDetails(paramId);
+            if (data.message == "not found") {
+                this.setState({
+                    notFound: true
+                });
+            } else {
 
+            }
             let getQuery = new GetQuery();
             const pictures = await getQuery.getImagesbyId(data.id);
 
@@ -95,58 +101,7 @@ export default class DetailsPage extends Component {
         window.scrollTo(0, 0);
     }
 
-    //engine = () => {
-
-
-    //    let data = [];
-    //    data = this.props.history.location.state.data;
-    //    let pictures = [];
-    //    pictures = this.props.history.location.state.pictures;
-    //    let pics = null;
-
-    //    try {
-
-    //        //if (this.state.data == undefined) {
-    //        //    let pagesData = [];
-    //        //    pagesData.push(data.image);
-    //        //    if (pictures !== undefined) {
-    //        //        if (pictures.length > 0) {
-    //        //            let dats = pictures.map(pic => pagesData.push(pic.image));
-    //        //        }
-    //        //    }
-    //        //    // console.log(pagesData);
-    //        //    this.setState({
-    //        //        data: pagesData
-    //        //    });
-    //        //    // console.log("This is pages data " + pagesData);
-    //        //}
-    //        // const id = this.props.history.location.state.id;
-    //        // console.log(pictures);
-
-    //        if (pics == null) {
-    //            pics = pictures.map((pic, index) => <img key={index} className="more-pictures" src={pic.image} />);
-    //        }
-
-    //    } catch (error) {
-    //        console.log(error);
-    //    }
-
-    //    return { data, pics };
-    //}
-
-    //    .map((pic, index) => {
-    //    return index < 3 ? pic : null
-    //}) 
-
     render() {
-
-        //const { data, pics } = this.engine();
-
-        // console.log(this.props.history.location.state.data);
-        // window.location.reload(false);
-        // if (this.state.isLoaded) {
-        //     clearInterval(this.setInrervals);
-        // }
 
         if (scroll == 0) {
             this.scrollWin();
@@ -159,6 +114,7 @@ export default class DetailsPage extends Component {
             });
         }
         return (
+            <div>{ this.state.notFound ? <h3 className="text-center mt-5">Not found</h3> : 
             <div className="main-container">{!this.state.data ? <div className="detail-loading"> <em >Loading...</em></div> :
                 <div className="container wrapper-details">
 
@@ -243,6 +199,7 @@ export default class DetailsPage extends Component {
 
                 </div>
             }</div>
+        }</div>
         )
     }
 
