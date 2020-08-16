@@ -11,6 +11,7 @@ import CorouselImage from './CorouselImage';
 import Search from '../SearchBar/Search';
 import SecondRowComp from './SecondRowComp';
 import ThirdRow from './ThirdRow';
+import LocalizationFunc from '../../Localization/LocalizationFunc';
 
 export default class HomeCom extends Component {
     constructor(props) {
@@ -72,13 +73,13 @@ export default class HomeCom extends Component {
 
                     <div className="header-image-poster d-flex justify-content-end">
 
-                        <h3 className="text-white text-mage-poster">For Sale</h3>
+                        <h3 className="text-white text-mage-poster">{LocalizationFunc().forSale}</h3>
 
                     </div>
 
                     <div className="mt-5 text-center">
                         <h3 className="text-info">
-                            These are our proposals with highest prices
+                            {LocalizationFunc().homePageProductDescription}
                         </h3>
                     </div>
 

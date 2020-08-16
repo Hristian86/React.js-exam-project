@@ -3,6 +3,7 @@ import './style.css';
 import { Redirect } from 'react-router';
 import ProductLeyout from '../Products/ProductLayout';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';
+import LocalizationFunc from '../../Localization/LocalizationFunc';
 
 export default class Search extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class Search extends Component {
     }
 
     searchItems = async (e) => {
+        
         this.setState({
             loading: true
         })
@@ -78,21 +80,21 @@ export default class Search extends Component {
                                         <div className="row">
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0 ">
-                                                <input type="text" className="form-control search-slt " placeholder="Search" name="search" />
+                                                <input type="text" className="form-control search-slt " placeholder={LocalizationFunc().search} name="search" />
                                             </div>
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0 ">
-                                                <input type="text" className="form-control search-slt " placeholder="city" name="city" />
+                                                <input type="text" className="form-control search-slt " placeholder={LocalizationFunc().city} name="city" />
                                             </div>
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0">
                                                 <select className="form-control search-slt" id="exampleFormControlSelect1" name="option">
-                                                    <option>For sale</option>
-                                                    <option>For rent</option>
+                                                    <option>{LocalizationFunc().forSale}</option>
+                                                    <option>{LocalizationFunc().forRent}</option>
                                                 </select>
                                             </div>
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0 text-center">
-                                                {this.state.loading ? <em className="loading-search btn btn-info wrn-btn">Loading...</em> : <button type="submit" className="btn btn-danger wrn-btn">Search</button>}
+                                                {this.state.loading ? <em className="loading-search btn btn-info wrn-btn">Loading...</em> : <button type="submit" className="btn btn-danger wrn-btn">{LocalizationFunc().search}</button>}
                                             </div>
                                         </div>
                                     </div>

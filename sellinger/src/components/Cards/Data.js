@@ -4,6 +4,7 @@ import './style.css';
 import { Redirect, useHistory } from 'react-router/cjs/react-router.min';
 import DetailsPage from '../Products/DetailsPage';
 import HistoryRedirect from './DetailRedirect';
+import LocalizationFunc from '../../Localization/LocalizationFunc';
 
 export default class data extends Component{
     constructor(props) {
@@ -28,7 +29,7 @@ export default class data extends Component{
     }
 
     render() {
-
+        
             return (
                 <div className="card-style" >
             {this.state.redirecting ? this.state.redirecting :
@@ -40,9 +41,9 @@ export default class data extends Component{
                 <Card.Text>
                     {this.props.props.city}
                 </Card.Text>
-                    <div className="mt-0">Price: {this.props.props.price} $</div>
+                                    <div className="mt-0">{LocalizationFunc().price} {this.props.props.price} $</div>
                     <input type="hidden" value={this.props.props.id} name="keys" />
-                <Button variant="primary" type="submit" >Details</Button>
+                                    <Button variant="primary" type="submit" >{LocalizationFunc().details}</Button>
             </Card.Body>
         </Card>
             </form> }

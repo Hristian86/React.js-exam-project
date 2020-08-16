@@ -1,11 +1,13 @@
 import React from 'react';
 import './footer.css';
+import LocalizationFunc from '../Localization/LocalizationFunc';
+import { CardLink } from 'reactstrap';
 
 const footer = () => {
     return <div className="footer bg-white">
         <div className="firstFooterLink">
             <div>
-                The common perception of the website footer is that it�s not as important as the header or body of the content.<br /> This relates to the somewhat antiquated notion that the most important information must lie above the fold, or before you start scrolling.
+                {LocalizationFunc().footerDescription1}<br />{LocalizationFunc().footerDescription2}
             </div>
         </div>
     </div>
@@ -21,9 +23,9 @@ const foot = () => {
                 <div className="url"></div>
             </div>
             <div className="ml-3 mt-3">
-                <h1 className="bg-white text-center mobile">About us</h1>
-                <h2 className="bg-white text-center mobile">Our services are. </h2>
-                <h2 className="bg-white text-center mobile">Buying and selling properties.</h2>
+                <h1 className="bg-white text-center mobile">{LocalizationFunc().about}</h1>
+                <h2 className="bg-white text-center mobile">{LocalizationFunc().ourServices}</h2>
+                <h2 className="bg-white text-center mobile">{LocalizationFunc().ourServicesDescription}</h2>
             </div>
 
             <div className="d-flex justify-content-end">

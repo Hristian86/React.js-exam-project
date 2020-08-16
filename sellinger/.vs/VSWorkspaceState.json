@@ -4,9 +4,11 @@
     "\\src",
     "\\src\\components",
     "\\src\\components\\Auth",
-    "\\src\\components\\Home-Components",
-    "\\src\\components\\SearchBar"
+    "\\src\\components\\FirebaseDB",
+    "\\src\\components\\FirebaseDB\\Query-Service",
+    "\\src\\components\\Products",
+    "\\src\\Localization"
   ],
-  "SelectedNode": "\\src\\components\\Auth\\Logout.js",
+  "SelectedNode": "\\src\\components\\Products\\ProductList.js",
   "PreviewInSolutionExplorer": false
 }

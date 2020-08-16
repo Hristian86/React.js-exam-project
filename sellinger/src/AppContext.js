@@ -3,6 +3,8 @@ import App from './App';
 import { Context } from './Context';
 import { useState } from 'react';
 import GetQuery from './components/FirebaseDB/Query-Service/GetQuery';
+import getCookie from './components/Cookioes/GetCookie';
+import setCookie from './components/Cookioes/SetCookie';
 
 const AppContext = () => {
 
@@ -30,8 +32,15 @@ const AppContext = () => {
     //}
     ////console.log(value);
 
+    const setDefaultLang = () => {
+        const lang = getCookie('language');
+        if (lang === undefined) {
+            setCookie('language', 'BG', 5);
+        }
+    }
+    
     return <div>
-
+        {setDefaultLang}
         <App />
 
     </div>
