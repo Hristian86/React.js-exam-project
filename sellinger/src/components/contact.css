@@ -1,5 +1,5 @@
 .loading {
-    height:900px;
+    height: 900px;
 }
 
 .create-post {
@@ -10,12 +10,15 @@
 }
 
 .content-holder {
-    height: 300px!important;
-    
+    height: 300px !important;
 }
 
 .create-back {
     background: url(https://d1.awsstatic.com/webteam/homepage/heroes/overlay-art/Site-Merch_What-is-AWS_Hero-Art.d92a5ae5daf0c0735f49b06814bee7a07742ba20.png);
+}
+
+.create-back{
+    height:800px;
 }
 
 .onSuccess {

@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 
 export default class WeatherApi extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -10,29 +10,20 @@ export default class WeatherApi extends Component {
     }
 
     getWeather = async () => {
-        // let rests = null;
-        // let responce = await fetch("https://localhost:44342/api/Chat")
-        // .then(res => {
-        //     if (res) {
-        //         rests = res.json();
-        //     }
-        // })
-        // .then(res => res)
-        // .catch(err => console.log(err));
-
-        // console.log(rests);
 
         const link = `https://api.openweathermap.org/data/2.5/weather?q=Russe,Bulgaria&appid=${this.state.apiKey}`;
-        let ress = null;
-        const result = await fetch(link)
-        .then(res => {
-            if (res) {
-                ress = res.json();
+
+        try {
+
+            const result = await fetch(link)
+                .then(res => res.json())
+                .catch(err => console.log(err));
+            if (await result) {
+                return result;
             }
-        })
-        .then(res => res)
-        .catch(err => console.log(err));
-        let disp = await ress;
-        return disp;
+
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

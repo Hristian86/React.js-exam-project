@@ -17,16 +17,12 @@ import Register from './components/Auth/Register';
 import login from './components/Auth/LogIn';
 import Logout from './components/Auth/Logout';
 import Manage from './components/Auth/Manage';
-import Hcard from './components/HearthStoneCards/HearthstoneCard';
 import ProductList from './components/Products/ProductList';
-import Details from './components/Products/Details';
-import CreatePost from './components/CreatePost/CreatePost';
 import DetailsPage from './components/Products/DetailsPage';
 import getCookie from './components/Cookioes/GetCookie';
 import NotFound from './components/NotFoundPage/NotFount';
 import Searching from './components/SearchBar/Searching';
-
-var useraaa = [];
+import Error from './components/ErrorPage/Error';
 
 export default class App extends Component {
     constructor(props) {
@@ -41,6 +37,7 @@ export default class App extends Component {
     }
 
     componentDidMount() {
+        
         this.mounted = true;
         if (this.mounted) {
             this.cookieUser();
@@ -84,8 +81,6 @@ export default class App extends Component {
 
                                 <Route exact path="/Products/ProductList/:id?" component={ProductList} ></Route>
 
-                                <Route exact path="/Products/Details" component={Details} ></Route>
-
                                 <Route exact path="/SearchBar/Searching" component={Searching} ></Route>
 
                                 <Route exact path="/Contact" component={Contact}>
@@ -94,7 +89,7 @@ export default class App extends Component {
                                 <Route exact path="/Products/DetailsPage/:id?" component={DetailsPage}>
                                 </Route>
 
-                                <Route exact path="/components/HearthStoneCards/HearthstoneCard" component={Hcard}>
+                                <Route exact path="/components/ErrorPage/Error" component={Error}>
                                 </Route>
 
                                 <Route exact path="/Auth/Register" component={Register}>

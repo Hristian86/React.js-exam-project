@@ -3,9 +3,8 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\FirebaseDB\\Query-Service",
-    "\\src\\Localization"
+    "\\src\\components\\Auth"
   ],
-  "SelectedNode": "\\src\\AppContext.js",
+  "SelectedNode": "\\src\\components\\Auth\\Register.js",
   "PreviewInSolutionExplorer": false
 }

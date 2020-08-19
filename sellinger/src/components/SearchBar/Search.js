@@ -13,58 +13,70 @@ export default class Search extends Component {
     }
 
     searchItems = async (e) => {
-        
+
         this.setState({
             loading: true
         })
 
         e.preventDefault();
-        const search = e.target.search.value;
-        const city = e.target.city.value;
-        const option = e.target.option.value;
 
-        const searchQuery = new GetQuery();
-        let result = await searchQuery.getPosts();
-        if (result) {
-            let searchRes = [];
+        try {
+
+            const search = e.target.search.value;
+            const city = e.target.city.value;
+            const option = e.target.option.value;
+
+            const searchQuery = new GetQuery();
+            let result = await searchQuery.getPosts();
+            if (result) {
+                let searchRes = [];
 
 
-            if (city.length > 0) {
-                result = result.filter((citySeach, index) => {
-                    let currentCity = citySeach.city.toLowerCase();
-                    const cityToLower = city.toLowerCase();
-                    if (currentCity == cityToLower) {
-                        return citySeach;
+                if (city.length > 0) {
+                    result = result.filter((citySeach, index) => {
+                        let currentCity = citySeach.city.toLowerCase();
+                        const cityToLower = city.toLowerCase();
+                        if (currentCity == cityToLower) {
+                            return citySeach;
+                        }
+                    });
+                }
+
+                for (let index = 0; index < result.length; index++) {
+                    const element = result[index];
+                    let containsEl = element.subject.toLowerCase().includes(search.toLowerCase());
+                    if (containsEl) {
+                        //console.log(element);
+                        searchRes.push(element);
                     }
+                }
+
+                this.setState({
+                    search: searchRes,
+                    redirect: true
                 });
             }
 
-            for (let index = 0; index < result.length; index++) {
-                const element = result[index];
-                let containsEl = element.subject.toLowerCase().includes(search.toLowerCase());
-                if (containsEl) {
-                    //console.log(element);
-                    searchRes.push(element);
-                }
-            }
-
-            this.setState({
-                search: searchRes,
-                redirect: true
-            });
+        } catch (e) {
+            console.log(e);
         }
     }
 
     render() {
 
         if (this.state.redirect && this.state.search) {
+            try {
 
-            return <Redirect push to={{
-                pathname: `/Products/ProductList`,
-                state: {
-                    state: this.state.search
-                }
-            }} />
+                return <Redirect push to={{
+                    pathname: `/Products/ProductList`,
+                    state: {
+                        state: this.state.search
+                    }
+                }} />
+
+            } catch (e) {
+                console.log(e);
+            }
 
         } else {
 
@@ -80,11 +92,11 @@ export default class Search extends Component {
                                         <div className="row">
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0 ">
-                                                <input type="text" className="form-control search-slt " placeholder={LocalizationFunc().search} name="search" />
+                                                <input type="text" className="form-control search-slt " maxLength="50" placeholder={LocalizationFunc().search} name="search" />
                                             </div>
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0 ">
-                                                <input type="text" className="form-control search-slt " placeholder={LocalizationFunc().city} name="city" />
+                                                <input type="text" className="form-control search-slt " placeholder={LocalizationFunc().city} maxLength="50" name="city" />
                                             </div>
 
                                             <div className="col-lg-3 col-md-3 col-sm-12 p-0">

@@ -1,0 +1,13 @@
+.profileCards {
+    padding-top:80px;
+    background-color:white;
+    height:500px;
+}
+
+@media only screen and (max-width: 768px) {
+    .profileCards {
+        padding-top: 10px;
+        background-color: white;
+        height: 900px;
+    }    
+}

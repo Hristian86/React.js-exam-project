@@ -72,7 +72,7 @@ export default class Manage extends Component {
                 error.innerHTML = await result;
 
                 setTimeout(function () {
-                    history.push('/');
+                    // history.push('/');
                     window.location.reload(false);
                 }, 700);
             } else {
@@ -124,14 +124,14 @@ export default class Manage extends Component {
                 <form className="registerForm" onSubmit={this.updateProfile}>
 
                     <h3>Username</h3>
-                    <FormControl type="text" className="passwordInput" placeholder={this.state.user ? this.state.user.displayName : ""} name="username" />
+                    <FormControl type="text" className="passwordInput" maxLength="30" placeholder={this.state.user ? this.state.user.displayName : ""} name="username" />
 
                     <h3>Email</h3>
                     <FormControl className="userInput" type="email" disabled name="email" placeholder={this.state.user ? this.state.user.email : ""} />
 
 
                     <h3>Photo image</h3>
-                    <FormControl type="text" className="passwordInput" placeholder={this.state.user ? this.state.user.imageURL : ""} name="photo" />
+                    <FormControl type="text" className="passwordInput" maxLength="250" placeholder={this.state.user ? this.state.user.imageURL : ""} name="photo" />
 
                     <h3></h3>
                     {this.state.procesing ? <em>Loading...</em> : <input type="submit" value="Apply changes" className="btn btn-primary buttons" />}

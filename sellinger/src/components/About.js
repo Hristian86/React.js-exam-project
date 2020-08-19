@@ -23,8 +23,6 @@ const About = () => {
         <p>Computer Code (JavaScript)</p>
         <p>Live Data (Files and Databases)</p>
 
-
-        
         <div className="spacer"></div>
     </div>
 

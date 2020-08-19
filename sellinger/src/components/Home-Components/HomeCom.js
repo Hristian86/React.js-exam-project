@@ -12,6 +12,7 @@ import Search from '../SearchBar/Search';
 import SecondRowComp from './SecondRowComp';
 import ThirdRow from './ThirdRow';
 import LocalizationFunc from '../../Localization/LocalizationFunc';
+import style from './style.module.css';
 
 export default class HomeCom extends Component {
     constructor(props) {
@@ -63,7 +64,7 @@ export default class HomeCom extends Component {
 
         return (
 
-            <div className="container-fluid">
+            <div className="container-fluid asd">
 
                 <div className="mobile-container">
                     <Search />
@@ -120,10 +121,9 @@ export default class HomeCom extends Component {
                 <SecondRowComp />
 
 
+
                 {/*third row*/}
-
                 <ThirdRow />
-
             </div>
 
         )

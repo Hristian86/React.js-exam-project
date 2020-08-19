@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import GetModel from '../Models/GetModel';
 import url from '../../BaseUrl/BaseUrl';
 
 export default class GetQuery extends Component {
@@ -14,41 +13,47 @@ export default class GetQuery extends Component {
     }
 
     getPosts = async () => {
+        try {
 
-        let arr = [];
+            let arr = [];
 
-        let data = await fetch(url("all"))
-            .then(data => data.json())
-            .catch(err => console.log(err));
+            let data = await fetch(url("all"))
+                .then(data => data.json())
+                .catch(err => console.log(err));
 
-        return data;
-    }
+            return data;
 
-    getSearchedItems = async (search) => {
-        
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     getImagesbyId = async (id) => {
-        
-        let payload = {
-            "id": id
-        };
-        
-        let result = await fetch(url("images"), {
-            "method": "POST",
-            "headers": {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }, body: JSON.stringify(payload)
-        })
-            .then(res => res.json())
-            .catch(err => {
-                console.log(err);
-            });
-        const data = await result;
+        try {
 
-        //console.log(data);
+            let payload = {
+                "id": id
+            };
 
-        return data;
+            let result = await fetch(url("images"), {
+                "method": "POST",
+                "headers": {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify(payload)
+            })
+                .then(res => res.json())
+                .catch(err => {
+                    console.log(err);
+                });
+            const data = await result;
+
+            //console.log(data);
+
+            return data;
+
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

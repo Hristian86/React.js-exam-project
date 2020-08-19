@@ -28,6 +28,7 @@
 
 .second-row {
     height:700px;
+    /*padding-bottom:200px;*/
 }
 
 .third-row-style {
@@ -47,6 +48,10 @@
         height: 2200px;
     }
 
+    .second-row {
+        padding-left:20px;
+        padding-right:20px;
+    }
 }
 
 .cube-col {

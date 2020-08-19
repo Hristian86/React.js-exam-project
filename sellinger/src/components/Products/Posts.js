@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 import { Component } from 'react';
 import { Redirect, useHistory } from 'react-router';
-import Details from './Details';
 import DetailsPage from './DetailsPage';
 import DetailsQuery from '../FirebaseDB/Query-Service/DetailsQuery';
 import GetQuery from '../FirebaseDB/Query-Service/GetQuery';

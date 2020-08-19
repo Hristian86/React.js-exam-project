@@ -14,7 +14,6 @@ import LogIn from './Auth/LogIn';
 import Cards from './Cards/Cards';
 import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
-import CreatePost from './CreatePost/CreatePost';
 import GetQuery from './FirebaseDB/Query-Service/GetQuery';
 import ProductLeyout from './Products/ProductLayout';
 import getCookie from './Cookioes/GetCookie';
@@ -62,11 +61,7 @@ export default class navbar extends Component {
         this.language();
     }
 
-    
-
     componentDidMount() {
-        //this.language();
-        //await this.authListener();
         this.cookieUser();
     }
 
@@ -87,52 +82,9 @@ export default class navbar extends Component {
         }
     }
 
-    //async authListener() {
-    //    const users = await fire.auth().onAuthStateChanged(user => {
-    //        if (user) {
-    //            this.setState({
-    //                user: user,
-    //                isLoged: true
-    //            });
-    //        } else {
-    //            this.setState = null;
-    //        }
-    //    });
-
-    //    return users;
-    //}
-
-    searchHandle = async (e) => {
-        e.preventDefault();
-        //const search = e.target.searchItem.value;
-        //console.log(search);
-        //const searchQuery = new GetQuery();
-        //let result = await searchQuery.getPosts();
-        //if (result) {
-        //    let searchRes = [];
-        //    for (let index = 0; index < result.length; index++) {
-        //        const element = result[index];
-        //        let containsEl = element.content.includes(search);
-        //        if (containsEl) {
-        //            console.log(element);
-        //            searchRes.push(element);
-        //        }
-        //    }
-
-        //    this.setState({
-        //        search: searchRes,
-        //        redirect: true
-        //    });
-        //}
-    }
-
     prevDef(e) {
 
         e.preventDefault();
-    }
-
-    resetState = () => {
-
     }
 
     render() {
@@ -146,27 +98,6 @@ export default class navbar extends Component {
         if (usr) {
             cheks = true;
             displayName = usr;
-            //displayName = usr.displayName;
-            //token = usr.refreshToken;
-            //localStorage.setItem("userToken", token);
-            //var localuser = localStorage.getItem("userToken");
-            //var currUser = fire.auth().currentUser;
-
-            //currUser.updateProfile({
-            //    displayName: "icaka",
-            //    photoURL: "https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-8-avatar-2754583_120515.png"
-            //})
-            //    .then(upd => console.log(upd))
-            //    .catch(err => console.log(err));
-            //console.log(currUser.displayName);
-            //console.log(currUser.photoURL);
-
-            //var results = localuser === currUser.refreshToken ? "true" : "false";
-            //console.log(results);
-
-
-
-
         } else {
             cheks = false;
         }
@@ -187,8 +118,6 @@ export default class navbar extends Component {
                         <Nav.Link href="/About" className="link-style" onClick={() => this.prevDef}>{LocalizationFunc().about}</Nav.Link>
 
                         <Nav.Link href="/Contact" className="link-style" onClick={() => this.prevDef}>{LocalizationFunc().contact}</Nav.Link>
-
-                        <Nav.Link href="/components/HearthStoneCards/HearthstoneCard" onClick={() => this.prevDef} className="link-style" >Hearthstone</Nav.Link>
 
                     </Nav>
 

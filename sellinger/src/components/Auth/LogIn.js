@@ -40,7 +40,7 @@ export default class login extends Component {
                 }
 
                 let notLoged = false;
-                
+
                 let user = await LogInHandler(payload);
 
                 //console.log(user);
@@ -92,18 +92,17 @@ export default class login extends Component {
         return (<div>
             <div className="backgrounds">
                 <h3 className="logo">Log in</h3>
-
-                <h3 id="errors" className="text-danger text-center error"></h3>
+                <h3 id="errors" className="text-danger text-center error" ></h3>
 
                 <div className="container d-flex justify-content-center">
 
                     <form className="registerForm" onSubmit={this.loginFunc}>
 
                         <h3>Email</h3>
-                        <FormControl className="userInput" type="Email" name="email" placeholder="Email" />
+                        <FormControl className="userInput" type="Email" name="email" maxLength="50" placeholder="Email" />
 
                         <h3>Password</h3>
-                        <FormControl type="password" className="passwordInput" placeholder="password" name="password" />
+                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="password" name="password" />
 
                         <h3></h3>
                         {this.state.buttonPresed ? <em>Loading..</em> : <input type="submit" value="Log in" className="btn btn-primary buttons" />}

@@ -8,9 +8,7 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
-import dataS from './Cards/dataS';
 import Tests from './Tests';
-import './HearthStoneCards/Hearth.css'
 import propsy from './SendingProps';
 import Search from './SearchBar/Search';
 import HomeCom from './Home-Components/HomeCom';
@@ -26,10 +24,8 @@ export default class Home extends Component {
         this.state = {}
     }
 
-    
-
     render() {
-        
+
         return (
             <div>
                 <HomeCom />

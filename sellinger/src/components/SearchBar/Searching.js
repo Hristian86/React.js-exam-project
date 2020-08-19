@@ -12,7 +12,7 @@ export default class Searching extends Component {
     render() {
         //const paramId = this.props.match.params.id;
         //<ProductLeyout state={this.state.search} />
-        console.log(this.props);
+        //console.log(this.props);
         return ( 
         
             <div>

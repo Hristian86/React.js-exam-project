@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
+import RegAuth from './RegAuth';
 
 export default class Register extends Component {
     constructor(props) {
@@ -40,29 +41,18 @@ export default class Register extends Component {
                         "password": password
                     }
 
-                    let result = await fetch(url("signup"), {
-                        "method": "POST",
-                        "headers": {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }, body: JSON.stringify(payload)
-                    })
-                        .then(res => res.json())
-                        .catch(err => {
-                            console.log(err);
-                        })
+                    let result = await RegAuth(payload);
 
                     if (result) {
                         setCookieUser(result.email);
                         setCookieToken(result.token);
                         error.innerHTML = "Account created suceesfully";
 
+                        setTimeout(function () {
+                            history.push("/");
+                            window.location.reload(false);
+                        }, 700);
                     }
-
-                    setTimeout(function () {
-                        history.push("/");
-                        window.location.reload(false    );
-                    }, 700);
 
                 } else {
                     if (email.length < 6) {
@@ -76,7 +66,6 @@ export default class Register extends Component {
                             buttonPushed: false
                         });
                         error.innerHTML = "Password length must be at least 6 symbols";
-
                     }
                 }
 
@@ -102,16 +91,16 @@ export default class Register extends Component {
                     <form className="registerForm" onSubmit={this.signUpFunc}>
 
                         <h3>Email</h3>
-                        <FormControl className="userInput" type="email" name="email" placeholder="email" />
+                        <FormControl className="userInput" type="email" name="email" maxLength="50" placeholder="email" />
 
                         <h3>Password</h3>
-                        <FormControl type="password" className="passwordInput" placeholder="password" name="password" />
+                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="password" name="password" />
 
                         <h3>Confirm password</h3>
-                        <FormControl type="password" className="passwordInput" placeholder="confirm password" name="passwordConf" />
+                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="confirm password" name="passwordConf" />
 
                         <h3></h3>
-                        {this.state.buttonPushed ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" /> }
+                        {this.state.buttonPushed ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" />}
 
                     </form>
 

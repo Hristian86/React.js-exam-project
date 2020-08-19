@@ -10,33 +10,51 @@ const sendChanges = async (userName, userImage) => {
         }
     } else if (userImage != null) {
         payload = {
-            "imageURL" : userImage
+            "imageURL": userImage
         }
     }
 
     const token = getCookie("token");
-    return await fetch(url("manage"), {
-        "method": "POST",
-        "headers": {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }, body: JSON.stringify(payload)
-    }).then(res => res.json())
-        .catch(err => console.log('something is wrong with user manage'));
+    try {
+
+        const result = await fetch(url("manage"), {
+            "method": "POST",
+            "headers": {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }, body: JSON.stringify(payload)
+        }).then(res => res.json());
+
+        if (await result) {
+            return result;
+        }
+
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 const getUserByToken = async () => {
-    const token = getCookie("token")
-    return await fetch(url("manage"), {
-        "method": "POST",
-        "headers": {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+    const token = getCookie("token");
+    try {
+
+        const result = await fetch(url("manage"), {
+            "method": "POST",
+            "headers": {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(res => res.json());
+
+        if (await result) {
+            return result;
         }
-    }).then(res => res.json())
-        .catch(err => console.log('something is wrong with user manage'));
+
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 export { sendChanges };

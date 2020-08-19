@@ -1,14 +1,14 @@
 import React from 'react';
-import './style.css';
+//import './style.css';
+import style from './style.module.css';
 
 const NotFound = () => {
-
-    return <div className="d-flex justify-content-center not-found-page">
-
-        <h2 className="header-not-found">
+    
+    return <div className={style.notFoundPage}>
+        
+        <h2 className={style.headerNotFound}>
             the page you are looking for is not found
         </h2>
-
 
     </div>
 }

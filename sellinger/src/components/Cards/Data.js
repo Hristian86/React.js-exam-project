@@ -19,13 +19,15 @@ export default class data extends Component{
         const productDetail = e.target.keys.value;
         this.setState({
             id: productDetail
-        })
+        });
+
         // console.log(this.props.props)
-        let redir = new HistoryRedirect(this.props.props);
+        const redir = new HistoryRedirect(this.props.props);
         // History(this.props.props);
+
         this.setState({
             redirecting: await redir.redirect()
-        }) 
+        });
     }
 
     render() {
