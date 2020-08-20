@@ -3,6 +3,7 @@ import './contact.css';
 import SendEmail from '../EmailSender/SendEmail';
 import Validate from './Validate';
 import { validateEmail } from './Validate';
+import ContactForm from './CntactForm';
 
 export default class contact extends Component {
     constructor(props) {
@@ -109,16 +110,25 @@ export default class contact extends Component {
             )
         }
         return (
-            <div className="create-back">
+            <div className="create-backs">
+
                 {/* <Successully uid={this.state.uid} /> */}
                 {/*{this.state.procesing ? <span id="message" className="procesing">Procesing...</span> :*/}
+
+                <div className="contact-left-letters text-center">
+                    <div className="contact-info-holder">
+                        <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                        <h2>Contact Us</h2>
+                        <h4>We would love to hear from you !</h4>
+                    </div>
+                </div>
+
+
                 <div className="row">
                     <div className="col-lg-4"></div>
                     <div className="col-lg-4"></div>
                     <div className="col-lg-4"></div>
                 </div>
-
-                <h3 className="text-center mt-2 mb-4">Contact Us</h3>
 
                 <form className="create-post" onSubmit={this.submitHandler}>
 

@@ -7,6 +7,7 @@ import getCookie from "../Cookioes/GetCookie";
 import getUserByToken from "./GetUserByToken";
 import './style.css';
 import setCookie from "../Cookioes/SetCookie";
+import style from './style.module.css';
 
 export default class Manage extends Component {
     constructor(props) {

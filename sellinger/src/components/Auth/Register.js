@@ -6,13 +6,15 @@ import url from '../BaseUrl/BaseUrl';
 import './style.css';
 import RegAuth from './RegAuth';
 import { validateEmail } from '../Contact/Validate';
+import style from './style.module.css';
 
 export default class Register extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            buttonPushed: false
+            buttonPushed: false,
+            password:null
         }
     }
 
@@ -32,7 +34,7 @@ export default class Register extends Component {
 
             error.innerHTML = "";
             if (password === passwordConf) {
-                
+
                 if (email.length > 5 && password.length > 5 && validateEmail(email)) {
 
                     error.innerHTML = "Procesing...";
@@ -92,6 +94,42 @@ export default class Register extends Component {
         }
     }
 
+    emailHandler = (e) => {
+        let errorEmail = document.getElementById('emailError');
+        const email = e.target.value;
+        errorEmail.innerHTML = null;
+        if (email.length < 4 || !validateEmail(email)) {
+            if (email.length < 4) {
+                errorEmail.innerHTML = "Length must at least 6 symbols";
+            } else {
+                errorEmail.innerHTML = "Invalid email";
+            }
+        }
+    }
+
+    passwordHandler = (e) => {
+        const password = e.target.value;
+        const pass = e.target.value;
+        const error = document.getElementById('passError');
+        error.innerHTML = null;
+        if (pass.length < 6) {
+            error.innerHTML = "Password length must be at least 6 symbols";
+        } else {
+            this.setState({
+                password: pass
+            });
+        }
+    }
+
+    confirmPassHandler = (e) => {
+        const pass = e.target.value;
+        const error = document.getElementById('confPassError');
+        error.innerHTML = null;
+        if (pass !== this.state.password) {
+            error.innerHTML = "Passwords does not match";
+        }
+    }
+
     render() {
         return (
             <div className="backgrounds">
@@ -103,13 +141,16 @@ export default class Register extends Component {
                     <form className="registerForm" onSubmit={this.signUpFunc}>
 
                         <h3>Email</h3>
-                        <FormControl className="userInput" type="email" name="email" maxLength="50" placeholder="email" />
+                        <FormControl className="userInput" onChange={this.emailHandler} type="email" name="email" maxLength="50" placeholder="email" />
+                        <span id="emailError"></span>
 
                         <h3>Password</h3>
-                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="password" name="password" />
+                        <FormControl onChange={this.passwordHandler} type="password" className="passwordInput" maxLength="60" placeholder="password" id="password" name="password" />
+                        <span id="passError"></span>
 
                         <h3>Confirm password</h3>
-                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="confirm password" name="passwordConf" />
+                        <FormControl onChange={this.confirmPassHandler} type="password" className="passwordInput" maxLength="60" placeholder="confirm password" name="passwordConf" />
+                        <span id="confPassError"></span>
 
                         <h3></h3>
                         {this.state.buttonPushed ? <em>Loading...</em> : <input type="submit" value="Submit to register" className="btn btn-primary buttons" />}
