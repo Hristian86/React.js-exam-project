@@ -24,7 +24,9 @@ export default class ProductList extends Component {
 
 
         if (this.props.history.location.state != undefined) {
-            this.setState({ data: this.props.history.location.state.state });
+            this.setState({
+                data: this.props.history.location.state.state
+            });
 
             //this.props.history.location.state = undefined;
             console.log(this.props.history.location.state);
@@ -47,10 +49,10 @@ export default class ProductList extends Component {
         }
 
         if (this.props.data) {
-            console.log(this.props.data);
+            //console.log(this.props.data);
             return (
                 <div className="container-fluid">
-                    
+
                     {this.props.data ? <ProductLeyout state={this.props.data} /> : <div className="loading"><em>loading....</em></div>}
 
                 </div>

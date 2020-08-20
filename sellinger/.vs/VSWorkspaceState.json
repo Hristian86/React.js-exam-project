@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Auth"
+    "\\src\\Localization"
   ],
-  "SelectedNode": "\\src\\components\\Auth\\Register.js",
+  "SelectedNode": "\\src\\components\\SearchBar",
   "PreviewInSolutionExplorer": false
 }

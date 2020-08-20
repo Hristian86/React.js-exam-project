@@ -5,6 +5,7 @@ import { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
 import RegAuth from './RegAuth';
+import { validateEmail } from '../Contact/Validate';
 
 export default class Register extends Component {
     constructor(props) {
@@ -31,8 +32,8 @@ export default class Register extends Component {
 
             error.innerHTML = "";
             if (password === passwordConf) {
-
-                if (email.length > 5 && password.length > 5) {
+                
+                if (email.length > 5 && password.length > 5 && validateEmail(email)) {
 
                     error.innerHTML = "Procesing...";
 
@@ -41,9 +42,15 @@ export default class Register extends Component {
                         "password": password
                     }
 
-                    let result = await RegAuth(payload);
+                    const result = await RegAuth(payload);
 
-                    if (result) {
+                    if (result.error) {
+                        error.innerHTML = "This email is already taken";
+                        this.setState({
+                            buttonPushed: false
+                        });
+
+                    } else {
                         setCookieUser(result.email);
                         setCookieToken(result.token);
                         error.innerHTML = "Account created suceesfully";
@@ -66,6 +73,11 @@ export default class Register extends Component {
                             buttonPushed: false
                         });
                         error.innerHTML = "Password length must be at least 6 symbols";
+                    } else if (!validateEmail(email)) {
+                        this.setState({
+                            buttonPushed: false
+                        });
+                        error.innerHTML = "This is not a valid email";
                     }
                 }
 

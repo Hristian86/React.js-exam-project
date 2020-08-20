@@ -6,6 +6,7 @@ import url from "../BaseUrl/BaseUrl";
 import getCookie from "../Cookioes/GetCookie";
 import getUserByToken from "./GetUserByToken";
 import './style.css';
+import setCookie from "../Cookioes/SetCookie";
 
 export default class Manage extends Component {
     constructor(props) {
@@ -31,14 +32,18 @@ export default class Manage extends Component {
 
         const user = await getUserByToken();
         console.log(user.error);
+
         if (user.error == "Unauthorized") {
             this.setState({
                 redirect: true
             });
         }
-        
+
         if (await user) {
-            console.log(user);
+            //console.log(user);
+            if (await user.displayName) {
+                setCookie("cheked", "", 5);
+            }
             this.setState({
                 user: await user
             })
@@ -66,35 +71,36 @@ export default class Manage extends Component {
 
         try {
 
-            if (email.length > 3 || username.length > 3 || photoURL.length > 3) {
+            if (email.length > 4 || username.length > 4 || photoURL.length > 4) {
 
                 const result = await UpdateUser(username, photoURL);
                 error.innerHTML = await result;
-
+                setCookie("user_name", null, -1);
+                setCookie("cheked", "", 5);
                 setTimeout(function () {
-                    // history.push('/');
                     window.location.reload(false);
                 }, 700);
             } else {
-                if (email.length < 4) {
-                    this.setState({
-                        procesing: false
-                    });
-                    error.innerHTML = "Email addres lenght must be at least 4 symbols";
+                //if (email.length < 4) {
+                //    this.setState({
+                //        procesing: false
+                //    });
+                //    error.innerHTML = "Email addres lenght must be at least 4 symbols";
 
-                } else if (username.length < 4) {
-                    this.setState({
-                        procesing: false
-                    });
-
-                    error.innerHTML = "Username length must be at least 4 symbols";
-
-                } else if (photoURL.length < 4) {
+                //} else
+                if (username.length < 5) {
                     this.setState({
                         procesing: false
                     });
 
-                    error.innerHTML = "PhotoURL length must be at least 4 symbols";
+                    error.innerHTML = "Username length must be at least 5 symbols";
+
+                } else if (photoURL.length < 5) {
+                    this.setState({
+                        procesing: false
+                    });
+
+                    error.innerHTML = "PhotoURL length must be at least 5 symbols";
                 }
             }
 
@@ -107,12 +113,6 @@ export default class Manage extends Component {
     }
 
     render() {
-        
-        //let manage = new Manage();
-        //let user = manage.getUserProfile();
-        //if (user) {
-
-        //}
 
         let manageProfile = this.state.user ? <div>
 
@@ -142,7 +142,7 @@ export default class Manage extends Component {
 
             <div className="spacer"></div>
         </div> : <div className="loading">Loading...</div>
-        
+
         return (
             <div>
                 {this.state.redirect ? <Redirect to="/Auth/LogIn" /> : null}

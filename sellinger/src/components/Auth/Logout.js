@@ -8,6 +8,8 @@ export default class Logout extends Component {
     logOutHandle = () => {
         setCookie("user", null, -1);
         setCookie("token", null, -1);
+        setCookie("user_name", null, -1);
+        setCookie("cheked", null, -1);
     }
 
 

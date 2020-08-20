@@ -19,6 +19,7 @@ import ProductLeyout from './Products/ProductLayout';
 import getCookie from './Cookioes/GetCookie';
 import LocalizationFunc from '../Localization/LocalizationFunc';
 import setCookie from './Cookioes/SetCookie';
+import getUserByToken from './Auth/GetUserByToken';
 
 export default class navbar extends Component {
     constructor(props) {
@@ -65,15 +66,40 @@ export default class navbar extends Component {
         this.cookieUser();
     }
 
-    cookieUser = () => {
-        let currentUser = getCookie("user");
+    cookieUser = async () => {
+        const currentUser = getCookie("user");
+        const userName = getCookie("user_name");
+        const cookieChek = getCookie("cheked");
 
+        const token = getCookie("token");
+
+        if (userName === null || userName === undefined || userName === "") {
+            if (currentUser && cookieChek === "") {
+                const user = await getUserByToken();
+
+                if (await user.displayName !== undefined) {
+                    if (user.displayName.length > 2) {
+                        setCookie("user_name", user.displayName, 5);
+                    }
+                }
+                setCookie("cheked", "cheked", 5);
+            }
+        }
+
+        const currUserName = getCookie("user_name");
         //To Do : add loged user to redux global state
         if (currentUser) {
-            this.setState({
-                user: currentUser,
-                isLoged: true
-            });
+            if (currUserName) {
+                this.setState({
+                    user: currUserName,
+                    isLoged: true
+                });
+            } else {
+                this.setState({
+                    user: currentUser,
+                    isLoged: true
+                });
+            }
         } else {
             this.setState({
                 user: null,
@@ -121,8 +147,8 @@ export default class navbar extends Component {
 
                     </Nav>
 
-                    <form onChange={this.setLanguage}>
-                        <select className="" name="language">
+                    <form onChange={this.setLanguage} className="btn">
+                        <select className="btn btn-outline-success" name="language">
                             <option>{LocalizationFunc().language}</option>
                             <option name="en">EN</option>
                             <option name="bg">BG</option>

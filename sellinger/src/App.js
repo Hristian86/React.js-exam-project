@@ -11,7 +11,7 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
-import Contact from './components/Contact';
+import Contact from './components/Contact/Contact';
 import Home from './components/Home';
 import Register from './components/Auth/Register';
 import login from './components/Auth/LogIn';
@@ -23,12 +23,13 @@ import getCookie from './components/Cookioes/GetCookie';
 import NotFound from './components/NotFoundPage/NotFount';
 import Searching from './components/SearchBar/Searching';
 import Error from './components/ErrorPage/Error';
+import PrivacyPolicy from './components/Privacy/PrivacyPolicy';
 
 export default class App extends Component {
     constructor(props) {
         super(props)
 
-
+        
         this.state = {
             user: null,
             isLoading: false
@@ -90,6 +91,9 @@ export default class App extends Component {
                                 </Route>
 
                                 <Route exact path="/components/ErrorPage/Error" component={Error}>
+                                </Route>
+
+                                <Route exact path="/Privacy/PrivacyPolicy" component={PrivacyPolicy}>
                                 </Route>
 
                                 <Route exact path="/Auth/Register" component={Register}>

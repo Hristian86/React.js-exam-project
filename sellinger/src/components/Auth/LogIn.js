@@ -3,10 +3,11 @@ import { FormControl } from 'react-bootstrap';
 import Home from '../Home';
 import LogInSuccess from './LogInSuccess';
 import { Redirect, useHistory } from 'react-router';
-import { setCookie, setCookieToken, setCookieUser } from '../Cookioes/SetCookie';
+import { setCookieToken, setCookieUser } from '../Cookioes/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
 import LogInHandler from './LogInHandler';
+import setCookie from '../Cookioes/SetCookie';
 
 export default class login extends Component {
     constructor(props) {
@@ -48,6 +49,7 @@ export default class login extends Component {
                 if (user.email && user.token && user.id) {
                     setCookieUser(user.email);
                     setCookieToken(user.token);
+
                     error.innerHTML = "Success";
 
                     setTimeout(function () {
@@ -87,6 +89,25 @@ export default class login extends Component {
 
     }
 
+    emailHandler = (e) => {
+        const email = e.target.value;
+        const error = document.getElementById('emailError');
+        error.innerHTML = null;
+        if (email.length < 6) {
+            error.innerHTML = "Email addres lenght must be at least 6 symbols";
+        }
+    }
+
+    passwordHandler = (e) => {
+        const password = e.target.value;
+        const pass = e.target.value;
+        const error = document.getElementById('passError');
+        error.innerHTML = null;
+        if (pass.length < 6) {
+            error.innerHTML = "Password length must be at least 6 symbols";
+        }
+    }
+
     render() {
 
         return (<div>
@@ -99,10 +120,12 @@ export default class login extends Component {
                     <form className="registerForm" onSubmit={this.loginFunc}>
 
                         <h3>Email</h3>
-                        <FormControl className="userInput" type="Email" name="email" maxLength="50" placeholder="Email" />
+                        <FormControl onChange={this.emailHandler} className="userInput" type="Email" name="email" maxLength="50" placeholder="Email" />
+                        <span id="emailError"></span>
 
                         <h3>Password</h3>
-                        <FormControl type="password" className="passwordInput" maxLength="60" placeholder="password" name="password" />
+                        <FormControl type="password" onChange={this.passwordHandler} className="passwordInput" maxLength="60" placeholder="password" name="password" />
+                        <span id="passError"></span>
 
                         <h3></h3>
                         {this.state.buttonPresed ? <em>Loading..</em> : <input type="submit" value="Log in" className="btn btn-primary buttons" />}

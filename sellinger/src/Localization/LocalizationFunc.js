@@ -46,7 +46,7 @@ const LocalizationFunc = () => {
             language: "English",
             product: "Products",
             about: "About us",
-            contact: "Contact",
+            contact: "Contacts",
             search: "Search",
             register: "Register",
             login: "Login",

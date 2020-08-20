@@ -3,7 +3,7 @@ import './style.css';
 
 const ThirdRow = () => {
 
-    return <div className="row bg-white">
+    return <div className="row bg-white third-row-layout">
         <div className="col-lg-2 d-flex justify-content-center text-center ">
             <div>
                 {/* <p>More sells</p>
