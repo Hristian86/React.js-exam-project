@@ -8,12 +8,10 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
-import Tests from './Tests';
-import propsy from './SendingProps';
 import Search from './SearchBar/Search';
 import HomeCom from './Home-Components/HomeCom';
 import GetQuery from './FirebaseDB/Query-Service/GetQuery';
-import getCookie from './Cookioes/GetCookie';
+import getCookie from './Cookies/GetCookie';
 
 export const UserContext = createContext({ user: null });
 

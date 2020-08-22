@@ -4,7 +4,7 @@ import { Collapse, Container, NavbarBrand, NavbarToggler, NavItem, NavLink } fro
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
+    Route,
     Redirect
 } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -12,13 +12,12 @@ import About from './About';
 import Register from './Auth/Register';
 import LogIn from './Auth/LogIn';
 import Cards from './Cards/Cards';
-import propsy from './SendingProps';
 import ProductList from './Products/ProductList';
 import GetQuery from './FirebaseDB/Query-Service/GetQuery';
 import ProductLeyout from './Products/ProductLayout';
-import getCookie from './Cookioes/GetCookie';
+import getCookie from './Cookies/GetCookie';
 import LocalizationFunc from '../Localization/LocalizationFunc';
-import setCookie from './Cookioes/SetCookie';
+import setCookie from './Cookies/SetCookie';
 import getUserByToken from './Auth/GetUserByToken';
 
 export default class navbar extends Component {
@@ -116,8 +115,6 @@ export default class navbar extends Component {
     render() {
         let cheks = false;
         let usr = this.state.user;
-
-        propsy(this.state.user); //component test from function
 
         let displayName = null;
         let token = null;

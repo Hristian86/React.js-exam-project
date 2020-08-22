@@ -1,5 +1,5 @@
 import url from "../BaseUrl/BaseUrl";
-import getCookie from "../Cookioes/GetCookie";
+import getCookie from "../Cookies/GetCookie";
 
 const sendChanges = async (userName, userImage) => {
 

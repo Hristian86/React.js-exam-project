@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react';
 import App from './App';
+import React from 'react';
 import { Context } from './Context';
 import { useState } from 'react';
 import GetQuery from './components/FirebaseDB/Query-Service/GetQuery';
-import getCookie from './components/Cookioes/GetCookie';
-import setCookie from './components/Cookioes/SetCookie';
+import getCookie from './components/Cookies/GetCookie';
+import setCookie from './components/Cookies/SetCookie';
+import { UserContext } from './components/Home';
+import { provider } from 'redux';
+import Store from './components/Redux/Store';
 
 const AppContext = () => {
 
-    //const [value, setValue] = useState([]);
+    const [value, setValue] = useState([]);
+
+    const setDefaultLang = () => {
+        const lang = getCookie('language');
+        if (lang === undefined) {
+            setCookie('language', 'BG', 5);
+        }
+    }
+
+    return <div>
+        <UserContext.Provider>
+            <provider store={Store}>
+                <App />
+            </provider>
+        </UserContext.Provider>
+    </div>
+
+}
+
+export default AppContext;
+
 
     //useEffect(() => {
     //    const fetch = async () => {
@@ -31,20 +54,3 @@ const AppContext = () => {
     //    //setValue(["user", "asd"]);
     //}
     ////console.log(value);
-
-    const setDefaultLang = () => {
-        const lang = getCookie('language');
-        if (lang === undefined) {
-            setCookie('language', 'BG', 5);
-        }
-    }
-    
-    return <div>
-
-        <App />
-
-    </div>
-
-}
-
-export default AppContext;

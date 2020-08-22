@@ -11,7 +11,11 @@ export default class contact extends Component {
 
         this.state = {
             success: false,
-            procesing: false
+            procesing: false,
+            letters: 0,
+            lettersName: 0,
+            lettersSubject: 0,
+            lettersEmail: 0
         }
     }
 
@@ -32,11 +36,19 @@ export default class contact extends Component {
         try {
             if (!valid) {
                 const result = await SendEmail(email, subject, name, content);
+
                 if (await result === "email send") {
                     this.setState({
                         success: true
                     });
                     errorNotSendEmail.innerHTML = null;
+                } else if (await result.errors.Name == "Invalid symbols") {
+                    let errorName = document.getElementById('name');
+                    errorName.innerHTML = result.errors.Name;
+
+                    this.setState({
+                        procesing: false
+                    });
                 } else {
 
                     errorNotSendEmail.innerHTML = 'Sorry there is a problem with mail service';
@@ -64,8 +76,14 @@ export default class contact extends Component {
         let errorName = document.getElementById('name');
         const name = e.target.value;
         errorName.innerHTML = null;
-        if (name.length < 4) {
-            errorName.innerHTML = "Length must at least 4 symbols";
+        this.setState({
+            lettersName: name.length
+        });
+        if (name.length < 5) {
+            errorName.innerHTML = "Length must at least 5 symbols";
+        }
+        if (name.length >= 50) {
+            errorName.innerHTML = "You have reached maximum of 50 symbols";
         }
     }
 
@@ -73,8 +91,14 @@ export default class contact extends Component {
         let errorSubject = document.getElementById('subject');
         const subject = e.target.value;
         errorSubject.innerHTML = null;
-        if (subject.length < 4) {
-            errorSubject.innerHTML = "Length must at least 4 symbols";
+        this.setState({
+            lettersSubject: subject.length
+        });
+        if (subject.length < 5) {
+            errorSubject.innerHTML = "Length must at least 5 symbols";
+        }
+        if (subject.length >= 50) {
+            errorSubject.innerHTML = "You have reached maximum of 50 symbols";
         }
     }
 
@@ -82,10 +106,14 @@ export default class contact extends Component {
         let errorEmail = document.getElementById('email');
         const email = e.target.value;
         errorEmail.innerHTML = null;
-        
-        if (email.length < 4 || !validateEmail(email)) {
-            if (email.length < 4) {
-                errorEmail.innerHTML = "Length must at least 4 symbols";
+        this.setState({
+            lettersEmail: email.length
+        });
+        if (email.length < 5 || !validateEmail(email) || email.length > 50) {
+            if (email.length < 5) {
+                errorEmail.innerHTML = "Length must at least 5 symbols";
+            } else if (email.length >= 50) {
+                errorEmail.innerHTML = "You have reached maximum of 50 symbols";
             } else {
                 errorEmail.innerHTML = "Invalid email";
             }
@@ -96,8 +124,13 @@ export default class contact extends Component {
         let errorMessage = document.getElementById('content');
         const message = e.target.value;
         errorMessage.innerHTML = null;
-        if (message.length < 4) {
-            errorMessage.innerHTML = "Length must at least 4 symbols";
+        this.setState({
+            letters: message.length
+        })
+        if (message.length < 5) {
+            errorMessage.innerHTML = "Length must at least 5 symbols and max 500";
+        } else if (message.length === 500) {
+            errorMessage.innerHTML = "You have reached the maximum of 500 symbols";
         }
     }
 
@@ -133,26 +166,26 @@ export default class contact extends Component {
                 <form className="create-post" onSubmit={this.submitHandler}>
 
                     <div className="form-group">
-                        <label >Name *</label>
-                        <input onChange={this.nameHandler} type="text" maxLength="100" minLength="4" className="form-control" placeholder="name" name="name" />
+                        <label >Name * {this.state.lettersName}</label>
+                        <input onChange={this.nameHandler} type="text" maxLength="50" minLength="5" className="form-control" placeholder="name" name="name" />
                         <span id="name" ></span>
                     </div>
 
                     <div className="form-group">
-                        <label >Subject *</label>
-                        <input onChange={this.subjectHandler} type="text" maxLength="100" minLength="4" className="form-control" placeholder="subject" name="subject" />
+                        <label >Subject * {this.state.lettersSubject}</label>
+                        <input onChange={this.subjectHandler} type="text" maxLength="50" minLength="5" className="form-control" placeholder="subject" name="subject" />
                         <span id="subject" ></span>
                     </div>
 
                     <div className="form-group">
-                        <label >Email *</label>
-                        <input onChange={this.emailHandler} type="text" maxLength="100" minLength="4" className="form-control" placeholder="email" name="email" />
+                        <label >Email * {this.state.lettersEmail}</label>
+                        <input onChange={this.emailHandler} type="text" maxLength="50" minLength="5" className="form-control" placeholder="email" name="email" />
                         <span id="email" ></span>
                     </div>
 
                     <div className="form-group">
-                        <label >Message *</label>
-                        <textarea type="text" onChange={this.messageHandler} className="form-control content-holder" placeholder="description" name="content" />
+                        <label >Message * {this.state.letters}</label>
+                        <textarea type="text" onChange={this.messageHandler} className="form-control content-holder" placeholder="description" name="content" maxLength="500" />
                         <span id="content" ></span>
                     </div>
 

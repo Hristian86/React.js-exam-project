@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import setCookie from '../Cookioes/SetCookie';
+import setCookie from '../Cookies/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
 

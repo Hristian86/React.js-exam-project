@@ -3,11 +3,11 @@ import { FormControl } from 'react-bootstrap';
 import Home from '../Home';
 import LogInSuccess from './LogInSuccess';
 import { Redirect, useHistory } from 'react-router';
-import { setCookieToken, setCookieUser } from '../Cookioes/SetCookie';
+import { setCookieToken, setCookieUser } from '../Cookies/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
 import LogInHandler from './LogInHandler';
-import setCookie from '../Cookioes/SetCookie';
+import setCookie from '../Cookies/SetCookie';
 
 export default class login extends Component {
     constructor(props) {

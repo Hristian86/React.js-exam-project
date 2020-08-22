@@ -1,4 +1,4 @@
-﻿import getCookie from "../components/Cookioes/GetCookie"
+﻿import getCookie from "../components/Cookies/GetCookie"
 
 const LocalizationFunc = () => {
     const lang = getCookie('language');

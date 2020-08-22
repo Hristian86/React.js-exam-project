@@ -19,7 +19,7 @@ import Logout from './components/Auth/Logout';
 import Manage from './components/Auth/Manage';
 import ProductList from './components/Products/ProductList';
 import DetailsPage from './components/Products/DetailsPage';
-import getCookie from './components/Cookioes/GetCookie';
+import getCookie from './components/Cookies/GetCookie';
 import NotFound from './components/NotFoundPage/NotFount';
 import Searching from './components/SearchBar/Searching';
 import Error from './components/ErrorPage/Error';

@@ -3,10 +3,10 @@ import { FormControl } from 'react-bootstrap';
 import UpdateUser from "./UpdateUser";
 import { useHistory, Redirect } from 'react-router';
 import url from "../BaseUrl/BaseUrl";
-import getCookie from "../Cookioes/GetCookie";
+import getCookie from "../Cookies/GetCookie";
 import getUserByToken from "./GetUserByToken";
 import './style.css';
-import setCookie from "../Cookioes/SetCookie";
+import setCookie from "../Cookies/SetCookie";
 import style from './style.module.css';
 
 export default class Manage extends Component {

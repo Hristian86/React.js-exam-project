@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { setCookieUser, setCookieToken } from '../Cookioes/SetCookie';
+import { setCookieUser, setCookieToken } from '../Cookies/SetCookie';
 import url from '../BaseUrl/BaseUrl';
 import './style.css';
 import RegAuth from './RegAuth';
