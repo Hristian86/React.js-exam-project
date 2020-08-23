@@ -7,80 +7,6 @@ import Home from './components/Home';
 import App from './App';
 import HomeCom from './components/Home-Components/HomeCom';
 
-//test('renders Search component', () => {
-//    const { getByText } = render(<App />);
-//    const linkElement = getByText(/search/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Layout component', () => {
-//    const { getByText } = render(<App />);
-//    const linkElement = getByText(/layout/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Navbar component', () => {
-//    const { getByText } = render(<App />);
-//    const linkElement = getByText(/navbar/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Contact component', () => {
-//    const { getByText } = render(<App />);
-//    const linkElement = getByText(/contact/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders About component', () => {
-//    const { getByText } = render(<App />);
-//    const linkElement = getByText(/about/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//Home component
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/ThirdRow/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/SecondRowComp/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/RightComponent/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/LeftSideComponent/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/Search/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<HomeCom />);
-//    const linkElement = getByText(/Search/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
-//test('renders Home component', () => {
-//    const { getByText } = render(<Home />);
-//    const linkElement = getByText(/HomeCom/i);
-//    expect(linkElement).toBeInTheDocument();
-//});
-
 //footer
 
 test('renders footer component', () => {
@@ -111,7 +37,7 @@ test('Log in users and return token', async () => {
 test('Log in users and return email', async () => {
     const payload = {
         email: "aaa@aaa.com",
-        password:"123456"
+        password: "123456"
     }
     const user = await LogInHandler(payload);
     expect(user.email).toBe("aaa@aaa.com");
@@ -131,4 +57,80 @@ test('Get images by post.id from server', async () => {
     if (await result) {
         expect(result.length).not.toBe(null);
     }
+});
+
+//Components
+
+test('renders Search component', () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/search/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Layout component', () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/layout/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Navbar component', () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/navbar/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Contact component', () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/contact/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders About component', () => {
+    const { getByText } = render(<App />);
+    const linkElement = getByText(/about/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+//Home component
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/ThirdRow/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/SecondRowComp/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/RightComponent/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/LeftSideComponent/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/Search/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<HomeCom />);
+    const linkElement = getByText(/Search/i);
+    expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Home component', () => {
+    const { getByText } = render(<Home />);
+    const linkElement = getByText(/HomeCom/i);
+    expect(linkElement).toBeInTheDocument();
 });
