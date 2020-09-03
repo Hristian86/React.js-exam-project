@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
-    "\\src\\components\\Contact",
-    "\\src\\components\\Redux",
-    "\\src\\components\\Redux\\Actions",
-    "\\src\\components\\Redux\\Reducers"
+    "\\src\\components"
   ],
+  "SelectedNode": "\\src\\components\\Auth",
   "PreviewInSolutionExplorer": false
 }

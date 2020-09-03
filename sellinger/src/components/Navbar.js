@@ -33,6 +33,7 @@ export default class navbar extends Component {
     }
 
     language = () => {
+        //setting the language by user choise
         const lang = getCookie('language');
         if (lang === undefined) {
             setCookie('language', 'BG', 5);
@@ -50,6 +51,7 @@ export default class navbar extends Component {
     }
 
     setLanguage = (e) => {
+        //get data from the selectable field
         const lang = e.target.value;
         if (lang == "EN") {
             setCookie("language", "EN", 5);
@@ -65,15 +67,22 @@ export default class navbar extends Component {
         this.cookieUser();
     }
 
+    componentWillUnmount() {
+        this.cookieUser();
+    }
+
     cookieUser = async () => {
+        //check for current user if its logged
         const currentUser = getCookie("user");
+        //check if the user has a username setted
         const userName = getCookie("user_name");
-        const cookieChek = getCookie("cheked");
+        //this is when the user opens up the website after time and if there is a cookie
+        const cookieCheck = getCookie("checked");
 
         const token = getCookie("token");
 
         if (userName === null || userName === undefined || userName === "") {
-            if (currentUser && cookieChek === "") {
+            if (currentUser && cookieCheck === "") {
                 const user = await getUserByToken();
 
                 if (await user.displayName !== undefined) {
@@ -81,7 +90,7 @@ export default class navbar extends Component {
                         setCookie("user_name", user.displayName, 5);
                     }
                 }
-                setCookie("cheked", "cheked", 5);
+                setCookie("checked", "checked", 5);
             }
         }
 
@@ -124,8 +133,6 @@ export default class navbar extends Component {
         } else {
             cheks = false;
         }
-
-        // <ProductLeyout state={this.state.search}  />
 
         return (<div className="">
             <Navbar bg="light" className="nav-bar-background" expand="lg">

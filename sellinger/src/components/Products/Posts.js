@@ -22,38 +22,13 @@ export default class Posts extends Component {
         e.preventDefault();
         const productDetail = e.target.idto.value;
 
+        //setting redirect to product details page
         if (productDetail) {
             this.setState({
-                //data: data,
                 isDetail: true,
                 detailId: productDetail
-                //pictures: pictures
             });
         }
-
-        // console.log(productDetail)
-        
-        // const id = this.props.props.id;
-        // console.log(this.props.props.id);
-        // console.log(this.state.data);
-
-        //let data = [];
-        //let query = new DetailsQuery();
-        //let data = await query.getDetails(productDetail);
-        
-        //const pictures = [];
-        //let getQuery = new GetQuery();
-        //const pictures = await getQuery.getImagesbyId(data.id);
-
-        //if (data && pictures) {
-        //    this.setState({
-        //         data: data,
-        //         isDetail: true,
-        //         detailId: productDetail,
-        //         pictures: pictures
-        //        });
-        //    //console.log(data.name);
-        //}
     }
     
     render() {
@@ -76,11 +51,11 @@ export default class Posts extends Component {
             <div className="card-header">
                 <ul className="nav nav-tabs card-header-tabs d-flex justify-content-between">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">Active</a>
+                        <div className="nav-link active" >Active</div>
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">DETAILS</a>
+                        <div className="nav-link active" >DETAILS</div>
                     </li>
 
                 </ul>

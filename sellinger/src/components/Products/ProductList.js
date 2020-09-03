@@ -20,6 +20,10 @@ export default class ProductList extends Component {
         }, 600);
     }
 
+    componentWillUnmount() {
+        this.getItems();
+    }
+
     getItems = async () => {
 
 

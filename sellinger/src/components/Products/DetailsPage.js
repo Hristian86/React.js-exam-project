@@ -23,6 +23,10 @@ export default class DetailsPage extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.detailsById();
+    }
+
     detailsById = async () => {
         try {
             const paramId = this.props.match.params.id;

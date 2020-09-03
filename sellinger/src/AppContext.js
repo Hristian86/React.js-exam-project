@@ -22,9 +22,9 @@ const AppContext = () => {
 
     return <div>
         <UserContext.Provider>
-            <provider store={Store}>
+            {/* <provider store={Store}> */}
                 <App />
-            </provider>
+            {/* </provider> */}
         </UserContext.Provider>
     </div>
 

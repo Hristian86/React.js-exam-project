@@ -44,7 +44,7 @@ export default class login extends Component {
 
                 let user = await LogInHandler(payload);
 
-                //console.log(user);
+                // console.log(user);
 
                 if (user.email && user.token && user.id) {
                     setCookieUser(user.email);

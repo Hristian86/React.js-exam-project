@@ -113,6 +113,7 @@ export default class ProductLeyout extends Component {
             
             if (this.state.filterPrice) {
                 display = arr.map(post => <Posts props={post} key={post.id} />)    
+                //setState({filterPrice: false});
             } else {   
                 display = arr.map(post => <Posts props={post} key={post.id} />)
             }

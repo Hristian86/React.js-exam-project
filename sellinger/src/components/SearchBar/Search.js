@@ -21,17 +21,19 @@ export default class Search extends Component {
         e.preventDefault();
 
         try {
-
+            //search values
             const search = e.target.search.value;
             const city = e.target.city.value;
             const option = e.target.option.value;
 
+            //query service
             const searchQuery = new GetQuery();
             let result = await searchQuery.getPosts();
+            //if there is any result
             if (result) {
                 let searchRes = [];
 
-
+                //filter by city to lower case insensitive
                 if (city.length > 0) {
                     result = result.filter((citySeach, index) => {
                         let currentCity = citySeach.city.toLowerCase();
@@ -42,6 +44,7 @@ export default class Search extends Component {
                     });
                 }
 
+                //another filter by seach subject data from the search field
                 for (let index = 0; index < result.length; index++) {
                     const element = result[index];
                     let containsEl = element.subject.toLowerCase().includes(search.toLowerCase());
@@ -66,7 +69,7 @@ export default class Search extends Component {
 
         if (this.state.redirect && this.state.search) {
             try {
-
+                //redirect when the button for the search is pushed and send the state to props
                 return <Redirect push to={{
                     pathname: `/Products/ProductList`,
                     state: {

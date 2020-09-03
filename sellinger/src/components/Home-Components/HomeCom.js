@@ -44,6 +44,10 @@ export default class HomeCom extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.getItems();
+    }
+
     getItems = async () => {
         let query = new GetQuery();
         const posts = await query.getPosts();

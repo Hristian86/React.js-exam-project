@@ -53,7 +53,7 @@ test('Get all data from server', async () => {
 
 test('Get images by post.id from server', async () => {
     const query = new GetQuery();
-    const result = await query.getImagesbyId("KhCgBha0vqfVWcygA4pd");
+    const result = await query.getImagesbyId("KhCgBha0vqfVWcygA4pd"); //item is not present
     if (await result) {
         expect(result.length).not.toBe(null);
     }

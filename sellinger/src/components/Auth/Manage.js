@@ -43,7 +43,7 @@ export default class Manage extends Component {
         if (await user) {
             //console.log(user);
             if (await user.displayName) {
-                setCookie("cheked", "", 5);
+                setCookie("checked", "", 5);
             }
             this.setState({
                 user: await user
@@ -77,7 +77,7 @@ export default class Manage extends Component {
                 const result = await UpdateUser(username, photoURL);
                 error.innerHTML = await result;
                 setCookie("user_name", null, -1);
-                setCookie("cheked", "", 5);
+                setCookie("checked", "", 5);
                 setTimeout(function () {
                     window.location.reload(false);
                 }, 700);
