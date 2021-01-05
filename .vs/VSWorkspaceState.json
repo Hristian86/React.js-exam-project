@@ -1,11 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\sellinger",
-    "\\sellinger\\src",
-    "\\sellinger\\src\\components",
-    "\\sellinger\\src\\components\\CreatePost"
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\BaseUrl",
+    "\\src\\components\\EmailSender",
+    "\\src\\components\\Redux",
+    "\\src\\components\\Redux\\Actions",
+    "\\src\\components\\Redux\\Reducers"
   ],
-  "SelectedNode": "\\sellinger\\src\\components\\CreatePost\\Create.js",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

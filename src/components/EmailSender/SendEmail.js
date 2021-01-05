@@ -7,7 +7,8 @@ const SendEmail = async (email, subject, name, content) => {
             Email: email,
             Subject: subject,
             Content: content,
-            Name: name
+            Name: name,
+            Server: "fuel-prices",
         };
 
         const result = fetch("https://mashop.herokuapp.com/api/Contacts", {
